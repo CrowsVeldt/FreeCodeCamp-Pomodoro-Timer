@@ -1,0 +1,27 @@
+#1. Use Trello for planning/management. 
+
+  1a. Write tasks as they occur to you. Give them one sentance descriptions, if the sentance is too long or complex it's a sign that that item needs to be broken into two or more tasks.
+
+  1b. Give each task an estimated time to complete, try to keep tasks to things that can be completed in 15 minutes, 30 at the most. Keep time of the time it takes to complete a task, and when you finish note the actual time next to the estimated time.
+  
+  1c. When you take on a task, make a Git issue for it. Update the issue as needed as you continue working on the task, and close it when you finish. Whether that means you successfully completed the task, or you decided it needs to be split/delayed/abandoned.
+  
+#2. Use Jest for testing
+
+  2a. Download Jest and it's dependencies. Run through the tutorial by Kent C. Dodds. See if you can finish it in one day but don't kill yourself, do it at your own pace.
+  
+  2b. When you are adding functionality to the application: First, think of what exactly it should do. Second, Think of how you can test that it is doing what it should. Write down pseudo-code for the function, then write a failing test for the function, make the test pass with the simplest code possible, and finally refactor the code to make it fully functional. Make sure to run the test suite regularly to make sure you haven't broken anything.
+  
+  2c. Note in the README that you are using this app as an opportunity to learn how to write and use unit tests.
+  
+#3. Workflow
+
+  3a. Pick a task from the Trello board
+  
+  3b. Start a timer
+  
+  3c. Add a Git issue to track progress
+  
+  3d. Think about the task: What end functionality is required? How can you achieve that? How can you test it?
+  
+  3e. 
