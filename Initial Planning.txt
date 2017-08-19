@@ -20,8 +20,26 @@
   
   3b. Start a timer
   
-  3c. Add a Git issue to track progress
+  3c. Add a Git issue to track progress, update it as you complete each following step
   
-  3d. Think about the task: What end functionality is required? How can you achieve that? How can you test it?
+  3d. Think about the task: What end functionality is required? How can you achieve that? How can you test it? This is the time to do any Googling necessary, try to get to where you won't need to interrupt the following steps for anything (You may not succeed, but try).
   
-  3e. 
+  3e. Write pseudo-code of your intended function (or class, object, whatever it is)
+  
+  3f. Write a failing test for your code
+  
+  3g. Write the code to make the test pass
+  
+  3h. Once the test passes, refactor the code to be fully functional, run tests.
+  
+  3i. Run standard --fix (stanfix), run tests again
+  
+  3j. Write a good, descriptive commit message. Push to Github
+  
+  3k. Close Git issue
+  
+  3l. Stop timer, update Trello card with the actual completion time. Mark as finished. Make notes as appropriate: Things that were easier/harder than expected, things you learned, things you realized.
+  
+  3m. Take a short (~5 minutes) break, you deserve it. Get up, stretch your legs. Eat some nuts. Do something fun.
+  
+  3n. Repeat as needed
