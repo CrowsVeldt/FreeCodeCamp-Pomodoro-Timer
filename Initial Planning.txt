@@ -1,12 +1,19 @@
-#1. Use Trello for planning/management. 
+My target is to finish it in one month (30 days), this is my deadline.
 
-  1a. Write tasks as they occur to you. Give them one sentance descriptions, if the sentance is too long or complex it's a sign that that item needs to be broken into two or more tasks.
+Take the estimated time to complete for the project from the FreeCodeCamp page, see how many hours a day I need to work to finish it in a month, add a little extra time. This is your daily target. Keep track of how much time you actually manage to do. If I'm likely to miss the deadline, either cut functionality or push the deadline.
+
+
+#Tools and worflow:
+
+##1. Use Trello for planning/management. 
+
+  1a. Write tasks as they occur to you. Give them a one sentance descriptions, if the sentance is too long or complex it's a sign that that item needs to be broken into two or more tasks.
 
   1b. Give each task an estimated time to complete, try to keep tasks to things that can be completed in 15 minutes, 30 at the most. Keep time of the time it takes to complete a task, and when you finish note the actual time next to the estimated time.
   
   1c. When you take on a task, make a Git issue for it. Update the issue as needed as you continue working on the task, and close it when you finish. Whether that means you successfully completed the task, or you decided it needs to be split/delayed/abandoned.
   
-#2. Use Jest for testing
+##2. Use Jest for testing
 
   2a. Download Jest and it's dependencies. Run through the tutorial by Kent C. Dodds. See if you can finish it in one day but don't kill yourself, do it at your own pace.
   
@@ -14,7 +21,7 @@
   
   2c. Note in the README that you are using this app as an opportunity to learn how to write and use unit tests.
   
-#3. Workflow
+##3. Workflow
 
   3a. Pick a task from the Trello board
   
