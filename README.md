@@ -1,4 +1,4 @@
-#A simple Pomodoro timer, for the FreeCodeCamp Front End course.
+#A Pomodoro timer, for the FreeCodeCamp Front End course.
 
 I'm going to use this as an opportunity to introduce myself to writing unit tests, using Jest.
 
@@ -10,3 +10,5 @@ I'm going to use this as an opportunity to introduce myself to writing unit test
 2. I can reset the clock for my next pomodoro
 
 3. I can customize the length of each pomodoro
+
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
