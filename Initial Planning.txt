@@ -2,14 +2,13 @@
 
   My target is to finish it in one month (30 days), this is my deadline.
   
-  Take the estimated time to complete for the project from the FreeCodeCamp page, see how many hours a day I need to work to finish it in a month, add a little extra time. This is your daily target. Keep track of how much time you actually manage to do. If I'm likely to miss the deadline, either cut functionality or push the deadline.  
+  30 hours, estimated time to complete from FCC.
+  
+  Say, 40 hours. That's 1.3 hours per day.
+  
+  //Take the estimated time to complete for the project from the FreeCodeCamp page, see how many hours a day I need to work to finish it in a month, add a little extra time. This is your daily target. Keep track of how much time you actually manage to do. If I'm likely to miss the deadline, either cut functionality or push the deadline.  
 
   I intend to make it a Chrome extension, and possibly port it to other browsers afterwards
-
-  I want to try using MVC, to familiarize myself with concept some more.
-  
-  
-
 
 #Tools and worflow:
 
