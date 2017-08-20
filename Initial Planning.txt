@@ -1,14 +1,24 @@
 #Overview:
 
+##Prep Schedule:
+
+  Get Internet hooked up: ?
+
+  Set up Trello: 1-2 hours
+
+  Do the Jest course: 7 hours(?)
+
+##Project Schedule:
+
   My target is to finish it in one month (30 days), this is my deadline.
   
   30 hours, estimated time to complete from FCC.
-  
-  Say, 40 hours. That's 1.3 hours per day.
-  
-  //Take the estimated time to complete for the project from the FreeCodeCamp page, see how many hours a day I need to work to finish it in a month, add a little extra time. This is your daily target. Keep track of how much time you actually manage to do. If I'm likely to miss the deadline, either cut functionality or push the deadline.  
 
-  I intend to make it a Chrome extension, and possibly port it to other browsers afterwards
+  Say, 40 hours. That's 1.3 hours per day, if I work every day; 1.8 hours, if I only work weekdays; and 5 hours per day, if I only work week*ends*. I think that's doable. Of course the estimate is probably off, but that's just part of the learning process.
+
+  I'll keep track of how much time I actually manage to do. If I'm likely to miss the deadline, I'll either cut functionality or push the deadline.  
+
+  I intend to make it a Chrome extension, and possibly port it to other browsers afterwards. I'm going to milk every possible bit of education out of these projects.
 
 #Tools and worflow:
 
