@@ -4,8 +4,15 @@ body{
   
 }
 
-.timer{
+#timer{
   
   color: cornflowerblue;
+  
+}
+
+.input{
+  
+  width: 1.5em;
+  text-align: center;
   
 }

@@ -17,7 +17,7 @@ I'm going to use this as an opportunity to introduce myself to writing unit test
 
   2. Play an alarm and pop up a notification when time runs out
 
-  3. A button to start and pause the timer
+  3. A button to start and reset the timer
 
   4. Input for pomodoro and break length
 
