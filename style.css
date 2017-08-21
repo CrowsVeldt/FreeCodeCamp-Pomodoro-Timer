@@ -1,5 +1,9 @@
 body{
   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
   text-align: center;
   
 }
@@ -7,11 +11,20 @@ body{
 #timer{
   
   color: cornflowerblue;
+  font-size: 10em;
+  
+}
+
+#play-reset{
+  
+  height: 50px;
+  width: 100px;
+  margin: 20px
   
 }
 
 .input{
-  
+  /* TODO: Width should adjust to the length of the number */
   width: 3em;
   text-align: center;
   
