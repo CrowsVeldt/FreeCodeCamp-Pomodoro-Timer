@@ -1,15 +1,15 @@
 (function () {
   'use strict;'
   
-  //Model - Start time, End Time, Work Length, Break Length
+  //Model - Holds variables for the current work length, break length, start time, and end time
   
   const time = {}
   
-  //View - The timer, itself
+  //View - Updates the view as the model is updated
   
   const view = {}
   
-  //Controller - Play/Pause Button, Time Input
+  //Controller - Accepts user input, updates the model as needed
   
   const input = {}
   
