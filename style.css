@@ -5,6 +5,16 @@ body{
   align-items: center;
   
   text-align: center;
+
+  background-color: skyblue
+  
+}
+
+header{
+  
+  background-color: black;
+  color: wheat;
+  width: 100%;
   
 }
 
@@ -24,8 +34,19 @@ body{
 }
 
 .input{
-  /* TODO: Width should adjust to the length of the number */
-  width: 3em;
+  
   text-align: center;
+  /* TODO: Width should adjust to the length of the number, or numbers should be limited to double-digits */
+  width: 3em;
+  
+}
+
+footer{
+  
+  background-color: black;
+  color: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
   
 }
