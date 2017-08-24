@@ -1,29 +1,16 @@
 (function () {
   'use strict;'
-
-  // Model - Holds relevent data
-
-  const data = {
-    
-    
-    
+  
+  var testObj = {
+    active: true,
+    startTime: 0,
+    currentTime: 0,
+    pomodoro: 25,
+    sBreak: 5,
+    lBreak: 15
   }
-
-  // View - Updates the view as the model is updated
-
-  const view = {
-    
-    
-    
-  }
-
-  // Controller - Accepts user input, updates the model as needed
-
-  const input = {
-    
-    //When user changes the time inputs, update the model
-    
-    //When the user presses the play button, start the timer
-    
-  }
+  
+  // When currentTime is equal to startTime.getMinutes() + pomodoro % 60 the time is up.
+  
+  // When the user presses the 'play' button, use setTimeout to create a timeout according to the value of 'Pomodoro length'. Play a sound at the end.
 }())
