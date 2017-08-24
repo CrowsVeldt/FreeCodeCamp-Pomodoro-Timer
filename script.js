@@ -12,23 +12,36 @@
   const button = document.getElementById('play-reset')
 
   button.addEventListener('click', function () {
-  // When currentTime is equal to startTime.getMinutes() + pomodoro % 60 the time is up.
+    
+    var intervalID
 
-    currentTimer.active = true
-    currentTimer.startTime = new Date().getMinutes()
-    currentTimer.endTime = (currentTimer.startTime + currentTimer.pomodoro) % 60
+    if(currentTimer.active === false){
+      
+      currentTimer.active = true
+      currentTimer.startTime = new Date().getTime()
+      currentTimer.endTime = currentTimer.startTime + (currentTimer.pomodoro * 60000)
+    
+        intervalID = setInterval(function () {
+        console.log('check')
 
-    setInterval(function () {
-      console.log('checking')
+        let check = new Date().getTime()
 
-      let check = new Date().getMinutes()
+        if (check >= currentTimer.endTime) {
+          //currentTimer.startTime = check
 
-      if (check === currentTimer.endTime) {
-        currentTimer.startTime = check
-        currentTimer.endTime = (check + currentTimer.pomodoro) % 60
+          currentTimer.endTime = check + (currentTimer.pomodoro * 60000)
 
-        console.log('restart')
-      }
-    }, 1000)
+          console.log('restart')
+        }
+      }, 1000) 
+      
+      
+    } else {
+    //debugger
+      currentTimer.active = false
+      
+      clearInterval(intervalID)
+    }
   })
 }())
+new Date().getT
