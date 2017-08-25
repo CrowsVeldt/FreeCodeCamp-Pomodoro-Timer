@@ -23,14 +23,16 @@ I'm going to use this as an opportunity to introduce myself to writing unit test
 
 ##Optional additions (if I'm feeling adventurous):
 
-  1. A button to push to add a mark for if the user got distracted, and tally marks for each distraction
+  1. A text input for noting the goal of the current pomodoro
+
+  2. A button to push to add a mark for if the user got distracted, and tally marks for each distraction
   
-  1a. The option to add a reason for each distraction, which the user can mouse over to see
+  2a. The option to add a reason for each distraction, which the user can mouse over to see
   
-  2. A selection of alarm sounds
+  3. A selection of alarm sounds
   
-  3. The option to save multiple time presets
+  4. The option to save multiple time presets
   
-  4. Allow playing sounds at intervals, like a clock's ticking
+  5. Allow playing sounds at intervals, like a clock's ticking
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
