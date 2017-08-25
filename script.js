@@ -1,15 +1,28 @@
 (function () {
   'use strict;'
   
-  const startButton = document.getElementById('start')
-  const stopButton = document.getElementById('stop')
+  const input = {
+    
+    startButton: document.getElementById('start'),
+    stopButton: document.getElementById('stop'),
+    pomodoroInput: document.getElementById('pomodoro').value,
+    shortBreakInput: document.getElementById('short-break').value,
+    longBreakInput: document.getElementById('long-break').value
+    
+  }
+  
+  const view = {
+    
+    timerView: document.getElementById('timer').value
+    
+  }
 
   const currentTimer = {
     active: false,
     startTime: 0,
-    pomodoro: 1,
-    sBreak: 5,
-    lBreak: 15,
+    pomodoro: input.pomodoroInput,
+    sBreak: input.shortBreakInput,
+    lBreak: input.longBreakInput,
     timerID: 0,
     
     checkTime: function checkTime () {
@@ -44,6 +57,6 @@
     }  
   }
   
-  startButton.addEventListener('click', currentTimer.startTimer)
-  stopButton.addEventListener('click', currentTimer.stopTimer)
+  input.startButton.addEventListener('click', currentTimer.startTimer)
+  input.stopButton.addEventListener('click', currentTimer.stopTimer)
 }())

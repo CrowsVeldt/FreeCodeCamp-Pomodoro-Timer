@@ -50,3 +50,7 @@ footer{
   bottom: 0;
   
 }
+label {
+  display: block;
+  margin: 10px;
+}
