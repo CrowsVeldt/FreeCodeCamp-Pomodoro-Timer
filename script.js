@@ -13,27 +13,31 @@
   const button = document.getElementById('play-reset')
 
   // Extract the code from addEventListener to these functions, call them from the eventListener
+  
+    function checkTime () {
+    
+    console.log('check')
+
+    let check = new Date().getTime()
+
+    if (check >= currentTimer.endTime) {
+
+      currentTimer.endTime = check + (currentTimer.pomodoro * 60000)
+
+      console.log('restart')
+    }
+    
+  }
 
   function startTimer () {
-    // debugger
+    //debugger
     if (currentTimer.active === false) {
       currentTimer.active = true
       currentTimer.startTime = new Date().getTime()
       currentTimer.endTime = currentTimer.startTime + (currentTimer.pomodoro * 60000)
 
-      currentTimer.timerID = setInterval(function () {
-        console.log('check')
-
-        let check = new Date().getTime()
-
-        if (check >= currentTimer.endTime) {
-          // currentTimer.startTime = check
-
-          currentTimer.endTime = check + (currentTimer.pomodoro * 60000)
-
-          console.log('restart')
-        }
-      }, 1000)
+      currentTimer.timerID = setInterval(checkTime, 1000)
+      checkTime()
     }
   }
 
@@ -45,6 +49,8 @@
       clearInterval(currentTimer.timerID)
     }
   }
+  
+
 
   button.addEventListener('click', startTimer)
   button.addEventListener('click', resetTimer)
