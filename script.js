@@ -13,6 +13,13 @@
   const startButton = document.getElementById('start')
   const resetButton = document.getElementById('reset')
 
+  const input = {
+    
+    function
+    
+    
+  }
+  
   function checkTime () {
     console.log('check')
 
