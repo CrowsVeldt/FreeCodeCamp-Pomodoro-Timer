@@ -1,62 +1,82 @@
 (function () {
   'use strict;'
-  
-  const input = {
-    
-    startButton: document.getElementById('start'),
-    stopButton: document.getElementById('stop')
-    
-  }
-  
+
+  const startButton = document.getElementById('start')
+  const stopButton = document.getElementById('stop')
+
   const view = {
     
-    timerView: document.getElementById('timer-view').value
+    timerView: document.getElementById('timer-view'),
+    
+    updateTimerView: function (time) {
+      
+      view.timerView.innerHTML = time
+      
+    },
+    
+    formatTime: function (ms) {
+      
+      //write this function
+      
+    }
     
   }
 
   const timer = {
     active: false,
-    startTime: 0,
-    pomodoro: 0,
-    sBreak: 0,
-    lBreak: 0,
+    start: 0,
+    pomodoro: 25,
+    sBreak: 5,
+    lBreak: 15,
     timerID: 0,
-    
-    checkTime: function checkTime () {
-      console.log('check')
+    currentTime: 0,
 
+    checkTime: function () {
+      console.log('check')
+      
       let check = new Date().getTime()
+      
+      timer.currentTime--
+      
+      view.updateTimerView(timer.currentTime)
 
       if (check >= timer.endTime) {
-        timer.endTime = check + (timer.pomodoro * 60000)
-
+        clearInterval(timer.timerID)
+        
+        timer.active = false
+        
+        timer.startTimer()
+        
         console.log('restart')
       }
     },
-    
-    startTimer: function startTimer () {
+
+    startTimer: function () {
       if (timer.active === false) {
         timer.active = true
-        timer.startTime = new Date().getTime()
+        timer.start = new Date().getTime()
         timer.pomodoro = document.getElementById('pomodoro').value
         timer.sBreak = document.getElementById('short-break').value
         timer.lBreak = document.getElementById('long-break').value
-        timer.endTime = timer.startTime + (timer.pomodoro * 60000)
+        timer.endTime = timer.start + (timer.pomodoro * 60000)
+        timer.currentTime = timer.pomodoro * 60
 
         timer.timerID = setInterval(timer.checkTime, 1000)
+        view.updateTimerView(timer.currentTime)
       }
     },
-    
-    stopTimer: function stopTimer () {
+
+    stopTimer: function () {
       console.log('stopped')
       if (timer.active === true) {
         timer.active = false
 
         clearInterval(timer.timerID)
       }
-    }  
+    }
   }
   
-  input.startButton.addEventListener('click', timer.startTimer)
-  input.stopButton.addEventListener('click', timer.stopTimer)
+  view.updateTimerView(timer.pomodoro)
+  startButton.addEventListener('click', timer.startTimer)
+  stopButton.addEventListener('click', timer.stopTimer)
 }())

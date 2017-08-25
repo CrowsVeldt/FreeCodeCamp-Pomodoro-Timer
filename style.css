@@ -50,7 +50,12 @@ footer{
   bottom: 0;
   
 }
+
 label {
   display: block;
   margin: 10px;
+}
+
+#timer-view {
+  font-size: 2em;
 }
