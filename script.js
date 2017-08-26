@@ -25,6 +25,7 @@
 
     updateTimerView: function (time) {
       view.timer.innerHTML = view.formatTime(time)
+      view.timerTitle.innerHTML = timer.currentActivity
     },
 
     formatTime: function (sec) {
@@ -62,30 +63,29 @@
       view.updateTimerView(timer.currentTime)
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
-      
+
       if (check >= timer.endTime) {
         input.alarm.play()
 
         if (timer.currentActivity === 'pomodoro') {
+          timer.currentActivity = 'shortBreak'
+          
           timer.startTime(timer.shortBreak)
 
-          timer.currentActivity = 'shortBreak'
         } else if (timer.currentActivity === 'shortBreak') {
+          timer.currentActivity = 'pomodoro'
+          
           timer.startTime(timer.pomodoro)
 
-          timer.currentActivity = 'pomodoro'
         }
       }
     },
 
     startTime: function (activity) {
-      
-      if (timer.active === true){
-        
+      if (timer.active === true) {
         clearTimeout(timer.timerID)
-        
       }
-      
+
       timer.active = true
       timer.start = new Date().getTime()
       timer.endTime = timer.start + (activity * 60000)
@@ -93,7 +93,6 @@
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime)
-      
     },
 
     stopTime: function () {
@@ -101,20 +100,18 @@
         timer.active = false
 
         clearTimeout(timer.timerID)
-        
+
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
         input.acceptTimerInput('shortBreak', input.shortBreakInput.value)
-        input.acceptTimerInput('pomodoro', input.pomodoroInput.value) 
-        
-        
+        input.acceptTimerInput('pomodoro', input.pomodoroInput.value)
       }
     }
   }
 
   view.updateTimerView(timer.pomodoro * 60)
-  input.startButton.addEventListener('click', function () {timer.startTime(timer.pomodoro)})
+  input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro) })
   input.stopButton.addEventListener('click', timer.stopTime)
-  input.pomodoroInput.addEventListener('change', function () {input.acceptTimerInput('pomodoro', input.pomodoroInput.value)})
-  input.shortBreakInput.addEventListener('change', function () {input.acceptTimerInput('shortBreak', input.shortBreakInput.value)})
-  input.longBreakInput.addEventListener('change', function () {input.acceptTimerInput('longBreak', input.longBreakInput.value)})
+  input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
+  input.shortBreakInput.addEventListener('change', function () { input.acceptTimerInput('shortBreak', input.shortBreakInput.value) })
+  input.longBreakInput.addEventListener('change', function () { input.acceptTimerInput('longBreak', input.longBreakInput.value) })
 }())
