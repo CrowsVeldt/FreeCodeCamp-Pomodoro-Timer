@@ -68,24 +68,19 @@
         input.alarm.play()
 
         if (timer.currentActivity === 'pomodoro') {
-          timer.currentActivity = 'shortBreak'
-          
-          timer.startTime(timer.shortBreak)
-
+          timer.startTime(timer.shortBreak, 'shortBreak')
         } else if (timer.currentActivity === 'shortBreak') {
-          timer.currentActivity = 'pomodoro'
-          
-          timer.startTime(timer.pomodoro)
-
+          timer.startTime(timer.pomodoro, 'pomodoro')
         }
       }
     },
 
-    startTime: function (activity) {
+    startTime: function (activity, activityName) {
       if (timer.active === true) {
         clearTimeout(timer.timerID)
       }
 
+      timer.currentActivity = activityName
       timer.active = true
       timer.start = new Date().getTime()
       timer.endTime = timer.start + (activity * 60000)
@@ -99,6 +94,8 @@
       if (timer.active === true) {
         timer.active = false
 
+        timer.currentActivity = 'pomodoro'
+
         clearTimeout(timer.timerID)
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
@@ -109,7 +106,7 @@
   }
 
   view.updateTimerView(timer.pomodoro * 60)
-  input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro) })
+  input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)
   input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
   input.shortBreakInput.addEventListener('change', function () { input.acceptTimerInput('shortBreak', input.shortBreakInput.value) })
