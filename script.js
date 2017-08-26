@@ -3,6 +3,7 @@
 
   const startButton = document.getElementById('start')
   const stopButton = document.getElementById('stop')
+  const alarm = document.getElementById('alarm')
 
   const view = {
     
@@ -41,7 +42,7 @@
     currentTime: 0,
 
     checkTime: function () {
-      console.log('check')
+      //console.log('check')
       
       let check = new Date().getTime()
       
@@ -50,13 +51,15 @@
       view.updateTimerView(timer.currentTime)
 
       if (check >= timer.endTime) {
+        alarm.play()
+        
         clearInterval(timer.timerID)
         
         timer.active = false
         
         timer.startTimer()
         
-        console.log('restart')
+        //console.log('restart')
       }
     },
 
@@ -76,7 +79,7 @@
     },
 
     stopTimer: function () {
-      console.log('stopped')
+      //console.log('stopped')
       if (timer.active === true) {
         timer.active = false
 
