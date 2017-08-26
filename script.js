@@ -1,13 +1,19 @@
 (function () {
   'use strict;'
 
-  const startButton = document.getElementById('start')
-  const stopButton = document.getElementById('stop')
-  const alarm = document.getElementById('alarm')
-  const pomodoroInput = document.getElementById('pomodoro')
-  const shortBreakInput = document.getElementById('short-break')
-  const longBreakInput = document.getElementById('long-break')
 
+
+  const input = {
+    
+    startButton: document.getElementById('start'),
+    stopButton: document.getElementById('stop'),
+    alarm: document.getElementById('alarm'),
+    pomodoroInput: document.getElementById('pomodoro'),
+    shortBreakInput: document.getElementById('short-break'),
+    longBreakInput: document.getElementById('long-break')
+    
+  }
+  
   const view = {
 
     timerView: document.getElementById('timer-view'),
@@ -79,9 +85,9 @@
       if (timer.active === false) {
         timer.active = true
         timer.start = new Date().getTime()
-        timer.pomodoro = pomodoroInput.value
-        timer.shortBreak = shortBreakInput.value
-        timer.longBreak = longBreakInput.value
+        timer.pomodoro = input.pomodoroInput.value
+        timer.shortBreak = input.shortBreakInput.value
+        timer.longBreak = input.longBreakInput.value
         timer.endTime = timer.start + (activity * 60000)
         timer.currentTime = activity * 60
 
@@ -100,6 +106,7 @@
   }
 
   view.updateTimerView(timer.pomodoro * 60)
-  startButton.addEventListener('click',function () {timer.startTime(timer.pomodoro)})
-  stopButton.addEventListener('click', timer.stopTime)
+  input.startButton.addEventListener('click',function () {timer.startTime(timer.pomodoro)})
+  input.stopButton.addEventListener('click', timer.stopTime)
+  input.pomodoroInput.addEventListener('change', function () {timer.pomodoro = this.value})
 }())
