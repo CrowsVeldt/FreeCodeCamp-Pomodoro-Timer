@@ -37,10 +37,9 @@
     lBreak: 15,
     timerID: 0,
     currentTime: 0,
-    currentActivity: 'pomodoro' //other options: sBreak, lBreak
+    currentActivity: 'pomodoro', // other options: sBreak, lBreak
 
     checkTime: function () {
-
       let check = new Date().getTime()
 
       timer.currentTime--
