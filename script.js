@@ -6,22 +6,19 @@
   const alarm = document.getElementById('alarm')
 
   const view = {
-    
+
     timerView: document.getElementById('timer-view'),
-    
+
     updateTimerView: function (time) {
-      
       view.timerView.innerHTML = view.formatTime(time)
-      
     },
-    
+
     formatTime: function (s) {
-      
       let seconds = s % 60
-      
+
       let minutes = Math.floor(s / 60)
-      
-      if (seconds === 0){
+
+      if (seconds === 0) {
         return minutes + ':00'
       } else if (seconds < 10) {
         return minutes + ':0' + seconds
@@ -29,7 +26,7 @@
         return minutes + ':' + seconds
       }
     }
-    
+
   }
 
   const timer = {
@@ -40,26 +37,24 @@
     lBreak: 15,
     timerID: 0,
     currentTime: 0,
+    currentActivity: 'pomodoro' //other options: sBreak, lBreak
 
     checkTime: function () {
-      //console.log('check')
-      
+
       let check = new Date().getTime()
-      
+
       timer.currentTime--
-      
+
       view.updateTimerView(timer.currentTime)
 
       if (check >= timer.endTime) {
         alarm.play()
-        
+
         clearInterval(timer.timerID)
-        
+
         timer.active = false
-        
+
         timer.startTimer()
-        
-        //console.log('restart')
       }
     },
 
@@ -79,7 +74,6 @@
     },
 
     stopTimer: function () {
-      //console.log('stopped')
       if (timer.active === true) {
         timer.active = false
 
@@ -87,7 +81,7 @@
       }
     }
   }
-  
+
   view.updateTimerView(timer.pomodoro * 60)
   startButton.addEventListener('click', timer.startTimer)
   stopButton.addEventListener('click', timer.stopTimer)
