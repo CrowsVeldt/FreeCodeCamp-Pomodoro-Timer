@@ -53,7 +53,7 @@
     timerID: 0,
     endTime: 0,
     currentTime: 0,
-    currentActivity: 'pomodoro', // other options: shortBreak, longBreak
+    currentActivity: 'Pomodoro', // other options: Short Break, Long Break
 
     checkTime: function () {
       let check = new Date().getTime()
@@ -67,10 +67,10 @@
       if (check >= timer.endTime) {
         input.alarm.play()
 
-        if (timer.currentActivity === 'pomodoro') {
-          timer.startTime(timer.shortBreak, 'shortBreak')
-        } else if (timer.currentActivity === 'shortBreak') {
-          timer.startTime(timer.pomodoro, 'pomodoro')
+        if (timer.currentActivity === 'Pomodoro') {
+          timer.startTime(timer.shortBreak, 'Short Break')
+        } else if (timer.currentActivity === 'Short Break') {
+          timer.startTime(timer.pomodoro, 'Pomodoro')
         }
       }
     },
@@ -106,7 +106,7 @@
   }
 
   view.updateTimerView(timer.pomodoro * 60)
-  input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'pomodoro') })
+  input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)
   input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
   input.shortBreakInput.addEventListener('change', function () { input.acceptTimerInput('shortBreak', input.shortBreakInput.value) })
