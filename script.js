@@ -1,25 +1,23 @@
 (function () {
   'use strict;'
 
-
-
   const input = {
-    
+
     startButton: document.getElementById('start'),
     stopButton: document.getElementById('stop'),
     alarm: document.getElementById('alarm'),
     pomodoroInput: document.getElementById('pomodoro'),
     shortBreakInput: document.getElementById('short-break'),
     longBreakInput: document.getElementById('long-break'),
-    
+
     acceptTimerInput: function (elementName, value) {
-      if(timer.active === false){
+      if (timer.active === false) {
         timer[elementName] = value
         view.updateTimerView(value * 60)
       }
-    } 
+    }
   }
-  
+
   const view = {
 
     timerView: document.getElementById('timer-view'),
@@ -56,7 +54,6 @@
     currentActivity: 'pomodoro', // other options: shortBreak, longBreak
 
     checkTime: function () {
-      
       let check = new Date().getTime()
 
       timer.currentTime--
@@ -64,38 +61,33 @@
       view.updateTimerView(timer.currentTime)
 
       if (check >= timer.endTime) {
-        
-        alarm.play()
+        input.alarm.play()
 
         clearInterval(timer.timerID)
-        
-        if(timer.currentActivity === 'pomodoro'){
-          
+
+        if (timer.currentActivity === 'pomodoro') {
           timer.startTime(timer.shortBreak)
-          
+
           timer.currentActivity = 'shortBreak'
-          
-        } else if (timer.currentActivity === 'shortBreak'){
-          
+        } else if (timer.currentActivity === 'shortBreak') {
           timer.startTime(timer.pomodoro)
-          
+
           timer.currentActivity = 'pomodoro'
-          
-        }      
+        }
       }
     },
 
     startTime: function (activity) {
-        timer.active = true
-        timer.start = new Date().getTime()
-        timer.pomodoro = input.pomodoroInput.value
-        timer.shortBreak = input.shortBreakInput.value
-        timer.longBreak = input.longBreakInput.value
-        timer.endTime = timer.start + (activity * 60000)
-        timer.currentTime = activity * 60
+      timer.active = true
+      timer.start = new Date().getTime()
+      timer.pomodoro = input.pomodoroInput.value
+      timer.shortBreak = input.shortBreakInput.value
+      timer.longBreak = input.longBreakInput.value
+      timer.endTime = timer.start + (activity * 60000)
+      timer.currentTime = activity * 60
 
-        timer.timerID = setInterval(timer.checkTime, 1000)
-        view.updateTimerView(timer.currentTime)
+      timer.timerID = setInterval(timer.checkTime, 1000)
+      view.updateTimerView(timer.currentTime)
     },
 
     stopTime: function () {
@@ -108,9 +100,9 @@
   }
 
   view.updateTimerView(timer.pomodoro * 60)
-  input.startButton.addEventListener('click',function () {timer.startTime(timer.pomodoro)})
+  input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro) })
   input.stopButton.addEventListener('click', timer.stopTime)
-  input.pomodoroInput.addEventListener('change', function () {input.acceptTimerInput('pomodoro', input.pomodoroInput.value)})
-  input.shortBreakInput.addEventListener('change', function () {input.acceptTimerInput('shortBreak', input.shortBreakInput.value)})
-  input.longBreakInput.addEventListener('change', function () {input.acceptTimerInput('longBreak', input.longBreakInput.value)})
+  input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
+  input.shortBreakInput.addEventListener('change', function () { input.acceptTimerInput('shortBreak', input.shortBreakInput.value) })
+  input.longBreakInput.addEventListener('change', function () { input.acceptTimerInput('longBreak', input.longBreakInput.value) })
 }())
