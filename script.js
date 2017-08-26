@@ -60,10 +60,10 @@
 
       view.updateTimerView(timer.currentTime)
 
+      timer.timerID = setTimeout(timer.checkTime, 1000)
+      
       if (check >= timer.endTime) {
         input.alarm.play()
-
-        clearInterval(timer.timerID)
 
         if (timer.currentActivity === 'pomodoro') {
           timer.startTime(timer.shortBreak)
@@ -78,6 +78,13 @@
     },
 
     startTime: function (activity) {
+      
+      if (timer.active = true){
+        
+        clearTimeout(timer.timerID)
+        
+      }
+      
       timer.active = true
       timer.start = new Date().getTime()
       timer.pomodoro = input.pomodoroInput.value
@@ -86,15 +93,16 @@
       timer.endTime = timer.start + (activity * 60000)
       timer.currentTime = activity * 60
 
-      timer.timerID = setInterval(timer.checkTime, 1000)
+      timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime)
+      
     },
 
     stopTime: function () {
       if (timer.active === true) {
         timer.active = false
 
-        clearInterval(timer.timerID)
+        clearTimeout(timer.timerID)
       }
     }
   }
