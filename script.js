@@ -53,11 +53,11 @@
 
         timer.active = false
 
-        timer.startTimer()
+        timer.startTime()
       }
     },
 
-    startTimer: function () {
+    startTime: function () {
       if (timer.active === false) {
         timer.active = true
         timer.start = new Date().getTime()
@@ -72,7 +72,7 @@
       }
     },
 
-    stopTimer: function () {
+    stopTime: function () {
       if (timer.active === true) {
         timer.active = false
 
@@ -82,6 +82,6 @@
   }
 
   view.updateTimerView(timer.pomodoro * 60)
-  startButton.addEventListener('click', timer.startTimer)
-  stopButton.addEventListener('click', timer.stopTimer)
+  startButton.addEventListener('click', timer.startTime)
+  stopButton.addEventListener('click', timer.stopTime)
 }())
