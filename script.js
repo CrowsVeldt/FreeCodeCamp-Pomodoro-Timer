@@ -10,7 +10,9 @@
     alarm: document.getElementById('alarm'),
     pomodoroInput: document.getElementById('pomodoro'),
     shortBreakInput: document.getElementById('short-break'),
-    longBreakInput: document.getElementById('long-break')
+    longBreakInput: document.getElementById('long-break'),
+    
+    
     
   }
   
@@ -45,6 +47,7 @@
     shortBreak: 5,
     longBreak: 15,
     timerID: 0,
+    endTime: 0,
     currentTime: 0,
     currentActivity: 'pomodoro', // other options: shortBreak, longBreak
 
@@ -108,5 +111,6 @@
   view.updateTimerView(timer.pomodoro * 60)
   input.startButton.addEventListener('click',function () {timer.startTime(timer.pomodoro)})
   input.stopButton.addEventListener('click', timer.stopTime)
-  input.pomodoroInput.addEventListener('change', function () {timer.pomodoro = this.value})
+  input.pomodoroInput.addEventListener('change', function () {timer.pomodoro = this.value
+                                                             view.updateTimerView(this.value)})
 }())
