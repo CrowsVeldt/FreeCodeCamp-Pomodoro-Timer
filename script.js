@@ -94,8 +94,6 @@
       if (timer.active === true) {
         timer.active = false
 
-        timer.currentActivity = 'pomodoro'
-
         clearTimeout(timer.timerID)
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
