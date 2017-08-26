@@ -1,4 +1,4 @@
-body{
+body {
   
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@ body{
   
 }
 
-header{
+header {
   
   background-color: black;
   color: wheat;
@@ -18,30 +18,7 @@ header{
   
 }
 
-#timer{
-  
-  color: cornflowerblue;
-  font-size: 10em;
-  
-}
-
-button{
-  
-  height: 50px;
-  width: 100px;
-  margin: 20px
-  
-}
-
-.input{
-  
-  text-align: center;
-  /* TODO: Width should adjust to the length of the number, or numbers should be limited to double-digits */
-  width: 3em;
-  
-}
-
-footer{
+footer {
   
   background-color: black;
   color: white;
@@ -51,11 +28,30 @@ footer{
   
 }
 
+#timer-view {
+  
+  font-size: 5em;
+  
+}
+
+button {
+  
+  height: 50px;
+  width: 100px;
+  margin: 20px
+  
+}
+
 label {
   display: block;
   margin: 10px;
 }
 
-#timer-view {
-  font-size: 2em;
+.input{ 
+  
+  text-align: center;
+  width: 3em;
+  
 }
+
+

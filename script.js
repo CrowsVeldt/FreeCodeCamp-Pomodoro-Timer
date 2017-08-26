@@ -10,14 +10,23 @@
     
     updateTimerView: function (time) {
       
-      view.timerView.innerHTML = time
+      view.timerView.innerHTML = view.formatTime(time)
       
     },
     
-    formatTime: function (ms) {
+    formatTime: function (s) {
       
-      //write this function
+      let seconds = s % 60
       
+      let minutes = Math.floor(s / 60)
+      
+      if (seconds === 0){
+        return minutes + ':00'
+      } else if (seconds < 10) {
+        return minutes + ':0' + seconds
+      } else {
+        return minutes + ':' + seconds
+      }
     }
     
   }
@@ -76,7 +85,7 @@
     }
   }
   
-  view.updateTimerView(timer.pomodoro)
+  view.updateTimerView(timer.pomodoro * 60)
   startButton.addEventListener('click', timer.startTimer)
   stopButton.addEventListener('click', timer.stopTimer)
 }())
