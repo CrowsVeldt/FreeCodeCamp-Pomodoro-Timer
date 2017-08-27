@@ -70,22 +70,17 @@
         input.alarm.play()
 
         if (timer.currentActivity === 'Pomodoro') {
-          
-          if (timer.pomodorosFinished < 3){
-            
+          if (timer.pomodorosFinished < 3) {
             timer.pomodorosFinished++
             timer.startTime(timer.shortBreak, 'Short Break')
             // The alerts are commented out temporarily for testing
             // window.alert('You\'ve finished for now, take a break!')
-            
           } else {
-            
             timer.pomodorosFinished++
             timer.startTime(timer.longBreak, 'Long Break')
             timer.pomodorosFinished = 0
-            
-          } 
-          
+            // window.alert('Well done! Take a good long break now. Youe deserve it!)
+          }
         } else if (timer.currentActivity === 'Short Break' || timer.currentActivity === 'Long Break') {
           timer.startTime(timer.pomodoro, 'Pomodoro')
           // window.alert('Did you rest a bit? Good! What do you want to do next?')
@@ -112,7 +107,7 @@
     stopTime: function () {
       if (timer.active === true) {
         timer.active = false
-        
+
         view.timerTitle = 'Pomodoro'
 
         clearTimeout(timer.timerID)
