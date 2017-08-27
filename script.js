@@ -69,8 +69,11 @@
 
         if (timer.currentActivity === 'Pomodoro') {
           timer.startTime(timer.shortBreak, 'Short Break')
+          // The alerts are commented out temporarily for testing
+          // alert('You\'ve finished for now, take a break!')
         } else if (timer.currentActivity === 'Short Break') {
           timer.startTime(timer.pomodoro, 'Pomodoro')
+          // alert('Did you rest a bit? Good! Go get stuff done!')
         }
       }
     },
