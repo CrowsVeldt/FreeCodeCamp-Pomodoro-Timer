@@ -12,7 +12,6 @@
 
     acceptTimerInput: function (inputName, minutes) {
       if (timer.active === false) {
-        //
         timer[inputName] = minutes * 60
         view.updateTimerView(minutes * 60)
       }
@@ -54,7 +53,7 @@
     timerID: 0,
     endTime: 0,
     currentTime: 0,
-    currentActivity: 'Pomodoro', // other options: Short Break, Long Break
+    currentActivity: 'Pomodoro',
 
     checkTime: function () {
       let check = new Date().getTime()
@@ -71,10 +70,10 @@
         if (timer.currentActivity === 'Pomodoro') {
           timer.startTime(timer.shortBreak, 'Short Break')
           // The alerts are commented out temporarily for testing
-          // alert('You\'ve finished for now, take a break!')
+          // window.alert('You\'ve finished for now, take a break!')
         } else if (timer.currentActivity === 'Short Break') {
           timer.startTime(timer.pomodoro, 'Pomodoro')
-          // alert('Did you rest a bit? Good! Go get stuff done!')
+          // window.alert('Did you rest a bit? Good! Go get stuff done!')
         }
       }
     },
