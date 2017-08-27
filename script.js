@@ -9,7 +9,6 @@
     pomodoroInput: document.getElementById('pomodoro'),
     shortBreakInput: document.getElementById('short-break'),
     longBreakInput: document.getElementById('long-break'),
-    checkmarks: document.getElementById('checkmarks'),
 
     acceptTimerInput: function (inputName, minutes) {
       if (timer.active === false) {
@@ -23,10 +22,12 @@
 
     timer: document.getElementById('timer'),
     timerTitle: document.getElementById('timer-title'),
+    checkmarks: document.getElementById('checkmarks'),
 
     updateTimerView: function (time, activity) {
       view.timer.innerHTML = view.formatTime(time)
       view.timerTitle.innerHTML = activity
+      view.checkmarks.innerHTML = 'X'.repeat(timer.pomodorosFinished)
     },
 
     formatTime: function (sec) {
@@ -98,7 +99,6 @@
       timer.start = new Date().getTime()
       timer.endTime = timer.start + (activity * 1000)
       timer.currentTime = activity
-      input.checkmarks.innerHTML = 'X'.repeat(timer.pomodorosFinished)
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime, timer.currentActivity)
@@ -110,7 +110,7 @@
 
         clearTimeout(timer.timerID)
 
-        view.updateTimerView(timer.pomodoro, 'Pomodoro')
+        // view.updateTimerView(timer.pomodoro, 'Pomodoro')
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
         input.acceptTimerInput('shortBreak', input.shortBreakInput.value)
