@@ -9,6 +9,7 @@
     pomodoroInput: document.getElementById('pomodoro'),
     shortBreakInput: document.getElementById('short-break'),
     longBreakInput: document.getElementById('long-break'),
+    checkmarks: document.getElementById('checkmarks'),
 
     acceptTimerInput: function (inputName, minutes) {
       if (timer.active === false) {
@@ -54,6 +55,7 @@
     endTime: 0,
     currentTime: 0,
     currentActivity: 'Pomodoro',
+    pomodorosFinished: 0,
 
     checkTime: function () {
       let check = new Date().getTime()
@@ -68,12 +70,25 @@
         input.alarm.play()
 
         if (timer.currentActivity === 'Pomodoro') {
-          timer.startTime(timer.shortBreak, 'Short Break')
-          // The alerts are commented out temporarily for testing
-          // window.alert('You\'ve finished for now, take a break!')
-        } else if (timer.currentActivity === 'Short Break') {
+          
+          if (timer.pomodorosFinished < 3){
+            
+            timer.pomodorosFinished++
+            timer.startTime(timer.shortBreak, 'Short Break')
+            // The alerts are commented out temporarily for testing
+            // window.alert('You\'ve finished for now, take a break!')
+            
+          } else {
+            
+            timer.pomodorosFinished++
+            timer.startTime(timer.longBreak, 'Long Break')
+            timer.pomodorosFinished = 0
+            
+          } 
+          
+        } else if (timer.currentActivity === 'Short Break' || timer.currentActivity === 'Long Break') {
           timer.startTime(timer.pomodoro, 'Pomodoro')
-          // window.alert('Did you rest a bit? Good! Go get stuff done!')
+          // window.alert('Did you rest a bit? Good! What do you want to do next?')
         }
       }
     },
@@ -88,6 +103,7 @@
       timer.start = new Date().getTime()
       timer.endTime = timer.start + (activity * 1000)
       timer.currentTime = activity
+      input.checkmarks.innerHTML = 'X'.repeat(timer.pomodorosFinished)
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime)
@@ -96,6 +112,8 @@
     stopTime: function () {
       if (timer.active === true) {
         timer.active = false
+        
+        view.timerTitle = 'Pomodoro'
 
         clearTimeout(timer.timerID)
 
