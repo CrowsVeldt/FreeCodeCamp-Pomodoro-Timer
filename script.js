@@ -14,7 +14,7 @@
     acceptTimerInput: function (inputName, minutes) {
       if (timer.active === false) {
         timer[inputName] = minutes * 60
-        view.updateTimerView(minutes * 60)
+        view.updateTimerView(minutes * 60, timer.currentActivity)
       }
     }
   }
@@ -24,9 +24,9 @@
     timer: document.getElementById('timer'),
     timerTitle: document.getElementById('timer-title'),
 
-    updateTimerView: function (time) {
+    updateTimerView: function (time, activity) {
       view.timer.innerHTML = view.formatTime(time)
-      view.timerTitle.innerHTML = timer.currentActivity
+      view.timerTitle.innerHTML = activity
     },
 
     formatTime: function (sec) {
@@ -62,7 +62,7 @@
 
       timer.currentTime--
 
-      view.updateTimerView(timer.currentTime)
+      view.updateTimerView(timer.currentTime, timer.currentActivity)
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
 
@@ -101,16 +101,16 @@
       input.checkmarks.innerHTML = 'X'.repeat(timer.pomodorosFinished)
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
-      view.updateTimerView(timer.currentTime)
+      view.updateTimerView(timer.currentTime, timer.currentActivity)
     },
 
     stopTime: function () {
       if (timer.active === true) {
         timer.active = false
 
-        view.timerTitle = 'Pomodoro'
-
         clearTimeout(timer.timerID)
+
+        view.updateTimerView(timer.pomodoro, 'Pomodoro')
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
         input.acceptTimerInput('shortBreak', input.shortBreakInput.value)
@@ -119,7 +119,7 @@
     }
   }
 
-  view.updateTimerView(timer.pomodoro)
+  view.updateTimerView(timer.pomodoro, 'Pomodoro')
   input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)
   input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
