@@ -10,10 +10,10 @@
     shortBreakInput: document.getElementById('short-break'),
     longBreakInput: document.getElementById('long-break'),
 
-    acceptTimerInput: function (elementName, value) {
+    acceptTimerInput: function (inputName, minutes) {
       if (timer.active === false) {
-        timer[elementName] = value
-        view.updateTimerView(value * 60)
+        timer[inputName] = minutes
+        view.updateTimerView(minutes * 60)
       }
     }
   }
