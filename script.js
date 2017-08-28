@@ -43,7 +43,6 @@
         return minutes + ':' + seconds
       }
     }
-
   }
 
   const timer = {
