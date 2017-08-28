@@ -73,17 +73,16 @@
           if (timer.pomodorosFinished < 3) {
             timer.pomodorosFinished++
             timer.startTime(timer.shortBreak, 'Short Break')
-            // The alerts are commented out temporarily for testing
-            // window.alert('You\'ve finished for now, take a break!')
+            window.alert('You\'ve finished for now, take a break!')
           } else {
             timer.pomodorosFinished++
             timer.startTime(timer.longBreak, 'Long Break')
             timer.pomodorosFinished = 0
-            // window.alert('Well done! Take a good long break now. Youe deserve it!)
+            window.alert('Well done! Take a good long break now. Youe deserve it!')
           }
         } else if (timer.currentActivity === 'Short Break' || timer.currentActivity === 'Long Break') {
           timer.startTime(timer.pomodoro, 'Pomodoro')
-          // window.alert('Did you rest a bit? Good! What do you want to do next?')
+          window.alert('Did you rest a bit? Good! What do you want to do next?')
         }
       }
     },
@@ -108,8 +107,6 @@
         timer.active = false
 
         clearTimeout(timer.timerID)
-
-        // view.updateTimerView(timer.pomodoro, 'Pomodoro')
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
         input.acceptTimerInput('shortBreak', input.shortBreakInput.value)
