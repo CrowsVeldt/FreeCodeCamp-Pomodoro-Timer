@@ -46,8 +46,6 @@
     },
 
     fillTimerView: function (percent, color) {
-      // TODO: make it work
-
       view.timerView.style.backgroundImage = 'linear-gradient(0deg, ' + color + ' ' + percent + '%, transparent 1%)'
     }
   }
@@ -63,15 +61,19 @@
     currentTime: 0,
     currentActivity: 'Pomodoro',
     pomodorosFinished: 0,
+    percentFinished: 0,
+    percentCheck: 0,
+    percentToFill: 0,
 
     checkTime: function () {
       let check = new Date().getTime()
-
-      timer.currentTime--
-
-      view.updateTimerView(timer.currentTime, timer.currentActivity)
-
-      timer.timerID = setTimeout(timer.checkTime, 1000)
+      // TODO: fix the math for color fill so it actually works
+      if (check >= timer.percentCheck + timer.percentToFill) {
+        timer.percentFinished += timer.percentToFill
+        // console.log(timer.percentFinished)
+        view.fillTimerView(timer.percentFinished, 'lightgreen')
+        timer.percentCheck += timer.percentToFill
+      }
 
       if (check >= timer.endTime) {
         input.alarm.play()
@@ -92,12 +94,19 @@
           timer.startTime(timer.pomodoro, 'Pomodoro')
           // window.alert('Did you rest a bit? Good! What do you want to do next?')
         }
+      } else {
+        timer.currentTime--
+
+        view.updateTimerView(timer.currentTime, timer.currentActivity)
+
+        timer.timerID = setTimeout(timer.checkTime, 1000)
       }
     },
 
     startTime: function (activity, activityName) {
       if (timer.active === true) {
         clearTimeout(timer.timerID)
+        // TODO: Clear background color on timer reset
       }
 
       timer.currentActivity = activityName
@@ -105,6 +114,9 @@
       timer.start = new Date().getTime()
       timer.endTime = timer.start + (activity * 1000)
       timer.currentTime = activity
+      // TODO: Fix the math for color fill
+      timer.percentCheck = timer.start
+      timer.percentToFill = ((timer.endTime - timer.start) / 1000) / 60
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime, timer.currentActivity)
@@ -114,6 +126,7 @@
       if (timer.active === true) {
         timer.active = false
 
+        // TODO: Clear background color
         clearTimeout(timer.timerID)
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
@@ -123,7 +136,6 @@
     }
   }
 
-  view.fillTimerView(10, 'lightgreen')
   view.updateTimerView(timer.pomodoro, 'Pomodoro')
   input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)
