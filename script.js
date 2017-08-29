@@ -45,10 +45,10 @@
       }
     },
 
-    fillTimerView: function (percent) {
+    fillTimerView: function (percent, color) {
       // TODO: make it work
 
-      view.timerView.style.backgroundImage = 'linear-gradient(0deg, lightgreen ' + percent + '%, transparent 1%)'
+      view.timerView.style.backgroundImage = 'linear-gradient(0deg, ' + color + ' ' + percent + '%, transparent 1%)'
     }
   }
 
@@ -123,7 +123,7 @@
     }
   }
 
-  // view.fillTimerView(10);
+  view.fillTimerView(10, 'lightgreen')
   view.updateTimerView(timer.pomodoro, 'Pomodoro')
   input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)
