@@ -1,6 +1,6 @@
 (function () {
   'use strict;'
-
+  
   const input = {
 
     startButton: document.getElementById('start'),
@@ -19,7 +19,8 @@
   }
 
   const view = {
-
+    
+    timerView: document.getElementById('timer-view'),
     timer: document.getElementById('timer'),
     timerTitle: document.getElementById('timer-title'),
     checkmarks: document.getElementById('checkmarks'),
@@ -42,6 +43,10 @@
       } else {
         return minutes + ':' + seconds
       }
+    },
+    
+    fillTimerView: function (color) {
+      
     }
   }
 
@@ -68,6 +73,7 @@
 
       if (check >= timer.endTime) {
         input.alarm.play()
+        
 
         if (timer.currentActivity === 'Pomodoro') {
           if (timer.pomodorosFinished < 3) {
@@ -79,7 +85,7 @@
             timer.pomodorosFinished++
             timer.startTime(timer.longBreak, 'Long Break')
             timer.pomodorosFinished = 0
-            // window.alert('Well done! Take a good long break now. Youe deserve it!)
+            // window.alert('Well done! Take a good long break now. Youe deserve it!')
           }
         } else if (timer.currentActivity === 'Short Break' || timer.currentActivity === 'Long Break') {
           timer.startTime(timer.pomodoro, 'Pomodoro')
@@ -108,8 +114,6 @@
         timer.active = false
 
         clearTimeout(timer.timerID)
-
-        // view.updateTimerView(timer.pomodoro, 'Pomodoro')
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
         input.acceptTimerInput('shortBreak', input.shortBreakInput.value)

@@ -6,7 +6,7 @@ body {
   
   text-align: center;
 
-  background-color: skyblue
+  background-color: skyblue;
   
 }
 
@@ -58,7 +58,9 @@ label {
 #timer-view {
   
   border-radius: 50%;
+  border: 1px solid black;
   height: 250px;
   width: 250px;
   padding: 20px;
+  margin: 20px;
 }
