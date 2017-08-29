@@ -20,6 +20,7 @@
 
   const view = {
 
+    timerView: document.getElementById('timer-view'),
     timer: document.getElementById('timer'),
     timerTitle: document.getElementById('timer-title'),
     checkmarks: document.getElementById('checkmarks'),
@@ -42,6 +43,12 @@
       } else {
         return minutes + ':' + seconds
       }
+    },
+
+    fillTimerView: function (percent, color) {
+      // TODO: make it work
+
+      view.timerView.style.backgroundImage = 'linear-gradient(0deg, ' + color + ' ' + percent + '%, transparent 1%)'
     }
   }
 
@@ -115,6 +122,7 @@
     }
   }
 
+  view.fillTimerView(10, 'lightgreen')
   view.updateTimerView(timer.pomodoro, 'Pomodoro')
   input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)
