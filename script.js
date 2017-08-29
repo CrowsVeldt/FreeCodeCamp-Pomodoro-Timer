@@ -1,6 +1,6 @@
 (function () {
   'use strict;'
-  
+
   const input = {
 
     startButton: document.getElementById('start'),
@@ -19,7 +19,7 @@
   }
 
   const view = {
-    
+
     timerView: document.getElementById('timer-view'),
     timer: document.getElementById('timer'),
     timerTitle: document.getElementById('timer-title'),
@@ -44,9 +44,11 @@
         return minutes + ':' + seconds
       }
     },
-    
-    fillTimerView: function (color) {
-      
+
+    fillTimerView: function (percent) {
+      // TODO: make it work
+
+      view.timerView.style.backgroundImage = 'linear-gradient(0deg, lightgreen ' + percent + '%, transparent 1%)'
     }
   }
 
@@ -73,7 +75,6 @@
 
       if (check >= timer.endTime) {
         input.alarm.play()
-        
 
         if (timer.currentActivity === 'Pomodoro') {
           if (timer.pomodorosFinished < 3) {
@@ -122,6 +123,7 @@
     }
   }
 
+  // view.fillTimerView(10);
   view.updateTimerView(timer.pomodoro, 'Pomodoro')
   input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)
