@@ -47,6 +47,10 @@
 
     fillTimerView: function (percent, color) {
       view.timerView.style.backgroundImage = 'linear-gradient(0deg, ' + color + ' ' + percent + '%, transparent 1%)'
+    },
+
+    clearTimerView: function () {
+      view.timerView.style.backgroundImage = null
     }
   }
 
@@ -67,16 +71,18 @@
 
     checkTime: function () {
       let check = new Date().getTime()
+
       // TODO: fix the math for color fill so it actually works
       if (check >= timer.percentCheck + timer.percentToFill) {
         timer.percentFinished += timer.percentToFill
-        // console.log(timer.percentFinished)
+        console.log(timer.percentFinished)
         view.fillTimerView(timer.percentFinished, 'lightgreen')
         timer.percentCheck += timer.percentToFill
       }
 
       if (check >= timer.endTime) {
         input.alarm.play()
+        view.clearTimerView()
 
         if (timer.currentActivity === 'Pomodoro') {
           if (timer.pomodorosFinished < 3) {
@@ -106,7 +112,6 @@
     startTime: function (activity, activityName) {
       if (timer.active === true) {
         clearTimeout(timer.timerID)
-        // TODO: Clear background color on timer reset
       }
 
       timer.currentActivity = activityName
@@ -115,8 +120,9 @@
       timer.endTime = timer.start + (activity * 1000)
       timer.currentTime = activity
       // TODO: Fix the math for color fill
-      timer.percentCheck = timer.start
-      timer.percentToFill = ((timer.endTime - timer.start) / 1000) / 60
+      timer.percentFinished = 0
+      timer.percentCheck = new Date().getTime()
+      timer.percentToFill = (timer.endTime - timer.start) / 1000
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime, timer.currentActivity)
@@ -125,8 +131,7 @@
     stopTime: function () {
       if (timer.active === true) {
         timer.active = false
-
-        // TODO: Clear background color
+        view.clearTimerView()
         clearTimeout(timer.timerID)
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
