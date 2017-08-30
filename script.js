@@ -72,10 +72,8 @@
     checkTime: function () {
       let check = new Date().getTime()
 
-      // TODO: fix the math for color fill so it actually works
       if (check >= timer.percentCheck + timer.percentToFill) {
         timer.percentFinished += timer.percentToFill
-        console.log(timer.percentFinished)
         view.fillTimerView(timer.percentFinished, 'lightgreen')
         timer.percentCheck += timer.percentToFill
       }
@@ -119,10 +117,10 @@
       timer.start = new Date().getTime()
       timer.endTime = timer.start + (activity * 1000)
       timer.currentTime = activity
-      // TODO: Fix the math for color fill
+
       timer.percentFinished = 0
       timer.percentCheck = new Date().getTime()
-      timer.percentToFill = (timer.endTime - timer.start) / 1000
+      timer.percentToFill = activity / 60
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime, timer.currentActivity)
