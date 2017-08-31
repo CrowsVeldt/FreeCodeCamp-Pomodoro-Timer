@@ -46,9 +46,11 @@
     },
 
     fillTimerView: function (percent, color) {
-      // TODO: make it work
-
       view.timerView.style.backgroundImage = 'linear-gradient(0deg, ' + color + ' ' + percent + '%, transparent 1%)'
+    },
+
+    clearTimerView: function () {
+      view.timerView.style.backgroundImage = null
     }
   }
 
@@ -63,18 +65,22 @@
     currentTime: 0,
     currentActivity: 'Pomodoro',
     pomodorosFinished: 0,
+    percentFilled: 0,
+    percentCheck: 0,
+    percentOfTime: 0,
 
     checkTime: function () {
       let check = new Date().getTime()
 
-      timer.currentTime--
-
-      view.updateTimerView(timer.currentTime, timer.currentActivity)
-
-      timer.timerID = setTimeout(timer.checkTime, 1000)
+      if ((check - timer.percentCheck) / timer.percentOfTime > 0) {
+        timer.percentFilled += (check - timer.percentCheck) / timer.percentOfTime
+        view.fillTimerView(timer.percentFilled, 'lightgreen')
+        timer.percentCheck = check
+      }
 
       if (check >= timer.endTime) {
         input.alarm.play()
+        view.clearTimerView()
 
         if (timer.currentActivity === 'Pomodoro') {
           if (timer.pomodorosFinished < 3) {
@@ -91,6 +97,12 @@
           timer.startTime(timer.pomodoro, 'Pomodoro')
           window.alert('Did you rest a bit? Good! What do you want to do next?')
         }
+      } else {
+        timer.currentTime--
+
+        view.updateTimerView(timer.currentTime, timer.currentActivity)
+
+        timer.timerID = setTimeout(timer.checkTime, 1000)
       }
     },
 
@@ -105,6 +117,11 @@
       timer.endTime = timer.start + (activity * 1000)
       timer.currentTime = activity
 
+      timer.percentFilled = 0
+      timer.percentCheck = timer.start
+      // Get the number that equals 1% of time passed, multiply to get the result in milliseconds
+      timer.percentOfTime = (activity / 100) * 1000
+
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime, timer.currentActivity)
     },
@@ -112,7 +129,7 @@
     stopTime: function () {
       if (timer.active === true) {
         timer.active = false
-
+        view.clearTimerView()
         clearTimeout(timer.timerID)
 
         input.acceptTimerInput('longBreak', input.longBreakInput.value)
@@ -122,7 +139,6 @@
     }
   }
 
-  view.fillTimerView(10, 'lightgreen')
   view.updateTimerView(timer.pomodoro, 'Pomodoro')
   input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
   input.stopButton.addEventListener('click', timer.stopTime)

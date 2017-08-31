@@ -28,6 +28,12 @@ header {
 
 footer {
   
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  
+
   background-color: black;
   color: white;
   width: 100%;
