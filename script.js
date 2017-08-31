@@ -65,17 +65,18 @@
     currentTime: 0,
     currentActivity: 'Pomodoro',
     pomodorosFinished: 0,
-    percentFinished: 0,
+    percentFilled: 0,
     percentCheck: 0,
-    percentToFill: 0,
+    percentOfTime: 0,
 
     checkTime: function () {
       let check = new Date().getTime()
+      console.log((check - timer.percentCheck) % timer.percentOfTime)
 
-      if (check >= timer.percentCheck + timer.percentToFill) {
-        timer.percentFinished += timer.percentToFill
-        view.fillTimerView(timer.percentFinished, 'lightgreen')
-        timer.percentCheck += timer.percentToFill
+      // Still not working right, but I think I'm getting closer
+      if ((check - timer.percentCheck) % timer.percentOfTime > 0) {
+        timer.percentFilled += (check - timer.percentCheck) % timer.percentOfTime
+        view.fillTimerView(timer.percentFilled, 'lightgreen')
       }
 
       if (check >= timer.endTime) {
@@ -118,9 +119,10 @@
       timer.endTime = timer.start + (activity * 1000)
       timer.currentTime = activity
 
-      timer.percentFinished = 0
-      timer.percentCheck = new Date().getTime()
-      timer.percentToFill = activity / 60
+      timer.percentFilled = 0
+      timer.percentCheck = timer.start
+      // Get the number that equals 1% of time passed, multiply to get the result in milliseconds
+      timer.percentOfTime = (activity / 100) * 1000
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
       view.updateTimerView(timer.currentTime, timer.currentActivity)
