@@ -71,12 +71,11 @@
 
     checkTime: function () {
       let check = new Date().getTime()
-      console.log((check - timer.percentCheck) % timer.percentOfTime)
 
-      // Still not working right, but I think I'm getting closer
-      if ((check - timer.percentCheck) % timer.percentOfTime > 0) {
-        timer.percentFilled += (check - timer.percentCheck) % timer.percentOfTime
+      if ((check - timer.percentCheck) / timer.percentOfTime > 0) {
+        timer.percentFilled += (check - timer.percentCheck) / timer.percentOfTime
         view.fillTimerView(timer.percentFilled, 'lightgreen')
+        timer.percentCheck = check
       }
 
       if (check >= timer.endTime) {
