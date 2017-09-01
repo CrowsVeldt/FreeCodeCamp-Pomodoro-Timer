@@ -1,149 +1,147 @@
-(function () {
-  'use strict;'
+ 'use strict;'
 
-  const input = {
+ const input = {
 
-    startButton: document.getElementById('start'),
-    stopButton: document.getElementById('stop'),
-    alarm: document.getElementById('alarm'),
-    pomodoroInput: document.getElementById('pomodoro'),
-    shortBreakInput: document.getElementById('short-break'),
-    longBreakInput: document.getElementById('long-break'),
+   startButton: document.getElementById('start'),
+   stopButton: document.getElementById('stop'),
+   alarm: document.getElementById('alarm'),
+   pomodoroInput: document.getElementById('pomodoro'),
+   shortBreakInput: document.getElementById('short-break'),
+   longBreakInput: document.getElementById('long-break'),
 
-    acceptTimerInput: function (inputName, minutes) {
-      if (timer.active === false) {
-        timer[inputName] = minutes * 60
-        view.updateTimerView(minutes * 60, timer.currentActivity)
-      }
-    }
-  }
+   acceptTimerInput: function (inputName, minutes) {
+     if (timer.active === false) {
+       timer[inputName] = minutes * 60
+       view.updateTimerView(minutes * 60, timer.currentActivity)
+     }
+   }
+ }
 
-  const view = {
+ const view = {
 
-    timerView: document.getElementById('timer-view'),
-    timer: document.getElementById('timer'),
-    timerTitle: document.getElementById('timer-title'),
-    checkmarks: document.getElementById('checkmarks'),
+   timerView: document.getElementById('timer-view'),
+   timer: document.getElementById('timer'),
+   timerTitle: document.getElementById('timer-title'),
+   checkmarks: document.getElementById('checkmarks'),
 
-    updateTimerView: function (time, activity) {
-      view.timer.innerHTML = view.formatTime(time)
-      view.timerTitle.innerHTML = activity
-      view.checkmarks.innerHTML = 'X'.repeat(timer.pomodorosFinished)
-    },
+   updateTimerView: function (time, activity) {
+     view.timer.innerHTML = view.formatTime(time)
+     view.timerTitle.innerHTML = activity
+     view.checkmarks.innerHTML = 'X'.repeat(timer.pomodorosFinished)
+   },
 
-    formatTime: function (sec) {
-      let seconds = sec % 60
+   formatTime: function (sec) {
+     let seconds = sec % 60
 
-      let minutes = Math.floor(sec / 60)
+     let minutes = Math.floor(sec / 60)
 
-      if (seconds === 0) {
-        return minutes + ':00'
-      } else if (seconds < 10) {
-        return minutes + ':0' + seconds
-      } else {
-        return minutes + ':' + seconds
-      }
-    },
+     if (seconds === 0) {
+       return minutes + ':00'
+     } else if (seconds < 10) {
+       return minutes + ':0' + seconds
+     } else {
+       return minutes + ':' + seconds
+     }
+   },
 
-    fillTimerView: function (percent, color) {
-      view.timerView.style.backgroundImage = 'linear-gradient(0deg, ' + color + ' ' + percent + '%, transparent 1%)'
-    },
+   fillTimerView: function (percent, color) {
+     view.timerView.style.backgroundImage = 'linear-gradient(0deg, ' + color + ' ' + percent + '%, transparent 1%)'
+   },
 
-    clearTimerView: function () {
-      view.timerView.style.backgroundImage = null
-    }
-  }
+   clearTimerView: function () {
+     view.timerView.style.backgroundImage = null
+   }
+ }
 
-  const timer = {
-    active: false,
-    start: 0,
-    pomodoro: input.pomodoroInput.value * 60,
-    shortBreak: input.shortBreakInput.value * 60,
-    longBreak: input.longBreakInput.value * 60,
-    timerID: 0,
-    endTime: 0,
-    currentTime: 0,
-    currentActivity: 'Pomodoro',
-    pomodorosFinished: 0,
-    percentFilled: 0,
-    percentCheck: 0,
-    percentOfTime: 0,
+ const timer = {
+   active: false,
+   start: 0,
+   pomodoro: input.pomodoroInput.value * 60,
+   shortBreak: input.shortBreakInput.value * 60,
+   longBreak: input.longBreakInput.value * 60,
+   timerID: 0,
+   endTime: 0,
+   currentTime: 0,
+   currentActivity: 'Pomodoro',
+   pomodorosFinished: 0,
+   percentFilled: 0,
+   percentCheck: 0,
+   percentOfTime: 0,
 
-    checkTime: function () {
-      let check = new Date().getTime()
+   checkTime: function () {
+     let check = new Date().getTime()
 
-      if ((check - timer.percentCheck) / timer.percentOfTime > 0) {
-        timer.percentFilled += (check - timer.percentCheck) / timer.percentOfTime
-        view.fillTimerView(timer.percentFilled, 'lightgreen')
-        timer.percentCheck = check
-      }
+     if ((check - timer.percentCheck) / timer.percentOfTime > 0) {
+       timer.percentFilled += (check - timer.percentCheck) / timer.percentOfTime
+       view.fillTimerView(timer.percentFilled, 'lightgreen')
+       timer.percentCheck = check
+     }
 
-      if (check >= timer.endTime) {
-        input.alarm.play()
-        view.clearTimerView()
+     if (check >= timer.endTime) {
+       input.alarm.play()
+       view.clearTimerView()
 
-        if (timer.currentActivity === 'Pomodoro') {
-          if (timer.pomodorosFinished < 3) {
-            timer.pomodorosFinished++
-            timer.startTime(timer.shortBreak, 'Short Break')
+       if (timer.currentActivity === 'Pomodoro') {
+         if (timer.pomodorosFinished < 3) {
+           timer.pomodorosFinished++
+           timer.startTime(timer.shortBreak, 'Short Break')
             // The alerts are commented out temporarily for testing
             // window.alert('You\'ve finished for now, take a break!')
-          } else {
-            timer.pomodorosFinished++
-            timer.startTime(timer.longBreak, 'Long Break')
-            timer.pomodorosFinished = 0
+         } else {
+           timer.pomodorosFinished++
+           timer.startTime(timer.longBreak, 'Long Break')
+           timer.pomodorosFinished = 0
             // window.alert('Well done! Take a good long break now. Youe deserve it!')
-          }
-        } else if (timer.currentActivity === 'Short Break' || timer.currentActivity === 'Long Break') {
-          timer.startTime(timer.pomodoro, 'Pomodoro')
+         }
+       } else if (timer.currentActivity === 'Short Break' || timer.currentActivity === 'Long Break') {
+         timer.startTime(timer.pomodoro, 'Pomodoro')
           // window.alert('Did you rest a bit? Good! What do you want to do next?')
-        }
-      } else {
-        timer.currentTime--
+       }
+     } else {
+       timer.currentTime--
 
-        view.updateTimerView(timer.currentTime, timer.currentActivity)
+       view.updateTimerView(timer.currentTime, timer.currentActivity)
 
-        timer.timerID = setTimeout(timer.checkTime, 1000)
-      }
-    },
+       timer.timerID = setTimeout(timer.checkTime, 1000)
+     }
+   },
 
-    startTime: function (activity, activityName) {
-      if (timer.active === true) {
-        clearTimeout(timer.timerID)
-      }
+   startTime: function (activity, activityName) {
+     if (timer.active === true) {
+       clearTimeout(timer.timerID)
+     }
 
-      timer.currentActivity = activityName
-      timer.active = true
-      timer.start = new Date().getTime()
-      timer.endTime = timer.start + (activity * 1000)
-      timer.currentTime = activity
+     timer.currentActivity = activityName
+     timer.active = true
+     timer.start = new Date().getTime()
+     timer.endTime = timer.start + (activity * 1000)
+     timer.currentTime = activity
 
-      timer.percentFilled = 0
-      timer.percentCheck = timer.start
+     timer.percentFilled = 0
+     timer.percentCheck = timer.start
       // Get the number that equals 1% of time passed, multiply to get the result in milliseconds
-      timer.percentOfTime = (activity / 100) * 1000
+     timer.percentOfTime = (activity / 100) * 1000
 
-      timer.timerID = setTimeout(timer.checkTime, 1000)
-      view.updateTimerView(timer.currentTime, timer.currentActivity)
-    },
+     timer.timerID = setTimeout(timer.checkTime, 1000)
+     view.updateTimerView(timer.currentTime, timer.currentActivity)
+   },
 
-    stopTime: function () {
-      if (timer.active === true) {
-        timer.active = false
-        view.clearTimerView()
-        clearTimeout(timer.timerID)
+   stopTime: function () {
+     if (timer.active === true) {
+       timer.active = false
+       view.clearTimerView()
+       clearTimeout(timer.timerID)
 
-        input.acceptTimerInput('longBreak', input.longBreakInput.value)
-        input.acceptTimerInput('shortBreak', input.shortBreakInput.value)
-        input.acceptTimerInput('pomodoro', input.pomodoroInput.value)
-      }
-    }
-  }
+       input.acceptTimerInput('longBreak', input.longBreakInput.value)
+       input.acceptTimerInput('shortBreak', input.shortBreakInput.value)
+       input.acceptTimerInput('pomodoro', input.pomodoroInput.value)
+     }
+   }
+ }
 
-  view.updateTimerView(timer.pomodoro, 'Pomodoro')
-  input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
-  input.stopButton.addEventListener('click', timer.stopTime)
-  input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
-  input.shortBreakInput.addEventListener('change', function () { input.acceptTimerInput('shortBreak', input.shortBreakInput.value) })
-  input.longBreakInput.addEventListener('change', function () { input.acceptTimerInput('longBreak', input.longBreakInput.value) })
-}())
+ view.updateTimerView(timer.pomodoro, 'Pomodoro')
+ input.startButton.addEventListener('click', function () { timer.startTime(timer.pomodoro, 'Pomodoro') })
+ input.stopButton.addEventListener('click', timer.stopTime)
+ input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
+ input.shortBreakInput.addEventListener('change', function () { input.acceptTimerInput('shortBreak', input.shortBreakInput.value) })
+ input.longBreakInput.addEventListener('change', function () { input.acceptTimerInput('longBreak', input.longBreakInput.value) })
