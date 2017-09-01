@@ -1,3 +1,4 @@
-Time Tracker.odt
+*.odt
 
 /res
+/node_modules
