@@ -1,8 +1,5 @@
 #A Pomodoro timer, for the FreeCodeCamp Front End course.
 
-I'm going to use this as an opportunity to introduce myself to writing unit tests, using Jest.
-
-
 ##User Stories from FreeCodeCamp:
 
   1. I can start a 25 minute timer, and the timer will go off once 25 minutes has elapsed

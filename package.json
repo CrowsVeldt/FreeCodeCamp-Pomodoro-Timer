@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "A simple browser-based Pomodoro timer",
     "main": "script.js",
+    "license": "MIT",
     "scripts": {
         "test": "jest"
     },
