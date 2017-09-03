@@ -1,5 +1,7 @@
 #A Pomodoro timer, for the FreeCodeCamp Front End course.
 
+link: https://www.freecodecamp.com/challenges/build-a-pomodoro-clock
+
 ##User Stories from FreeCodeCamp:
 
   1. I can start a 25 minute timer, and the timer will go off once 25 minutes has elapsed
@@ -31,5 +33,9 @@
   4. The option to save multiple time presets
   
   5. Allow playing sounds at intervals, like a clock's ticking
+
+##Attributions:
+  The alarm sound is copyright of Daniel Simion. Many thanks. Found at: http://soundbible.com/2197-Analog-Watch-Alarm.html
+
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)

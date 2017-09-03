@@ -1,4 +1,3 @@
-(function () {
   'use strict;'
 
   const input = {
@@ -119,7 +118,7 @@
 
       timer.percentFilled = 0
       timer.percentCheck = timer.start
-      // Get the number that equals 1% of time passed, multiply to get the result in milliseconds
+      // Get the number that equals 1% of time passed, multiply to get it in milliseconds
       timer.percentOfTime = (activity / 100) * 1000
 
       timer.timerID = setTimeout(timer.checkTime, 1000)
@@ -145,4 +144,3 @@
   input.pomodoroInput.addEventListener('change', function () { input.acceptTimerInput('pomodoro', input.pomodoroInput.value) })
   input.shortBreakInput.addEventListener('change', function () { input.acceptTimerInput('shortBreak', input.shortBreakInput.value) })
   input.longBreakInput.addEventListener('change', function () { input.acceptTimerInput('longBreak', input.longBreakInput.value) })
-}())

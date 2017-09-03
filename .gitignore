@@ -1,7 +1,3 @@
 *.odt
 
 Initial Planning.md
-
-/res
-/node_modules
-/__tests__
