@@ -1,6 +1,8 @@
 #A Pomodoro timer, for the FreeCodeCamp Front End course.
 
-link: https://www.freecodecamp.com/challenges/build-a-pomodoro-clock
+The challange page: https://www.freecodecamp.com/challenges/build-a-pomodoro-clock
+
+Try out the timer: https://crowsveldt.github.io/FreeCodeCamp-Pomodoro-Timer/
 
 ##User Stories from FreeCodeCamp:
 
