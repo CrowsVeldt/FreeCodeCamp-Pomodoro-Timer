@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer/issues"
   },
-  "homepage": "https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer#readme"
+  "homepage": "https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer#readme",
+  "devDependencies": {
+    "webpack": "^3.5.5"
+  }
 }
