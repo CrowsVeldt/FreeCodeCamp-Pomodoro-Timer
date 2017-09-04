@@ -1,0 +1,20 @@
+{
+  "name": "FreeCodeCamp-Pomodoro-timer",
+  "version": "1.0.0",
+  "description": "A simple Pomodoro timer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer.git"
+  },
+  "keywords": [],
+  "author": "Zechy Mahler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer/issues"
+  },
+  "homepage": "https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer#readme"
+}
