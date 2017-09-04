@@ -2,6 +2,7 @@ var path = require('path')
 
 module.exports = {
   entry: './src/index.js',
+  devtool: 'cheap-eval-source-map',
   devServer: {
     contentBase: './dist'
   },
