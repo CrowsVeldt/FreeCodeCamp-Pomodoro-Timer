@@ -8,6 +8,11 @@
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer.git"
@@ -20,6 +25,10 @@
   },
   "homepage": "https://github.com/CrowsVeldt/FreeCodeCamp-Pomodoro-Timer#readme",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "install": "^0.10.1",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }
