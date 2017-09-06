@@ -4,13 +4,18 @@
   "description": "A simple Pomodoro timer",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest && standard",
     "build": "webpack",
     "start": "webpack-dev-server --open"
   },
   "babel": {
     "presets": [
       "env"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "/dist"
     ]
   },
   "repository": {
@@ -29,15 +34,9 @@
     "babel-jest": "^21.0.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
-    "eslint": "^4.6.1",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.0.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
     "install": "^0.10.1",
     "jest": "^21.0.1",
+    "standard": "^10.0.3",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
   }
