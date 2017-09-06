@@ -1,39 +1,21 @@
-const path = require('path')
-const merge = require('webpack-merge')
+var path = require('path')
 
-const PATHS = {
-  src: path.join(__dirname, 'src'),
-  dist: path.join(__dirname, 'dist')
-}
-
-const commonConfig = {
-  entry: {
-    index: PATHS.src
+module.exports = {
+  entry: './src/index.js',
+  devtool: 'cheap-eval-source-map',
+  devServer: {
+    contentBase: './dist'
+  },
+  module: {
+    rules: [
+      {
+        test: /|.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'}
+    ]
   },
   output: {
-    path: PATHS.dist,
-    filename: '[name].bundle.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'index.bundle.js'
   }
-}
-
-const productionConfig = () => commonConfig
-
-const developementConfig = () => {
-  const config = {
-    host: process.env.HOST,
-    port: process.env.PORT
-  }
-
-  return Object.assign(
-  {},
-  commonConfig,
-  config
-)
-}
-
-module.exports = (env) => {
-  if (env === 'production') {
-    return merge(commonConfig, productionConfig)
-  }
-  return merge(commonConfig, developementConfig)
 }
