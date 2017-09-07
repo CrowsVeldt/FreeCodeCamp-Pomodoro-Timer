@@ -20,20 +20,6 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {loader: 'css-loader',
-            options: {importLoaders: 1}},
-          {loader: 'postcss-loader',
-            options: {plugins: () => ([
-              require('autoprefixer')()
-            ])}
-          }
-        ]
-
-      },
-      {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           'file-loader'
