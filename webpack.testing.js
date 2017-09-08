@@ -1,12 +1,10 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const common = require('./webpack.common.js')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = merge(common, {
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -23,22 +21,13 @@ module.exports = merge(common, {
             }
           ]
         })
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
       }
     ]
   },
   plugins: [
-    new UglifyJSPlugin({
-      sourceMap: true
-    }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('test')
     }),
-    new CleanWebpackPlugin('dist'),
     new ExtractTextPlugin('style.css')
   ]
 })

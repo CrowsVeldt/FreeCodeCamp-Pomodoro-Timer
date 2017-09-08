@@ -1,4 +1,4 @@
-const file = require('../dist/app.bundle')
+const file = require('../src/title')
 
 test('constant "corgiButt" exists', () => {
   expect(file.corgiButt).toBeDefined()

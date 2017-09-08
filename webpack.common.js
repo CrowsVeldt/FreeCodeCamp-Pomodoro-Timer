@@ -1,5 +1,4 @@
 const path = require('path')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -7,18 +6,12 @@ module.exports = {
     app: './src/index.js'
   },
   plugins: [
-    new CleanWebpackPlugin('dist'),
     new HtmlWebpackPlugin({
       title: 'Pomodoro Timer'
     })
   ],
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
