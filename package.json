@@ -4,19 +4,18 @@
   "description": "A simple Pomodoro timer",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js"
   },
   "jest": {
     "moduleNameMapper": {
-      "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
       "\\.(css)$": "identity-obj-proxy"
     }
   },
   "babel": {
     "presets": [
-        "env"
+      "env"
     ]
   },
   "standard": {
@@ -40,7 +39,6 @@
     "babel-core": "^6.26.0",
     "babel-jest": "^21.0.0",
     "babel-loader": "^7.1.2",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.28.7",
