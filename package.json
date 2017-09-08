@@ -4,9 +4,14 @@
   "description": "A simple Pomodoro timer",
   "main": "index.js",
   "scripts": {
-    "test": "jest && standard",
+    "test": "jest",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy"
+    }
   },
   "babel": {
     "presets": [
@@ -40,6 +45,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
+    "identity-obj-proxy": "^3.0.0",
     "install": "^0.10.1",
     "jest": "^21.0.1",
     "postcss-loader": "^2.0.6",

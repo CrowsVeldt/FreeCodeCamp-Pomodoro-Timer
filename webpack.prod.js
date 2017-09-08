@@ -14,7 +14,7 @@ module.exports = merge(common, {
           fallback: 'style-loader',
           use: [
             {loader: 'css-loader',
-              options: {importLoaders: 1}},
+              options: {importLoaders: 1, modules: true}},
             {loader: 'postcss-loader',
               options: {plugins: () => ([
                 require('autoprefixer')()
@@ -26,7 +26,9 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new UglifyJSPlugin(),
+    new UglifyJSPlugin({
+      sourceMap: true
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
