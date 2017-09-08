@@ -1,6 +1,8 @@
-import styles from './title.css'
+// figuring out how to test with Jest
 
-export default function createTitle (specialClass, name) {
+export const corgiButt = 'boo'
+
+export function createTitle (specialClass, name) {
   const element = document.createElement('h1')
 
   element.classList.add(specialClass)
@@ -10,4 +12,8 @@ export default function createTitle (specialClass, name) {
   return element
 }
 
-document.body.appendChild(createTitle(styles.differentText, 'This is a Title'))
+export function addTwoNumbers (a, b) {
+  return a + b
+}
+
+document.body.appendChild(createTitle('class', 'This is a Title'))

@@ -4,12 +4,13 @@
   "description": "A simple Pomodoro timer",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose  --no-cache",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js"
   },
   "jest": {
     "moduleNameMapper": {
+      "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
       "\\.(css)$": "identity-obj-proxy"
     }
   },
