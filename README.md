@@ -4,30 +4,37 @@ A pomodoro timer inspired by [FreeCodeCamp](https://www.freecodecamp.com). I'm g
 
 My original intention was to use this project as an opportunity to learn how to write and use unit tests with Jest, but after falling down the tooling hole for a while I've built up a more complete/complex tooling chain also including Webpack and Babel. This diversion did take some time away from actual programming, but I feel it was worth it to familiarize myself with more of the tools and processes used in professional web developement.
 
+
 ## User Stories:
 
  ### Full Page:
  - When I open the app I see a timer. I can press on the timer to start it. I can stop the timer by pressing on it again.
- - When I stop the timer a settings menu opens where I can change the times for the work and break periods
+ - When I stop the timer a settings menu opens where I can change the times for the work and break periods.
  - I can push a button to open the settings menu, without stopping the timer.
- - When I change the time in the settings menu, the timer doesn't change until I stop it and start it again (or maybe not)
+ - When I change the time in the settings menu, the timer doesn't change until I stop it and start it again (or maybe not).
  - When the timer reaches 0 an alarm sound plays, and a notification pops up. Then a timer starts for a break.
- - After 4 work periods there is a longer break
+ - After 4 work periods there is a longer break.
 
  ### Extension:
- (I'll add details here later)
+ - I can add the extension to my browser, when I do a button appears on my toolbar.
+ - When I click on the toolbar button a popup appears with a timer on it, I can start and stop the timer by pushing a button (or maybe clicking on the timer itself).
+ - As the timer runs down the button will visibly change to show how much time has passed/is left
+ - When the timer reaches 0, an alarm sound plays and a notification pops up
+ - I can change the time of the timer
+
 
 ## UI:
 
- ### FULL PAGE: 
+ ### Full page: 
  - The timer will be the center of the view, with the settings menu hidden on the right side.
  - The timer will fill up clockwise as time passes
 
  ### Extension:
  - A toolbar button which opens a popup
  - The popup shows the time remaining, has buttons to stop/start, and the time can be changed
- - I want to have an indicator show approximately how much time has passed/is left, possibly the toolbar button will change color. I'll see what is possible.
+ - I want to have an indicator show approximately how much time has passed/is left. Either change the toolbar button itself, or add a badge to it. (or both)
  - other than that it should work with the same code as the full page view.
+
 
 ## Implementation:
 
