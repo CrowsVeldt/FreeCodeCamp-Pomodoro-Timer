@@ -1,4 +1,6 @@
-A pomodoro timer inspired by FreeCodeCamp.
+A pomodoro timer inspired by FreeCodeCamp. I'm going to write it as a browser extension, focussing primarily on FireFox (as that is my main browser), but I will also try to keep it compatible with other browsers. I'm going to write it using best practices as best I can (testing; clean, readable code; accesibility; etc).
+
+My original intention was to use this project as an opportunity to learn how to write and use unit tests, with Jest, but after falling down the tooling hole for a while I've build up a more complete/complex tooling chain also including Webpack and Babel. This diversion did take some time away from actual programming, but I feel it was worth it to familiarize myself with more of the tools and processes used in professional web developement.
 
 #User Stories:
 
