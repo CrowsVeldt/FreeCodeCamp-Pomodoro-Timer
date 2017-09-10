@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: './build'
   },
   module: {
     rules: [
@@ -32,7 +32,7 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin('dist'),
+    new CleanWebpackPlugin('build'),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('developement')
     })

@@ -33,7 +33,7 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    new CleanWebpackPlugin('dist'),
+    new CleanWebpackPlugin('build'),
     new ExtractTextPlugin('style.css')
   ]
 })
