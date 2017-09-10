@@ -1,3 +1,10 @@
 import styles from './timer.css'
 
-export const currentTime = new Date().getTime()
+// function to create a 'timer' instance
+const createTimer = ({
+currentTime = new Date().getTime() // setting default values
+} = {}) => ({
+  currentTime
+})
+
+export const time = createTimer()
