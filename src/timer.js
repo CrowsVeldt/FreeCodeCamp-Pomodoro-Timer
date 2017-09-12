@@ -1,16 +1,29 @@
+'use strict'
+
 import styles from './timer.css'
 
 // function to create a 'timer' instance
-export const createTimer = ({
+export const timer = ({
 currentTime = new Date().getTime(),
 startTime = currentTime,
 pomodoroLength = 25,
 shortBreakLength = 5,
-longBreakLength = 15
+longBreakLength = 15,
+pomodoroCount = 0,
+currentActivity = 'pomodoro',
+endTime = 0
 } = {}) => ({
   currentTime,
   startTime,
   pomodoroLength,
   shortBreakLength,
-  longBreakLength
+  longBreakLength,
+  pomodoroCount,
+  currentActivity,
+  endTime
 })
+
+// function to start a timer
+export function beginTimer () {
+  setTimeout(() => { return 1 + 2 }, 1000)
+}
