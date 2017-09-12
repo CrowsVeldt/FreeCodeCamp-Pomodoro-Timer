@@ -3,7 +3,7 @@
 import styles from './timer.css'
 
 // function to create a 'timer' instance
-export const timer = ({
+export const Timer = ({
 currentTime = new Date().getTime(),
 startTime = currentTime,
 pomodoroLength = 25,

@@ -4,7 +4,7 @@ import * as timer from '../src/timer.js'
 
 jest.useFakeTimers()
 
-const defaultTimer = timer.timer()
+const defaultTimer = timer.Timer()
 
 describe('createTimer', () => {
   describe('values', () => {
