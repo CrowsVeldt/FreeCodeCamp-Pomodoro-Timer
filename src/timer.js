@@ -25,5 +25,5 @@ endTime = 0
 
 // function to start a timer
 export function beginTimer () {
-  setTimeout(() => { return 1 + 2 }, 1000)
+  setTimeout(() => {}, 1000)
 }
