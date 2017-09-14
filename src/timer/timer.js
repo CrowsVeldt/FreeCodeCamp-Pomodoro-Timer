@@ -6,35 +6,34 @@ import styles from './timer.css'
 
 // function to create a 'timer' instance
 export const Timer = ({
-  // leaving defaults so I'll remember what should be there
-currentTime = new Date().getTime(),
-startTime = currentTime,
-pomodoroLength = 25,
-shortBreakLength = 5,
-longBreakLength = 15,
+startTime = new Date().getTime(),
+pomodoroLength = input.userInputs.pomodoroLength,
+shortBreakLength = input.userInputs.shortBreakLength,
+longBreakLength = input.userInputs.longBreakLength,
 pomodoroCount = 0,
 currentActivity = 'pomodoro',
 endTime = startTime + (pomodoroLength * 60000)
 } = {}) => ({
-  currentTime,
   startTime,
   pomodoroLength,
   shortBreakLength,
   longBreakLength,
   pomodoroCount,
   currentActivity,
-  endTime
+  endTime,
+  timerID: 0
 })
 
-/*
-How to Instantiate Timer
-new Timer({
-  pomodoroLength: input.userInputs.pomodoroLength,
-  shortBreakLength: input.userInputs.shortBreakLength,
-  longBreakLength: input.userInputs.longBreakLength
-})
-*/
+export function beginTimer (timer = new Timer()) {
+  timer.timerID = setTimeout(checkTimer, 1000, timer)
+}
 
-export function beginTimer () {
-  setTimeout(() => {}, 1000)
+export function checkTimer (timerToCheck) {
+  let currentTime = new Date().getTime()
+  if (currentTime >= timerToCheck.endTime) {
+    console.log('finished')
+  } else {
+    console.log('tick')
+    timerToCheck.timerID = setTimeout(checkTimer, 1000, timerToCheck)
+  }
 }

@@ -1,7 +1,7 @@
 /* Stand-in variables for input from input elements */
 
   export const userInputs = {
-    pomodoroLength: 25,
+    pomodoroLength: 1,
     shortBreakLength: 5,
     longBreakLength: 15
   }
