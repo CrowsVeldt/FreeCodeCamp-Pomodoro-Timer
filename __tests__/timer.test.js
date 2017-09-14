@@ -1,6 +1,6 @@
 'use strict'
 
-import * as timer from '../src/timer.js'
+import * as timer from '../src/timer/timer.js'
 
 jest.useFakeTimers()
 
