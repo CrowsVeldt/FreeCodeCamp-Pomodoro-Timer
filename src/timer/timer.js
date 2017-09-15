@@ -39,16 +39,24 @@ export function checkTimer (timerToCheck) {
 }
 
 export function finishTimer (previousTimer) {
-  if (previousTimer.currentActivity === 'pomodoro') {
-    console.log('finished pomodoro #' + previousTimer.pomodoroCount)
+  if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
+    console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount + 1,
       currentActivity: 'shortBreak',
       endTime: newEndtime
     }))
+  } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
+    console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
+    let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
+    beginTimer(Timer({
+      pomodoroCount: 0,
+      currentActivity: 'longBreak',
+      endTime: newEndtime
+    }))
   } else {
-    console.log('finished break')
+    console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount,
