@@ -77,6 +77,11 @@ describe('beginTimer', () => {
 })
 
 /*
-*  Test checkTimer: when it is called, move the time forward by pomodoroLength minutes,
+*  checkTimer: when called, move the time forward by pomodoroLength minutes,
 *  and check if finishTimer() is called
+*/
+
+/*
+*  finishTimer: when called, make sure it calls beginTimer with the right parameters,
+*  based on pomodoroCount
 */
