@@ -96,7 +96,40 @@ describe('checkTimer', () => {
     let result = timer.Timer({
       endTime: time
     })
-
     expect(timer.checkTimer(result)).toBe('finished')
+  })
+})
+
+describe('finishTimer', () => {
+  test('starts a 1 second timer', () => {
+    timer.finishTimer(defaultTimer)
+    expect(setTimeout.mock.calls.length).toBe(1)
+    expect(setTimeout.mock.calls[0][1]).toBe(1000)
+  })
+
+  test('starts a short break after finishing a pomodoro', () => {
+    expect(timer.finishTimer(defaultTimer)).toBe('short break')
+  })
+
+  test('starts a long break after finishing four pomodoros', () => {
+    let tempTimer = timer.Timer({
+      currentActivity: 'pomodoro',
+      pomodoroCount: 3
+    })
+    expect(timer.finishTimer(tempTimer)).toBe('long break')
+  })
+
+  test('starts a pomodoro after finishing a short break', () => {
+    let shortBreakTimer = timer.Timer({
+      currentActivity: 'short break'
+    })
+    expect(timer.finishTimer(shortBreakTimer)).toBe('pomodoro')
+  })
+
+  test('starts a pomodoro after finishing a long break', () => {
+    let longBreakTimer = timer.Timer({
+      currentActivity: 'long break'
+    })
+    expect(timer.finishTimer(longBreakTimer)).toBe('pomodoro')
   })
 })

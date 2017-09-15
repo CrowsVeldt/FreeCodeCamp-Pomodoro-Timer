@@ -35,6 +35,7 @@ export function checkTimer (timerToCheck) {
     return 'finished'
   } else {
     timerToCheck.timerID = setTimeout(checkTimer, 1000, timerToCheck)
+    // console.log('tick')
     return 'unfinished'
   }
 }
@@ -48,6 +49,7 @@ export function finishTimer (previousTimer) {
       currentActivity: 'shortBreak',
       endTime: newEndtime
     }))
+    return 'short break'
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
     // console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
@@ -56,6 +58,7 @@ export function finishTimer (previousTimer) {
       currentActivity: 'longBreak',
       endTime: newEndtime
     }))
+    return 'long break'
   } else {
     // console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
@@ -64,5 +67,6 @@ export function finishTimer (previousTimer) {
       currentActivity: 'pomodoro',
       endTime: newEndtime
     }))
+    return 'pomodoro'
   }
 }
