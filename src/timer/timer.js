@@ -31,9 +31,16 @@ export function beginTimer (timer = new Timer()) {
 export function checkTimer (timerToCheck) {
   let currentTime = new Date().getTime()
   if (currentTime >= timerToCheck.endTime) {
-    console.log('finished')
+    finishTimer(timerToCheck)
   } else {
     console.log('tick')
     timerToCheck.timerID = setTimeout(checkTimer, 1000, timerToCheck)
+  }
+}
+
+export function finishTimer (previousTimer) {
+  console.log(previousTimer)
+  if (previousTimer.currentActivity === 'pomodoro') {
+    beginTimer(new Timer())
   }
 }

@@ -12,12 +12,8 @@ describe('createTimer', () => {
       expect(typeof (defaultTimer)).toBe('object')
     })
 
-    test('.currentTime should be a number', () => {
-      expect(typeof (defaultTimer.currentTime)).toBe('number')
-    })
-
-    test('.startTime should default to currentTime', () => {
-      expect(defaultTimer.startTime).toEqual(defaultTimer.currentTime)
+    test('.startTime should be number', () => {
+      expect(typeof (defaultTimer.startTime)).toBe('number')
     })
 
     test('.pomodoroCount should be a number', () => {
@@ -91,3 +87,8 @@ describe('beginTimer', () => {
     expect(setTimeout.mock.calls[0][1]).toBe(1000)
   })
 })
+
+/*
+*  Test checkTimer: when it is called, move the time forward by pomodoroLength minutes,
+*  and check if finishTimer() is called
+*/

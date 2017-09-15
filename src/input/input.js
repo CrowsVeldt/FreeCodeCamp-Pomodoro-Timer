@@ -1,8 +1,8 @@
 /* Stand-in variables for input from input elements */
 
   export const userInputs = {
-    pomodoroLength: 1,
-    shortBreakLength: 5,
+    pomodoroLength: 0.1,
+    shortBreakLength: 0.1,
     longBreakLength: 15
   }
 
