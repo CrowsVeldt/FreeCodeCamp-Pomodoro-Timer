@@ -41,6 +41,6 @@ export function checkTimer (timerToCheck) {
 export function finishTimer (previousTimer) {
   console.log(previousTimer)
   if (previousTimer.currentActivity === 'pomodoro') {
-    beginTimer(new Timer())
+    beginTimer(new Timer({pomodoroCount: previousTimer.pomodoroCount + 1}))
   }
 }
