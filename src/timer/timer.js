@@ -32,7 +32,6 @@ export function checkTimer (timerToCheck) {
   let currentTime = new Date().getTime()
   if (currentTime >= timerToCheck.endTime) {
     finishTimer(timerToCheck)
-    console.log('finish')
   } else {
     console.log('tick')
     timerToCheck.timerID = setTimeout(checkTimer, 1000, timerToCheck)
@@ -41,10 +40,19 @@ export function checkTimer (timerToCheck) {
 
 export function finishTimer (previousTimer) {
   if (previousTimer.currentActivity === 'pomodoro') {
+    console.log('finished pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount + 1,
       currentActivity: 'shortBreak',
+      endTime: newEndtime
+    }))
+  } else {
+    console.log('finished break')
+    let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
+    beginTimer(Timer({
+      pomodoroCount: previousTimer.pomodoroCount,
+      currentActivity: 'pomodoro',
       endTime: newEndtime
     }))
   }
