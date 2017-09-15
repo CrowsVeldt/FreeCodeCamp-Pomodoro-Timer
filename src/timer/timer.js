@@ -35,15 +35,16 @@ export function checkTimer (timerToCheck) {
     return 'finished'
   } else {
     timerToCheck.timerID = setTimeout(checkTimer, 1000, timerToCheck)
-    // console.log('tick')
+    console.log('tick')
     return 'unfinished'
   }
 }
 
 export function finishTimer (previousTimer) {
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
-    // console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
+    console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
+    spawnNotification('You finished! Good work! Take a short break, you deserve it', 'Pomodoro: Finished')
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount + 1,
       currentActivity: 'shortBreak',
@@ -51,7 +52,7 @@ export function finishTimer (previousTimer) {
     }))
     return 'short break'
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
-    // console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
+    console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
     beginTimer(Timer({
       pomodoroCount: 0,
@@ -60,8 +61,9 @@ export function finishTimer (previousTimer) {
     }))
     return 'long break'
   } else {
-    // console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
+    console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
+    spawnNotification('Recharged a bit? Good! Pick something new and go get \'em!', 'New Pomodoro Started')
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount,
       currentActivity: 'pomodoro',
@@ -71,5 +73,9 @@ export function finishTimer (previousTimer) {
   }
 }
 
-export function alarmAndNotify () {
+export function spawnNotification (theBody, theTitle) {
+  let options = {
+    body: theBody
+  }
+  let n = new Notification(theTitle, options)
 }
