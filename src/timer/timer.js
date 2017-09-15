@@ -44,7 +44,7 @@ export function finishTimer (previousTimer) {
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
     console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
-    spawnNotification('You finished! Good work! Take a short break, you deserve it', 'Pomodoro: Finished')
+    notify('You finished! Good work! Take a short break, you deserve it', 'Short Break Started')
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount + 1,
       currentActivity: 'shortBreak',
@@ -54,6 +54,7 @@ export function finishTimer (previousTimer) {
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
     console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
+    notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
     beginTimer(Timer({
       pomodoroCount: 0,
       currentActivity: 'longBreak',
@@ -63,7 +64,7 @@ export function finishTimer (previousTimer) {
   } else {
     console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
-    spawnNotification('Recharged a bit? Good! Pick something new and go get \'em!', 'New Pomodoro Started')
+    notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount,
       currentActivity: 'pomodoro',
@@ -73,7 +74,7 @@ export function finishTimer (previousTimer) {
   }
 }
 
-export function spawnNotification (theBody, theTitle) {
+export function notify (theBody, theTitle) {
   let options = {
     body: theBody
   }
