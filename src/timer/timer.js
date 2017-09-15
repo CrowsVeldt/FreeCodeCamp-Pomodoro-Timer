@@ -24,7 +24,7 @@ endTime = startTime + (pomodoroLength * 60000)
   timerID: 0
 })
 
-export function beginTimer (timer = new Timer()) {
+export function beginTimer (timer = Timer()) {
   timer.timerID = setTimeout(checkTimer, 1000, timer)
 }
 
@@ -39,8 +39,10 @@ export function checkTimer (timerToCheck) {
 }
 
 export function finishTimer (previousTimer) {
-  console.log(previousTimer)
   if (previousTimer.currentActivity === 'pomodoro') {
-    beginTimer(new Timer({pomodoroCount: previousTimer.pomodoroCount + 1}))
+    beginTimer(Timer({
+      pomodoroCount: previousTimer.pomodoroCount + 1,
+      currentActivity: 'shortBreak'
+    }))
   }
 }

@@ -2,7 +2,7 @@
 
   export const userInputs = {
     pomodoroLength: 0.1,
-    shortBreakLength: 0.1,
+    shortBreakLength: 0.2,
     longBreakLength: 15
   }
 
