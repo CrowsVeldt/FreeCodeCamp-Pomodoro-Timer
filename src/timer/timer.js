@@ -32,15 +32,16 @@ export function checkTimer (timerToCheck) {
   let currentTime = new Date().getTime()
   if (currentTime >= timerToCheck.endTime) {
     finishTimer(timerToCheck)
+    return 'finished'
   } else {
-    console.log('tick')
     timerToCheck.timerID = setTimeout(checkTimer, 1000, timerToCheck)
+    return 'unfinished'
   }
 }
 
 export function finishTimer (previousTimer) {
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
-    console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
+    // console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount + 1,
@@ -48,7 +49,7 @@ export function finishTimer (previousTimer) {
       endTime: newEndtime
     }))
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
-    console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
+    // console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
     beginTimer(Timer({
       pomodoroCount: 0,
@@ -56,7 +57,7 @@ export function finishTimer (previousTimer) {
       endTime: newEndtime
     }))
   } else {
-    console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
+    // console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
     beginTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount,

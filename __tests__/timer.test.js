@@ -4,6 +4,10 @@ import * as timer from '../src/timer/timer.js'
 
 jest.useFakeTimers()
 
+afterEach(() => {
+  setTimeout.mockClear()
+})
+
 const defaultTimer = timer.Timer()
 
 describe('createTimer', () => {
@@ -76,12 +80,23 @@ describe('beginTimer', () => {
   })
 })
 
-/*
-*  checkTimer: when called, move the time forward by pomodoroLength minutes,
-*  and check if finishTimer() is called
-*/
+describe('checkTimer', () => {
+  test('starts a 1 second timer', () => {
+    timer.checkTimer(defaultTimer)
+    expect(setTimeout.mock.calls.length).toBe(1)
+    expect(setTimeout.mock.calls[0][1]).toBe(1000)
+  })
 
-/*
-*  finishTimer: when called, make sure it calls beginTimer with the right parameters,
-*  based on pomodoroCount
-*/
+  test('returns "unfinished" when timer is not finished', () => {
+    expect(timer.checkTimer(defaultTimer)).toBe('unfinished')
+  })
+
+  test('returns "finished" when timer is finished', () => {
+    let time = new Date().getTime()
+    let result = timer.Timer({
+      endTime: time
+    })
+
+    expect(timer.checkTimer(result)).toBe('finished')
+  })
+})
