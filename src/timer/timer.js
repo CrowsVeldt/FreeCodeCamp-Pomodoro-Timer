@@ -70,3 +70,6 @@ export function finishTimer (previousTimer) {
     return 'pomodoro'
   }
 }
+
+export function alarmAndNotify () {
+}
