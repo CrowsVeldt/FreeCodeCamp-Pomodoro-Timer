@@ -36,45 +36,33 @@ describe('createTimer', () => {
       })
     })
 
-    describe('.pomodoroLength', () => {
+    describe('.pomodoro', () => {
       test('should be a number', () => {
-        expect(typeof (defaultTimer.pomodoroLength)).toBe('number')
+        expect(typeof (defaultTimer.pomodoro)).toBe('number')
       })
 
       test('should be greater than 0', () => {
-        expect(defaultTimer.pomodoroLength).toBeGreaterThan(0)
-      })
-
-      test('should not be fraction', () => {
-        expect((defaultTimer.pomodoroLength).toString()).not.toMatch(/\./g)
+        expect(defaultTimer.pomodoro).toBeGreaterThan(0)
       })
     })
 
-    describe('.shortBreakLength', () => {
+    describe('.shortBreak', () => {
       test('should be a number', () => {
-        expect(typeof (defaultTimer.shortBreakLength)).toBe('number')
+        expect(typeof (defaultTimer.shortBreak)).toBe('number')
       })
 
       test('should be greater than 0', () => {
-        expect(defaultTimer.shortBreakLength).toBeGreaterThan(0)
-      })
-
-      test('should not be fraction', () => {
-        expect((defaultTimer.shortBreakLength).toString()).not.toMatch(/\./g)
+        expect(defaultTimer.shortBreak).toBeGreaterThan(0)
       })
     })
 
-    describe('.longBreakLength', () => {
+    describe('.longBreak', () => {
       test('should be a number', () => {
-        expect(typeof (defaultTimer.longBreakLength)).toBe('number')
+        expect(typeof (defaultTimer.longBreak)).toBe('number')
       })
 
       test('should be greater than 0', () => {
-        expect(defaultTimer.longBreakLength).toBeGreaterThan(0)
-      })
-
-      test('should not be fraction', () => {
-        expect((defaultTimer.longBreakLength).toString()).not.toMatch(/\./g)
+        expect(defaultTimer.longBreak).toBeGreaterThan(0)
       })
     })
   })
