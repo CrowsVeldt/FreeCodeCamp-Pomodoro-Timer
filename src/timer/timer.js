@@ -33,29 +33,26 @@ export function toggleTimer (timer = Timer(), display = timerView.TimerView()) {
     timerActive = false
     timerView.updateTimerView()
   } else {
-    timerID = setTimeout(checkTimer, 1000, timer)
+    timerID = setTimeout(checkTimer, 1000, timer, display)
     timerActive = true
     timerView.updateTimerView(display)
   }
 }
 
-export function checkTimer (timerToCheck) {
+export function checkTimer (timerToCheck, display) {
   let currentTime = new Date().getTime()
-  timerView.updateTimerView({
-
-  })
+  timerView.updateTimerView(display)
   timerToCheck.timeLeft--
   if (currentTime >= timerToCheck.endTime) {
     timerActive = false
     finishTimer(timerToCheck)
   } else {
-    timerID = setTimeout(checkTimer, 1000, timerToCheck)
+    timerID = setTimeout(checkTimer, 1000, timerToCheck, display)
   }
 }
 
 export function finishTimer (previousTimer) {
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
-    // console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
     notify('You finished! Good work! Take a short break, you deserve it', 'Short Break Started')
     toggleTimer(Timer({
@@ -65,7 +62,6 @@ export function finishTimer (previousTimer) {
     }))
     return 'short break'
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
-    // console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
     notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
     toggleTimer(Timer({
@@ -75,7 +71,6 @@ export function finishTimer (previousTimer) {
     }))
     return 'long break'
   } else {
-    // console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     toggleTimer(Timer({

@@ -5,7 +5,7 @@ import styles from './timer.css'
 import * as timer from './timer.js'
 
 export const TimerView = ({
-  title = 'Timer',
+  title = 'Pomodoro',
   time = timer.Timer().pomodoro
 } = {}) => ({
   title,
@@ -25,9 +25,7 @@ export function createTimerView () {
   newTimerView.appendChild(timerDisplay)
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
-    timer.toggleTimer(timer.Timer(), TimerView({
-      title: 'Pomodoro'
-    }))
+    timer.toggleTimer(timer.Timer(), TimerView())
   })
 
   document.body.appendChild(newTimerView)
