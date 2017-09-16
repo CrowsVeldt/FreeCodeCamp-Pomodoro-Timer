@@ -36,7 +36,7 @@ export function updateTimerView (view = TimerView()) {
   const timerElement = document.getElementById('timer')
 
   timerElement.childNodes[0].innerHTML = view.title
-  timerElement.childNodes[1].innerHTML = view.time * 60
+  timerElement.childNodes[1].innerHTML = view.time
 }
 
 window.onload = createTimerView()

@@ -41,9 +41,11 @@ export function toggleTimer (timer = Timer(), display = timerView.TimerView()) {
 
 export function checkTimer (timerToCheck, display) {
   let currentTime = new Date().getTime()
-  timerView.updateTimerView(display)
   timerToCheck.timeLeft--
-  // console.log(timerToCheck.timeLeft)
+  timerView.updateTimerView(timerView.TimerView({
+    title: display.title,
+    time: timerToCheck.timeLeft
+  }))
   if (currentTime >= timerToCheck.endTime) {
     timerActive = false
     finishTimer(timerToCheck)
