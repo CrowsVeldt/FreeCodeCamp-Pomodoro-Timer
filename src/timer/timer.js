@@ -62,6 +62,9 @@ export function finishTimer (previousTimer) {
       currentActivity: 'shortBreak',
       endTime: newEndtime,
       timeLeft: newTimeLeft
+    }), timerView.TimerView({
+      title: 'Short Break',
+      time: previousTimer.shortBreak
     }))
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
@@ -72,6 +75,9 @@ export function finishTimer (previousTimer) {
       currentActivity: 'longBreak',
       endTime: newEndtime,
       timeLeft: newTimeLeft
+    }), timerView.TimerView({
+      title: 'Long Break',
+      time: previousTimer.longBreak
     }))
   } else {
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
