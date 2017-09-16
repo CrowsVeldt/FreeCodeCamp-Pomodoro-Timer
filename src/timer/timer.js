@@ -25,7 +25,10 @@ endTime = startTime + (pomodoro * 60000)
   endTime
 })
 
-export function toggleTimer (timer = Timer()) {
+export function toggleTimer (timer = Timer(), display = {
+  title: 'Pomodoro',
+  time: timer.pomodoro * 60
+}) {
   if (timerActive === true) {
     clearTimeout(timerID)
     timerActive = false
@@ -33,23 +36,18 @@ export function toggleTimer (timer = Timer()) {
   } else {
     timerID = setTimeout(checkTimer, 1000, timer)
     timerActive = true
-    timerView.updateTimerView({
-      title: 'Pomodoro',
-      time: timer.pomodoro
-    })
+    timerView.updateTimerView(display)
   }
 }
 
 export function checkTimer (timerToCheck) {
   let currentTime = new Date().getTime()
+  timerView.updateTimerView()
   if (currentTime >= timerToCheck.endTime) {
     timerActive = false
     finishTimer(timerToCheck)
-    return 'finished'
   } else {
     timerID = setTimeout(checkTimer, 1000, timerToCheck)
-    // console.log('tick')
-    return 'unfinished'
   }
 }
 
