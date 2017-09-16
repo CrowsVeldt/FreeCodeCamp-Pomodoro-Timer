@@ -4,7 +4,6 @@ import * as input from '../input/input.js'
 
 import styles from './timer.css'
 
-// function to create a 'timer' instance
 export const Timer = ({
 startTime = new Date().getTime(),
 pomodoro = input.userInputs.pomodoroLength,
@@ -79,4 +78,6 @@ export function notify (theBody, theTitle) {
     body: theBody
   }
   let n = new Notification(theTitle, options)
+  // close the notification for browsers who don't close it automatically
+  setTimeout(n.close.bind(n), 500)
 }
