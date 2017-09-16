@@ -7,7 +7,7 @@ import * as timerView from './timerView.js'
 let timerActive = false
 let timerID = 0
 
-export const Timer = ({
+const Timer = ({
 startTime = new Date().getTime(),
 pomodoro = input.userInputs.pomodoroLength,
 shortBreak = input.userInputs.shortBreakLength,

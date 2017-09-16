@@ -4,34 +4,34 @@ import styles from './timer.css'
 
 import * as timer from './timer.js'
 
-// what is the best way to create and then update the timer?
+const TimerView = ({
+  title = 'Pomodoro',
+  time = '00/:00'
+} = {}) => ({
+  title,
+  time
+})
 
-/**
- * A template for the timer view : title,
- * time to display, percent to fill
- *
- * export const TimerView = ({
- *   title = 'Pomodoro'
- * } = {}) => ({
- *   title
- * })
-*/
-
-// Create a timer view based on the above template
-export function createTimerView (percentDone, title) {
-  const timerView = document.createElement('div')
-  timerView.setAttribute('id', 'timer')
+export function createTimerView () {
+  const newTimerView = document.createElement('div')
+  newTimerView.setAttribute('id', 'timer')
 
   const timerTitle = document.createElement('label')
-  timerTitle.innerHTML = title
   timerTitle.setAttribute('for', 'timer')
 
-  timerView.appendChild(timerTitle)
-  timerView.classList.add(styles.timer)
-  timerView.addEventListener('click', () => {
+  newTimerView.appendChild(timerTitle)
+  newTimerView.classList.add(styles.timer)
+  newTimerView.addEventListener('click', () => {
     timer.toggleTimer()
   })
-  document.body.appendChild(timerView)
+  document.body.appendChild(newTimerView)
+  updateTimerView()
 }
 
-createTimerView()
+export function updateTimerView (view = TimerView()) {
+  const timerElement = document.getElementById('timer')
+
+  timerElement.childNodes[0].innerHTML = view.title
+}
+
+window.onload = createTimerView()
