@@ -29,9 +29,14 @@ export function toggleTimer (timer = Timer()) {
   if (timerActive === true) {
     clearTimeout(timerID)
     timerActive = false
+    timerView.updateTimerView()
   } else {
     timerID = setTimeout(checkTimer, 1000, timer)
     timerActive = true
+    timerView.updateTimerView({
+      title: 'Pomodoro',
+      time: timer.pomodoro
+    })
   }
 }
 

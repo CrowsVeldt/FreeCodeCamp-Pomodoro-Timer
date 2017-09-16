@@ -4,14 +4,6 @@ import styles from './timer.css'
 
 import * as timer from './timer.js'
 
-const TimerView = ({
-  title = 'Pomodoro',
-  time = '25:00'
-} = {}) => ({
-  title,
-  time
-})
-
 export function createTimerView () {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
@@ -32,7 +24,10 @@ export function createTimerView () {
   updateTimerView()
 }
 
-export function updateTimerView (view = TimerView()) {
+export function updateTimerView (view = {
+  title: 'Timer',
+  time: '25:00'
+}) {
   const timerElement = document.getElementById('timer')
 
   timerElement.childNodes[0].innerHTML = view.title
