@@ -25,6 +25,7 @@ export function createTimerView () {
   newTimerView.appendChild(timerDisplay)
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
+    // Starting with all default values:
     timer.toggleTimer(timer.Timer(), TimerView())
   })
 
@@ -39,8 +40,6 @@ export function updateTimerView (view = TimerView()) {
   timerElement.childNodes[1].innerHTML = formatTime(view.time)
 }
 
-window.onload = createTimerView()
-
 function formatTime (timeInSeconds) {
   let seconds = timeInSeconds % 60
   let minutes = Math.floor(timeInSeconds / 60)
@@ -53,3 +52,5 @@ function formatTime (timeInSeconds) {
     return minutes + ':' + seconds
   }
 }
+
+window.onload = createTimerView()

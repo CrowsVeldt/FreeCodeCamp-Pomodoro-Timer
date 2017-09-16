@@ -9,13 +9,13 @@ let timerID = 0
 
 export const Timer = ({
 startTime = new Date().getTime(),
-// Multiplying to convert minutes to seconds:
+// Multiplying inputs to convert minutes to seconds:
 pomodoro = input.userInputs.pomodoroLength * 60,
 shortBreak = input.userInputs.shortBreakLength * 60,
 longBreak = input.userInputs.longBreakLength * 60,
 pomodoroCount = 0,
 currentActivity = 'pomodoro',
-// Converting seconds to milliseconds, for comparing with the result of Date.getTime()
+// Converting seconds to milliseconds for comparing with Date.getTime()
 endTime = startTime + (pomodoro * 1000),
 timeLeft = pomodoro
 } = {}) => ({
@@ -87,9 +87,8 @@ export function finishTimer (previousTimer) {
     // Using previousTimer.pomodoro so that changing input values doesn't change the timer while it's running
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 1000)
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
-    toggleTimer(Timer({ // Leaving timeLeft out so it uses the default value
+    toggleTimer(Timer({ // timeLeft and currentActivity left out so that it uses the default value
       pomodoroCount: previousTimer.pomodoroCount,
-      currentActivity: 'pomodoro',
       endTime: newEndtime
     }))
   }
@@ -101,5 +100,5 @@ export function notify (theBody, theTitle) {
   }
   let n = new Notification(theTitle, options)
   // close the notification for browsers who don't close it automatically
-  setTimeout(n.close.bind(n), 5000)
+  setTimeout(n.close.bind(n), 10000)
 }
