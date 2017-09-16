@@ -9,13 +9,15 @@ let timerID = 0
 
 export const Timer = ({
 startTime = new Date().getTime(),
-pomodoro = input.userInputs.pomodoroLength,
-shortBreak = input.userInputs.shortBreakLength,
-longBreak = input.userInputs.longBreakLength,
+// Multiplying to convert minutes to seconds:
+pomodoro = input.userInputs.pomodoroLength * 60,
+shortBreak = input.userInputs.shortBreakLength * 60,
+longBreak = input.userInputs.longBreakLength * 60,
 pomodoroCount = 0,
 currentActivity = 'pomodoro',
-endTime = startTime + (pomodoro * 60000),
-timeLeft = pomodoro * 60
+// Converting seconds to milliseconds, for comparing with the result of Date.getTime()
+endTime = startTime + (pomodoro * 1000),
+timeLeft = pomodoro
 } = {}) => ({
   startTime,
   pomodoro,
@@ -56,8 +58,8 @@ export function checkTimer (timerToCheck, display) {
 
 export function finishTimer (previousTimer) {
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
-    let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
-    let newTimeLeft = previousTimer.shortBreak * 60
+    let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 1000)
+    let newTimeLeft = previousTimer.shortBreak
     notify('You finished! Good work! Take a short break, you deserve it', 'Short Break Started')
     toggleTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount + 1,
@@ -69,8 +71,8 @@ export function finishTimer (previousTimer) {
       time: previousTimer.shortBreak
     }))
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
-    let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
-    let newTimeLeft = previousTimer.longBreak * 60
+    let newEndtime = new Date().getTime() + (previousTimer.longBreak * 1000)
+    let newTimeLeft = previousTimer.longBreak
     notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
     toggleTimer(Timer({
       pomodoroCount: 0,
@@ -82,9 +84,10 @@ export function finishTimer (previousTimer) {
       time: previousTimer.longBreak
     }))
   } else {
-    let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
+    // Using previousTimer.pomodoro so that changing input values doesn't change the timer while it's running
+    let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 1000)
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
-    toggleTimer(Timer({
+    toggleTimer(Timer({ // Leaving timeLeft out so it uses the default value
       pomodoroCount: previousTimer.pomodoroCount,
       currentActivity: 'pomodoro',
       endTime: newEndtime

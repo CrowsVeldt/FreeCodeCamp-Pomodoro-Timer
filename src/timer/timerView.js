@@ -36,7 +36,20 @@ export function updateTimerView (view = TimerView()) {
   const timerElement = document.getElementById('timer')
 
   timerElement.childNodes[0].innerHTML = view.title
-  timerElement.childNodes[1].innerHTML = view.time
+  timerElement.childNodes[1].innerHTML = formatTime(view.time)
 }
 
 window.onload = createTimerView()
+
+function formatTime (timeInSeconds) {
+  let seconds = timeInSeconds % 60
+  let minutes = Math.floor(timeInSeconds / 60)
+
+  if (seconds === 0) {
+    return minutes + ':00'
+  } else if (seconds < 10) {
+    return minutes + ':0' + seconds
+  } else {
+    return minutes + ':' + seconds
+  }
+}
