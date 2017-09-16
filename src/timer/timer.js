@@ -7,14 +7,15 @@ import * as timerView from './timerView.js'
 let timerActive = false
 let timerID = 0
 
-const Timer = ({
+export const Timer = ({
 startTime = new Date().getTime(),
 pomodoro = input.userInputs.pomodoroLength,
 shortBreak = input.userInputs.shortBreakLength,
 longBreak = input.userInputs.longBreakLength,
 pomodoroCount = 0,
 currentActivity = 'pomodoro',
-endTime = startTime + (pomodoro * 60000)
+endTime = startTime + (pomodoro * 60000),
+timeLeft = pomodoro * 60
 } = {}) => ({
   startTime,
   pomodoro,
@@ -22,13 +23,11 @@ endTime = startTime + (pomodoro * 60000)
   longBreak,
   pomodoroCount,
   currentActivity,
-  endTime
+  endTime,
+  timeLeft
 })
 
-export function toggleTimer (timer = Timer(), display = {
-  title: 'Pomodoro',
-  time: timer.pomodoro * 60
-}) {
+export function toggleTimer (timer = Timer(), display = timerView.TimerView()) {
   if (timerActive === true) {
     clearTimeout(timerID)
     timerActive = false
@@ -42,7 +41,10 @@ export function toggleTimer (timer = Timer(), display = {
 
 export function checkTimer (timerToCheck) {
   let currentTime = new Date().getTime()
-  timerView.updateTimerView()
+  timerView.updateTimerView({
+
+  })
+  timerToCheck.timeLeft--
   if (currentTime >= timerToCheck.endTime) {
     timerActive = false
     finishTimer(timerToCheck)

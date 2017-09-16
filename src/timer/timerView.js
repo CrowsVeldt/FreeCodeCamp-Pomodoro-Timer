@@ -4,6 +4,14 @@ import styles from './timer.css'
 
 import * as timer from './timer.js'
 
+export const TimerView = ({
+  title = 'Timer',
+  time = timer.Timer().pomodoro
+} = {}) => ({
+  title,
+  time
+})
+
 export function createTimerView () {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
@@ -17,21 +25,20 @@ export function createTimerView () {
   newTimerView.appendChild(timerDisplay)
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
-    timer.toggleTimer()
+    timer.toggleTimer(timer.Timer(), TimerView({
+      title: 'Pomodoro'
+    }))
   })
 
   document.body.appendChild(newTimerView)
   updateTimerView()
 }
 
-export function updateTimerView (view = {
-  title: 'Timer',
-  time: '25:00'
-}) {
+export function updateTimerView (view = TimerView()) {
   const timerElement = document.getElementById('timer')
 
   timerElement.childNodes[0].innerHTML = view.title
-  timerElement.childNodes[1].innerHTML = view.time
+  timerElement.childNodes[1].innerHTML = view.time * 60
 }
 
 window.onload = createTimerView()
