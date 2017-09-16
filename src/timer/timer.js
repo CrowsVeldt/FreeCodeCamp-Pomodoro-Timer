@@ -79,5 +79,5 @@ export function notify (theBody, theTitle) {
   }
   let n = new Notification(theTitle, options)
   // close the notification for browsers who don't close it automatically
-  setTimeout(n.close.bind(n), 500)
+  setTimeout(n.close.bind(n), 5000)
 }
