@@ -4,6 +4,9 @@ import * as input from '../input/input.js'
 
 import styles from './timer.css'
 
+let timerActive = false
+let timerID = 0
+
 export const Timer = ({
 startTime = new Date().getTime(),
 pomodoro = input.userInputs.pomodoroLength,
@@ -19,21 +22,27 @@ endTime = startTime + (pomodoro * 60000)
   longBreak,
   pomodoroCount,
   currentActivity,
-  endTime,
-  timerID: 0
+  endTime
 })
 
-export function beginTimer (timer = Timer()) {
-  timer.timerID = setTimeout(checkTimer, 1000, timer)
+export function toggleTimer (timer = Timer()) {
+  if (timerActive === true) {
+    clearTimeout(timerID)
+    timerActive = false
+  } else {
+    timerID = setTimeout(checkTimer, 1000, timer)
+    timerActive = true
+  }
 }
 
 export function checkTimer (timerToCheck) {
   let currentTime = new Date().getTime()
   if (currentTime >= timerToCheck.endTime) {
+    timerActive = false
     finishTimer(timerToCheck)
     return 'finished'
   } else {
-    timerToCheck.timerID = setTimeout(checkTimer, 1000, timerToCheck)
+    timerID = setTimeout(checkTimer, 1000, timerToCheck)
     console.log('tick')
     return 'unfinished'
   }
@@ -44,7 +53,7 @@ export function finishTimer (previousTimer) {
     console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting short break')
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 60000)
     notify('You finished! Good work! Take a short break, you deserve it', 'Short Break Started')
-    beginTimer(Timer({
+    toggleTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount + 1,
       currentActivity: 'shortBreak',
       endTime: newEndtime
@@ -54,7 +63,7 @@ export function finishTimer (previousTimer) {
     console.log('finished pomodoro #' + previousTimer.pomodoroCount + ', starting long break')
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 60000)
     notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
-    beginTimer(Timer({
+    toggleTimer(Timer({
       pomodoroCount: 0,
       currentActivity: 'longBreak',
       endTime: newEndtime
@@ -64,7 +73,7 @@ export function finishTimer (previousTimer) {
     console.log('finished break, starting pomodoro #' + previousTimer.pomodoroCount)
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * 60000)
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
-    beginTimer(Timer({
+    toggleTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount,
       currentActivity: 'pomodoro',
       endTime: newEndtime

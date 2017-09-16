@@ -14,7 +14,9 @@ function createTimerView () {
   timerTitle.setAttribute('for', 'timer')
 
   timerView.appendChild(timerTitle)
-  timerView.addEventListener('click', timer.beginTimer)
+  timerView.addEventListener('click', () => {
+    timer.toggleTimer()
+  })
   return timerView
 }
 
