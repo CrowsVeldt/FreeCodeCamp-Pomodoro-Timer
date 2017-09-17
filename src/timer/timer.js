@@ -105,4 +105,8 @@ export function notify (theBody, theTitle) {
   let n = new Notification(theTitle, options)
   // close the notification for browsers who don't close it automatically
   setTimeout(n.close.bind(n), 10000)
+
+  n.onclick = function (event) {
+    // stop the alarm playing
+  }
 }
