@@ -74,7 +74,7 @@ export function finishTimer (previousTimer) {
       title: 'Short Break',
       time: previousTimer.shortBreak
     }))
-  } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount === 3) {
+  } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * 1000)
     let newTimeLeft = previousTimer.longBreak
     notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
