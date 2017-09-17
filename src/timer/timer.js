@@ -107,6 +107,9 @@ export function notify (theBody, theTitle) {
   setTimeout(n.close.bind(n), 10000)
 
   n.onclick = function (event) {
-    // stop the alarm playing
+    if (document.getElementById('alarm') !== null) {
+      let alarm = document.getElementById('alarm')
+      alarm.pause()
+    }
   }
 }
