@@ -10,9 +10,9 @@ let timerID = 0
 export const Timer = ({
 startTime = new Date().getTime(),
 // Multiplying inputs to convert minutes to seconds:
-pomodoro = input.userInputs.pomodoroLength * 60,
-shortBreak = input.userInputs.shortBreakLength * 60,
-longBreak = input.userInputs.longBreakLength * 60,
+pomodoro = document.getElementById('pomodoroInput').value * 60,
+shortBreak = document.getElementById('shortBreakInput').value * 60,
+longBreak = document.getElementById('longBreakInput').value * 60,
 pomodoroCount = 0,
 currentActivity = 'pomodoro',
 // Converting seconds to milliseconds for comparing with Date.getTime()
