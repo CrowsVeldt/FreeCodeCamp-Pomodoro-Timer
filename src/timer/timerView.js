@@ -59,5 +59,3 @@ function formatTime (timeInSeconds) {
     return minutes + ':' + seconds
   }
 }
-
-window.onload = createTimerView()
