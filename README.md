@@ -43,3 +43,5 @@ I'm going to write it as modular componants, and I'm going to try and keep it as
 I'm going to use the Web Notifications API for the notifications.
 
 I'm going to check the timer against the current time multiple times a second, to reduce delays as much as possible.
+
+## Attributions: Alarm sound is copyright of Daniel Simion. Many thanks. Found at: http://soundbible.com/2197-Analog-Watch-Alarm.html

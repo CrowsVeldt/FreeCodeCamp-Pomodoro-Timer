@@ -1,5 +1,7 @@
 'use strict'
 
+import alarm from '../static/alarm.mp3'
+
 import styles from './timer.css'
 
 import * as timer from './timer.js'
@@ -21,8 +23,13 @@ export function createTimerView () {
 
   const timerDisplay = document.createElement('p')
 
+  const alarmElement = document.createElement('audio')
+  alarmElement.setAttribute('src', alarm)
+  alarmElement.setAttribute('id', 'alarm')
+
   newTimerView.appendChild(timerTitle)
   newTimerView.appendChild(timerDisplay)
+  newTimerView.appendChild(alarmElement)
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
     // Starting with all default values:

@@ -57,6 +57,10 @@ export function checkTimer (timerToCheck, display) {
 }
 
 export function finishTimer (previousTimer) {
+  if (document.getElementById('alarm') !== null) {
+    let alarm = document.getElementById('alarm')
+    alarm.play()
+  }
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * 1000)
     let newTimeLeft = previousTimer.shortBreak
