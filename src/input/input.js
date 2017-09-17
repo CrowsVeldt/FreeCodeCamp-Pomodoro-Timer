@@ -5,6 +5,7 @@ export function createInputElement (name, value) {
   // using replace so I can use one string for the label and the ID
   input.setAttribute('id', name.replace(/\s/g, '') + 'Input')
   input.setAttribute('value', value)
+  input.setAttribute('type', 'number')
   const label = document.createElement('label')
   label.innerHTML = name[0].toUpperCase() + name.substr(1) + ' Length'
   label.setAttribute('for', name.replace(/\s/g, '') + 'Input')
