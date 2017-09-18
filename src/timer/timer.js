@@ -47,7 +47,6 @@ export function checkTimer (timerToCheck, display) {
     time: timerToCheck.timeLeft
   }))
   if (currentTime >= timerToCheck.endTime) {
-    timerActive = false
     finishTimer(timerToCheck)
   } else {
     timerID = setTimeout(checkTimer, 1000, timerToCheck, display)

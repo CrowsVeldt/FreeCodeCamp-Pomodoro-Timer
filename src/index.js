@@ -1,11 +1,11 @@
 import styles from './index.css'
 
-import * as input from './input/input.js'
+import {createSettingsView} from './input/input.js'
 
-import * as timer from './timer/timerView.js'
+import {createTimerView} from './timer/timerView.js'
 
-input.createSettingsView()
+createSettingsView()
 
-timer.createTimerView()
+createTimerView()
 
 Notification.requestPermission().then()

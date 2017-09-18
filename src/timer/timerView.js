@@ -4,11 +4,11 @@ import alarmFile from '../static/alarm.mp3'
 
 import styles from './timer.css'
 
-import * as timer from './timer.js'
+import {Timer, toggleTimer} from './timer.js'
 
 export const TimerView = ({
   title = 'Pomodoro',
-  time = timer.Timer().pomodoro
+  time = Timer().pomodoro
 } = {}) => ({
   title,
   time
@@ -33,7 +33,7 @@ export function createTimerView () {
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
     // Starting with all default values:
-    timer.toggleTimer(timer.Timer(), TimerView())
+    toggleTimer(Timer(), TimerView())
   })
 
   document.body.appendChild(newTimerView)
