@@ -88,10 +88,9 @@ export function finishTimer (previousTimer) {
       time: previousTimer.longBreak
     }))
   } else {
-    // Using previousTimer.pomodoro so that changing input values doesn't change the timer while it's running
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * seconds)
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
-    toggleTimer(Timer({ // timeLeft and currentActivity left out so that it uses the default value
+    toggleTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount,
       endTime: newEndtime
     }))
@@ -103,7 +102,7 @@ export function notify (theBody, theTitle) {
     body: theBody
   }
   let n = new Notification(theTitle, options)
-  // close the notification for browsers who don't close it automatically
+  // close the notification for systems which don't close it automatically
   setTimeout(n.close.bind(n), 7000)
 
   n.onclick = function (event) {

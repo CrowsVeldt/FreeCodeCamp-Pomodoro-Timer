@@ -2,20 +2,19 @@
 
 export function createInputElement (name, value) {
   const input = document.createElement('input')
-  // using replace so I can use one string for the label and the ID
-  input.setAttribute('id', name.replace(/\s/g, '') + 'Input')
+  input.setAttribute('id', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   input.setAttribute('value', value)
   input.setAttribute('type', 'number')
   const label = document.createElement('label')
-  label.innerHTML = name[0].toUpperCase() + name.substr(1) + ' Length'
-  label.setAttribute('for', name.replace(/\s/g, '') + 'Input')
+  label.innerHTML = name + ' Length'
+  label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
 
   document.body.appendChild(label)
 }
 
 export function createSettingsView () {
-  createInputElement('pomodoro', '25')
-  createInputElement('short Break', '5')
-  createInputElement('long Break', '15')
+  createInputElement('Pomodoro', '25')
+  createInputElement('Short Break', '5')
+  createInputElement('Long Break', '15')
 }
