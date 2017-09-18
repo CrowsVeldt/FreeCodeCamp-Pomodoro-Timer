@@ -1,10 +1,8 @@
 'use strict'
 
-import * as input from '../input/input.js'
+import {TimerView, updateTimerView} from './timerView.js'
 
-import * as timerView from './timerView.js'
-
-let timerActive = false
+export let timerActive = false
 let timerID = 0
 const seconds = 60
 const milliseconds = 1000
@@ -29,22 +27,22 @@ timeLeft = pomodoro
   timeLeft
 })
 
-export function toggleTimer (timer = Timer(), display = timerView.TimerView()) {
+export function toggleTimer (timer = Timer(), display = TimerView()) {
   if (timerActive === true) {
     clearTimeout(timerID)
     timerActive = false
-    timerView.updateTimerView()
+    updateTimerView()
   } else {
     timerID = setTimeout(checkTimer, 1000, timer, display)
     timerActive = true
-    timerView.updateTimerView(display)
+    updateTimerView(display)
   }
 }
 
 export function checkTimer (timerToCheck, display) {
   let currentTime = new Date().getTime()
   timerToCheck.timeLeft--
-  timerView.updateTimerView(timerView.TimerView({
+  updateTimerView(TimerView({
     title: display.title,
     time: timerToCheck.timeLeft
   }))
@@ -62,7 +60,7 @@ export function finishTimer (previousTimer) {
     alarm.play()
   }
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
-    let newEndtime = new Date().getTime() + (previousTimer.shortBreak * seconds)
+    let newEndtime = new Date().getTime() + (previousTimer.shortBreak * milliseconds)
     let newTimeLeft = previousTimer.shortBreak
     notify('You finished! Good work! Take a short break, you deserve it', 'Short Break Started')
     toggleTimer(Timer({
@@ -70,12 +68,12 @@ export function finishTimer (previousTimer) {
       currentActivity: 'shortBreak',
       endTime: newEndtime,
       timeLeft: newTimeLeft
-    }), timerView.TimerView({
+    }), TimerView({
       title: 'Short Break',
       time: previousTimer.shortBreak
     }))
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
-    let newEndtime = new Date().getTime() + (previousTimer.longBreak * seconds)
+    let newEndtime = new Date().getTime() + (previousTimer.longBreak * milliseconds)
     let newTimeLeft = previousTimer.longBreak
     notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
     toggleTimer(Timer({
@@ -83,12 +81,12 @@ export function finishTimer (previousTimer) {
       currentActivity: 'longBreak',
       endTime: newEndtime,
       timeLeft: newTimeLeft
-    }), timerView.TimerView({
+    }), TimerView({
       title: 'Long Break',
       time: previousTimer.longBreak
     }))
   } else {
-    let newEndtime = new Date().getTime() + (previousTimer.pomodoro * seconds)
+    let newEndtime = new Date().getTime() + (previousTimer.pomodoro * milliseconds)
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     toggleTimer(Timer({
       pomodoroCount: previousTimer.pomodoroCount,
