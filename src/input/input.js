@@ -32,6 +32,7 @@ export function createSettingsButton () {
   const button = document.createElement('button')
   button.setAttribute('id', 'settingsButton')
   button.innerHTML = 'settings'
+  button.classList.add(styles.settingsButton)
 
   button.addEventListener('click', function () {
     const settings = document.getElementById('settingsView')
@@ -51,7 +52,7 @@ export function createSettingsButton () {
 export function createSettingsView () {
   const settingsView = document.createElement('div')
   settingsView.setAttribute('id', 'settingsView')
-  settingsView.classList.add(styles.visible)
+  settingsView.classList.add(styles.visible, styles.settingsView)
 
   const pomodoro = createInputElement('Pomodoro', '25')
   const short = createInputElement('Short Break', '5')

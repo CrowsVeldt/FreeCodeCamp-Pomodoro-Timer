@@ -1,3 +1,14 @@
+.settingsView {
+  right: 0;
+  position: absolute;
+}
+
+.settingsButton {
+  right: 0;
+  top: 50vh;
+  position: absolute;
+}
+
 .hidden {
   display: none;
 }
