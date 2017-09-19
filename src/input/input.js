@@ -1,10 +1,12 @@
 'use strict'
 
+import styles from './input.css'
+
 import {timerActive} from '../timer/timer.js'
 
 import {updateTimerView} from '../timer/timerView.js'
 
-export function createInputElement (name, value) {
+function createInputElement (name, value) {
   const input = document.createElement('input')
   input.setAttribute('id', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   input.setAttribute('value', value)
@@ -14,7 +16,6 @@ export function createInputElement (name, value) {
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
 
-  document.body.appendChild(label)
   input.addEventListener('change', function () {
     if (timerActive === false) {
       updateTimerView({
@@ -23,10 +24,22 @@ export function createInputElement (name, value) {
       })
     }
   })
+
+  return label
 }
 
 export function createSettingsView () {
-  createInputElement('Pomodoro', '25')
-  createInputElement('Short Break', '5')
-  createInputElement('Long Break', '15')
+  const settingsView = document.createElement('div')
+  settingsView.setAttribute('id', 'settingsView')
+  settingsView.classList += styles.visible
+
+  const pomodoro = createInputElement('Pomodoro', '25')
+  const short = createInputElement('Short Break', '5')
+  const long = createInputElement('Long Break', '15')
+
+  settingsView.appendChild(pomodoro)
+  settingsView.appendChild(short)
+  settingsView.appendChild(long)
+
+  return settingsView
 }

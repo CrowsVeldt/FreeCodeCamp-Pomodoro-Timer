@@ -2,10 +2,12 @@ import styles from './index.css'
 
 import {createSettingsView} from './input/input.js'
 
-import {createTimerView} from './timer/timerView.js'
+import {createTimerView, updateTimerView} from './timer/timerView.js'
 
-createSettingsView()
+document.body.appendChild(createSettingsView())
 
-createTimerView()
+document.body.appendChild(createTimerView())
+
+updateTimerView()
 
 Notification.requestPermission().then()

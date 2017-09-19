@@ -36,8 +36,7 @@ export function createTimerView () {
     toggleTimer(Timer(), TimerView())
   })
 
-  document.body.appendChild(newTimerView)
-  updateTimerView()
+  return newTimerView
 }
 
 export function updateTimerView (view = TimerView()) {
