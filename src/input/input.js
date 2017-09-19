@@ -37,13 +37,8 @@ export function createSettingsButton () {
   button.addEventListener('click', function () {
     const settings = document.getElementById('settingsView')
 
-    if (settings.classList.contains(styles.visible)) {
-      settings.classList.remove(styles.visible)
-      settings.classList.add(styles.hidden)
-    } else {
-      settings.classList.remove(styles.hidden)
-      settings.classList.add(styles.visible)
-    }
+    settings.classList.toggle(styles.visible)
+    settings.classList.toggle(styles.hidden)
   })
 
   return button
