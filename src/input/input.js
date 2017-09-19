@@ -28,10 +28,30 @@ function createInputElement (name, value) {
   return label
 }
 
+export function createSettingsButton () {
+  const button = document.createElement('button')
+  button.setAttribute('id', 'settingsButton')
+  button.innerHTML = 'settings'
+
+  button.addEventListener('click', function () {
+    const settings = document.getElementById('settingsView')
+
+    if (settings.classList.contains('visible')) {
+      settings.classList.remove(styles.visible)
+      settings.classList.add(styles.hidden)
+    } else {
+      settings.classList.remove(styles.hidden)
+      settings.classList.add(styles.visible)
+    }
+  })
+
+  return button
+}
+
 export function createSettingsView () {
   const settingsView = document.createElement('div')
   settingsView.setAttribute('id', 'settingsView')
-  settingsView.classList += styles.visible
+  settingsView.classList.add(styles.visible)
 
   const pomodoro = createInputElement('Pomodoro', '25')
   const short = createInputElement('Short Break', '5')

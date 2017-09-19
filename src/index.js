@@ -1,10 +1,12 @@
 import styles from './index.css'
 
-import {createSettingsView} from './input/input.js'
+import {createSettingsView, createSettingsButton} from './input/input.js'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
 document.body.appendChild(createSettingsView())
+
+document.body.appendChild(createSettingsButton())
 
 document.body.appendChild(createTimerView())
 
