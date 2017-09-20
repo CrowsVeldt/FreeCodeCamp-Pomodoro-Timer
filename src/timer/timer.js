@@ -36,6 +36,13 @@ export function beginTimer (timer = Timer(), display = TimerView()) {
   updateTimerView(display)
 }
 
+export function endTimer () {
+  timerActive = false
+  clearTimeout(timerID)
+  toggleSettingsView('show')
+  updateTimerView()
+}
+
 export function checkTimer (timerToCheck, display) {
   let currentTime = new Date().getTime()
   timerToCheck.timeLeft--
