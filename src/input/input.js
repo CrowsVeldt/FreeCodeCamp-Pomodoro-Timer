@@ -6,6 +6,8 @@ import {timerActive} from '../timer/timer.js'
 
 import {updateTimerView} from '../timer/timerView.js'
 
+const minutes = 60
+
 function createInputElement (name, value) {
   const input = document.createElement('input')
   input.setAttribute('id', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
@@ -18,11 +20,26 @@ function createInputElement (name, value) {
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
 
-  input.addEventListener('input', function () {
-    if (timerActive === false && input.value % 1 === 0) {
+  input.addEventListener('change', function () {
+    if (timerActive === false && input.value % 1 === 0 && input.value > 0 && input.value <= 60) {
       updateTimerView({
         title: name,
-        time: input.value * 60 // seconds
+        time: input.value * minutes
+      })
+    } else if (timerActive === false && input.value % 1 === 0 && input.value < 1) { // Testing for < 1 because === 0 didn't work (???)
+      updateTimerView({
+        title: name,
+        time: 0
+      })
+    } else if (timerActive === false && input.value % 1 === 0 && input.value > 60) {
+      updateTimerView({
+        title: name,
+        time: 60 * minutes
+      })
+    } else {
+      updateTimerView({
+        title: 'error',
+        time: 0
       })
     }
   })
@@ -78,9 +95,12 @@ export function toggleSettingsView (value) {
 
 export function getInputValue (inputElement) {
   const element = document.getElementById(inputElement)
-  if (element.value % 1 === 0) {
-    return element.value * 60
-  } else {
-    return 60
+
+  if (element.value % 1 === 0 && element.value < 60) {
+    return element.value * minutes
+  } else if (element.value >= 60) {
+    return 60 * minutes
+  } else if (element.value % 1 !== 0) {
+    return 0
   }
 }
