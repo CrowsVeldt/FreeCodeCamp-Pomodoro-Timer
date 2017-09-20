@@ -6,7 +6,7 @@ import {timerActive} from '../timer/timer.js'
 
 import {updateTimerView} from '../timer/timerView.js'
 
-const minutes = 60
+const seconds = 60
 const maxValue = 60
 const minValue = 0
 
@@ -26,7 +26,7 @@ function createInputElement (name, value) {
     if (timerActive === false && input.value % 1 === 0 && input.value > minValue && input.value <= maxValue) {
       updateTimerView({
         title: name,
-        time: input.value * minutes
+        time: input.value * seconds
       })
     } else if (timerActive === false && input.value % 1 === 0 && input.value < 1) { // Testing for < 1 because === 0 didn't work (???)
       updateTimerView({
@@ -36,7 +36,7 @@ function createInputElement (name, value) {
     } else if (timerActive === false && input.value % 1 === 0 && input.value > maxValue) {
       updateTimerView({
         title: name,
-        time: maxValue * minutes
+        time: maxValue * seconds
       })
     } else {
       updateTimerView({
@@ -99,9 +99,9 @@ export function getInputValue (inputElement) {
   const element = document.getElementById(inputElement)
 
   if (element.value % 1 === 0 && element.value < maxValue) {
-    return element.value * minutes
+    return element.value * seconds
   } else if (element.value >= maxValue) {
-    return maxValue * minutes
+    return maxValue * seconds
   } else if (element.value % 1 !== 0) {
     return 0
   }
