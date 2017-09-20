@@ -11,6 +11,8 @@ function createInputElement (name, value) {
   input.setAttribute('id', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   input.setAttribute('value', value)
   input.setAttribute('type', 'number')
+  input.setAttribute('min', '0')
+  input.setAttribute('max', '60')
   const label = document.createElement('label')
   label.innerHTML = name + ' Length'
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
