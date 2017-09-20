@@ -2,18 +2,17 @@
 
 import {TimerView, updateTimerView} from './timerView.js'
 
-import {toggleSettingsView} from '../input/input.js'
+import {toggleSettingsView, getInputValue} from '../input/input.js'
 
 export let timerActive = false
 let timerID = 0
-const seconds = 60
 const milliseconds = 1000
 
 export const Timer = ({
 startTime = new Date().getTime(),
-pomodoro = document.getElementById('pomodoroInput').value * seconds,
-shortBreak = document.getElementById('shortBreakInput').value * seconds,
-longBreak = document.getElementById('longBreakInput').value * seconds,
+pomodoro = getInputValue('pomodoroInput'),
+shortBreak = getInputValue('shortBreakInput'),
+longBreak = getInputValue('longBreakInput'),
 pomodoroCount = 0,
 currentActivity = 'pomodoro',
 endTime = startTime + (pomodoro * milliseconds),

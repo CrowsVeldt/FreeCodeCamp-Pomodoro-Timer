@@ -75,3 +75,12 @@ export function toggleSettingsView (value) {
     settings.classList.add(styles.hidden)
   }
 }
+
+export function getInputValue (inputElement) {
+  const element = document.getElementById(inputElement)
+  if (element.value % 1 === 0) {
+    return element.value * 60
+  } else {
+    return 60
+  }
+}
