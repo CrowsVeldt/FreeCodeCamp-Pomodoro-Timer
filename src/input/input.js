@@ -19,7 +19,7 @@ function createInputElement (name, value) {
   label.appendChild(input)
 
   input.addEventListener('input', function () {
-    if (timerActive === false) {
+    if (timerActive === false && input.value % 1 === 0) {
       updateTimerView({
         title: name,
         time: input.value * 60 // seconds
