@@ -4,7 +4,7 @@ import alarmFile from '../static/alarm.mp3'
 
 import styles from './timer.css'
 
-import {Timer, toggleTimer} from './timer.js'
+import {Timer, timerActive, beginTimer} from './timer.js'
 
 export const TimerView = ({
   title = 'Pomodoro',
@@ -32,8 +32,9 @@ export function createTimerView () {
   newTimerView.appendChild(alarmElement)
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
-    // Starting with all default values:
-    toggleTimer(Timer(), TimerView())
+    if (timerActive === false) {
+      beginTimer(Timer(), TimerView())
+    }
   })
 
   return newTimerView
