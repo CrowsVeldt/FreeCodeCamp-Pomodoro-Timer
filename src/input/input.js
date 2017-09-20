@@ -34,12 +34,7 @@ export function createSettingsButton () {
   button.innerHTML = 'settings'
   button.classList.add(styles.settingsButton)
 
-  button.addEventListener('click', function () {
-    const settings = document.getElementById('settingsView')
-
-    settings.classList.toggle(styles.visible)
-    settings.classList.toggle(styles.hidden)
-  })
+  button.addEventListener('click', toggleSettingsView)
 
   return button
 }
@@ -58,4 +53,11 @@ export function createSettingsView () {
   settingsView.appendChild(long)
 
   return settingsView
+}
+
+export function toggleSettingsView () {
+  const settings = document.getElementById('settingsView')
+
+  settings.classList.toggle(styles.visible)
+  settings.classList.toggle(styles.hidden)
 }
