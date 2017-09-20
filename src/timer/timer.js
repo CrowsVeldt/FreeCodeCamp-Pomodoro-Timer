@@ -32,7 +32,7 @@ timeLeft = pomodoro
 export function beginTimer (timer = Timer(), display = TimerView()) {
   timerActive = true
   timerID = setTimeout(checkTimer, 1000, timer, display)
-  toggleSettingsView('show')
+  toggleSettingsView('hide')
   updateTimerView(display)
 }
 
