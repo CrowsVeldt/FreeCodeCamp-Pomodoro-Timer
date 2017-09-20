@@ -7,21 +7,23 @@ import {timerActive} from '../timer/timer.js'
 import {updateTimerView} from '../timer/timerView.js'
 
 const minutes = 60
+const maxValue = 60
+const minValue = 0
 
 function createInputElement (name, value) {
   const input = document.createElement('input')
   input.setAttribute('id', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   input.setAttribute('value', value)
   input.setAttribute('type', 'number')
-  input.setAttribute('min', '0')
-  input.setAttribute('max', '60')
+  input.setAttribute('min', minValue)
+  input.setAttribute('max', maxValue)
   const label = document.createElement('label')
   label.innerHTML = name + ' Length'
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
 
   input.addEventListener('change', function () {
-    if (timerActive === false && input.value % 1 === 0 && input.value > 0 && input.value <= 60) {
+    if (timerActive === false && input.value % 1 === 0 && input.value > minValue && input.value <= maxValue) {
       updateTimerView({
         title: name,
         time: input.value * minutes
@@ -31,10 +33,10 @@ function createInputElement (name, value) {
         title: name,
         time: 0
       })
-    } else if (timerActive === false && input.value % 1 === 0 && input.value > 60) {
+    } else if (timerActive === false && input.value % 1 === 0 && input.value > maxValue) {
       updateTimerView({
         title: name,
-        time: 60 * minutes
+        time: maxValue * minutes
       })
     } else {
       updateTimerView({
@@ -96,10 +98,10 @@ export function toggleSettingsView (value) {
 export function getInputValue (inputElement) {
   const element = document.getElementById(inputElement)
 
-  if (element.value % 1 === 0 && element.value < 60) {
+  if (element.value % 1 === 0 && element.value < maxValue) {
     return element.value * minutes
-  } else if (element.value >= 60) {
-    return 60 * minutes
+  } else if (element.value >= maxValue) {
+    return maxValue * minutes
   } else if (element.value % 1 !== 0) {
     return 0
   }
