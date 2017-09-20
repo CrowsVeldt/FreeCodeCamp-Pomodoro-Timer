@@ -16,7 +16,7 @@ function createInputElement (name, value) {
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
 
-  input.addEventListener('change', function () {
+  input.addEventListener('input', function () {
     if (timerActive === false) {
       updateTimerView({
         title: name,
@@ -34,7 +34,14 @@ export function createSettingsButton () {
   button.innerHTML = 'settings'
   button.classList.add(styles.settingsButton)
 
-  button.addEventListener('click', toggleSettingsView)
+  button.addEventListener('click', () => {
+    const settings = document.getElementById('settingsView')
+    if (settings.classList.contains(styles.visible)) {
+      toggleSettingsView('hide')
+    } else if (settings.classList.contains(styles.hidden)) {
+      toggleSettingsView('show')
+    }
+  })
 
   return button
 }
@@ -55,9 +62,14 @@ export function createSettingsView () {
   return settingsView
 }
 
-export function toggleSettingsView () {
+export function toggleSettingsView (value) {
   const settings = document.getElementById('settingsView')
 
-  settings.classList.toggle(styles.visible)
-  settings.classList.toggle(styles.hidden)
+  if (value === 'show') {
+    settings.classList.add(styles.visible)
+    settings.classList.remove(styles.hidden)
+  } else if (value === 'hide') {
+    settings.classList.remove(styles.visible)
+    settings.classList.add(styles.hidden)
+  }
 }

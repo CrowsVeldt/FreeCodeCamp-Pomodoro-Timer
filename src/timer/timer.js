@@ -2,6 +2,8 @@
 
 import {TimerView, updateTimerView} from './timerView.js'
 
+import {toggleSettingsView} from '../input/input.js'
+
 export let timerActive = false
 let timerID = 0
 const seconds = 60
@@ -29,12 +31,14 @@ timeLeft = pomodoro
 
 export function toggleTimer (timer = Timer(), display = TimerView()) {
   if (timerActive === true) {
-    clearTimeout(timerID)
     timerActive = false
+    clearTimeout(timerID)
+    toggleSettingsView('hide')
     updateTimerView()
-  } else {
-    timerID = setTimeout(checkTimer, 1000, timer, display)
+  } else if (timerActive === false) {
     timerActive = true
+    timerID = setTimeout(checkTimer, 1000, timer, display)
+    toggleSettingsView('show')
     updateTimerView(display)
   }
 }
