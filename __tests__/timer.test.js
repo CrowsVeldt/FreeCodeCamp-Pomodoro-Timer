@@ -1,20 +1,20 @@
-'use strict'
+// 'use strict'
 
-import * as timer from '../src/timer/timer.js'
+// import * as timer from '../src/timer/timer.js'
 
-jest.useFakeTimers()
+// jest.useFakeTimers()
 
-afterEach(() => {
-  setTimeout.mockClear()
-})
+// afterEach(() => {
+//   setTimeout.mockClear()
+// })
 
-describe('beginTimer', () => {
-  test('starts a 1 second timer', () => {
-    timer.toggleTimer()
-    expect(setTimeout.mock.calls.length).toBe(1)
-    expect(setTimeout.mock.calls[0][1]).toBe(1000)
-  })
-})
+// describe('beginTimer', () => {
+//   test('starts a 1 second timer', () => {
+//     timer.toggleTimer()
+//     expect(setTimeout.mock.calls.length).toBe(1)
+//     expect(setTimeout.mock.calls[0][1]).toBe(1000)
+//   })
+// })
 
 // describe('checkTimer', () => {
 //   test('starts a 1 second timer', () => {

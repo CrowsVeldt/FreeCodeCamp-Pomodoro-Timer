@@ -43,7 +43,7 @@ export function endTimer () {
   updateTimerView()
 }
 
-export function checkTimer (timerToCheck, display) {
+function checkTimer (timerToCheck, display) {
   let currentTime = new Date().getTime()
   timerToCheck.timeLeft--
   updateTimerView(TimerView({
@@ -57,7 +57,7 @@ export function checkTimer (timerToCheck, display) {
   }
 }
 
-export function finishTimer (previousTimer) {
+function finishTimer (previousTimer) {
   if (document.getElementById('alarm') !== null) {
     let alarm = document.getElementById('alarm')
     alarm.play()
@@ -98,7 +98,7 @@ export function finishTimer (previousTimer) {
   }
 }
 
-export function notify (theBody, theTitle) {
+function notify (theBody, theTitle) {
   let options = {
     body: theBody
   }
