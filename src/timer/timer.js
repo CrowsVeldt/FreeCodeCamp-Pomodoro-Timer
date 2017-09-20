@@ -33,12 +33,12 @@ export function toggleTimer (timer = Timer(), display = TimerView()) {
   if (timerActive === true) {
     timerActive = false
     clearTimeout(timerID)
-    toggleSettingsView('hide')
+    toggleSettingsView('show')
     updateTimerView()
   } else if (timerActive === false) {
     timerActive = true
     timerID = setTimeout(checkTimer, 1000, timer, display)
-    toggleSettingsView('show')
+    toggleSettingsView('hide')
     updateTimerView(display)
   }
 }

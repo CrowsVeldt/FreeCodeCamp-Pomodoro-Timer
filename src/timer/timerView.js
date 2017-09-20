@@ -34,7 +34,6 @@ export function createTimerView () {
   newTimerView.addEventListener('click', () => {
     // Starting with all default values:
     toggleTimer(Timer(), TimerView())
-    document.getElementById('settingsButton').click()
   })
 
   return newTimerView
