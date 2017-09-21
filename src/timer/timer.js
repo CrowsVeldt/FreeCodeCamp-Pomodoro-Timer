@@ -63,26 +63,30 @@ function finishTimer (previousTimer) {
   }
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
     let newEndtime = new Date().getTime() + (previousTimer.shortBreak * milliseconds)
-    let newTimeLeft = previousTimer.shortBreak
     notify('You finished! Good work! Take a short break, you deserve it', 'Short Break Started')
     beginTimer(Timer({
+      pomodoro: previousTimer.pomodoro,
+      shortBreak: previousTimer.shortBreak,
+      longBreak: previousTimer.longBreak,
       pomodoroCount: previousTimer.pomodoroCount + 1,
       currentActivity: 'shortBreak',
       endTime: newEndtime,
-      timeLeft: newTimeLeft
+      timeLeft: previousTimer.shortBreak
     }), TimerView({
       title: 'Short Break',
       time: previousTimer.shortBreak
     }))
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
     let newEndtime = new Date().getTime() + (previousTimer.longBreak * milliseconds)
-    let newTimeLeft = previousTimer.longBreak
     notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
     beginTimer(Timer({
+      pomodoro: previousTimer.pomodoro,
+      shortBreak: previousTimer.shortBreak,
+      longBreak: previousTimer.longBreak,
       pomodoroCount: 0,
       currentActivity: 'longBreak',
       endTime: newEndtime,
-      timeLeft: newTimeLeft
+      timeLeft: previousTimer.longBreak
     }), TimerView({
       title: 'Long Break',
       time: previousTimer.longBreak
@@ -91,8 +95,15 @@ function finishTimer (previousTimer) {
     let newEndtime = new Date().getTime() + (previousTimer.pomodoro * milliseconds)
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     beginTimer(Timer({
+      pomodoro: previousTimer.pomodoro,
+      shortBreak: previousTimer.shortBreak,
+      longBreak: previousTimer.longBreak,
       pomodoroCount: previousTimer.pomodoroCount,
-      endTime: newEndtime
+      endTime: newEndtime,
+      timeLeft: previousTimer.pomodoro
+    }), TimerView({
+      title: 'Pomodoro',
+      time: previousTimer.pomodoro
     }))
   }
 }
