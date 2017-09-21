@@ -18,9 +18,7 @@ function createInputElement (name, value) {
   input.setAttribute('min', minValue)
   input.setAttribute('max', maxValue)
   input.onkeypress = function (event) {
-    if (isAnAllowedKey(event)) {
-      // allIsGood
-    } else {
+    if (!isAnAllowedKey(event)) {
       event.preventDefault()
     }
   }
@@ -30,30 +28,17 @@ function createInputElement (name, value) {
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
 
-  input.addEventListener('change', function () {
+  input.addEventListener('input', function () {
     if (timerActive === false && input.value > minValue && input.value <= maxValue) {
-      input.value = Math.round(input.value)
       updateTimerView({
         title: name,
         time: input.value * seconds
       })
-    } else if (timerActive === false && Math.abs(input.value) > maxValue) {
+    } else if (timerActive === false && input.value > maxValue) {
       input.value = maxValue
       updateTimerView({
         title: name,
         time: input.value * seconds
-      })
-    } else if (timerActive === false && input.value < minValue) {
-      input.value = Math.round(-input.value)
-      updateTimerView({
-        title: name,
-        time: input.value * seconds
-      })
-    } else {
-      input.value = 0
-      updateTimerView({
-        title: name,
-        time: 0
       })
     }
   })
@@ -120,12 +105,9 @@ export function getInputValue (inputElement) {
 }
 
 function isAnAllowedKey (keyEvent) {
-  console.log(keyEvent.key)
-  if (/Enter/.test(keyEvent.key)) {
+  if (/Enter|Backspace|Tab|ArrowUp|ArrowDown|ArrowRight|ArrowLeft|End|Home|Escape|Delete|[\d]/.test(keyEvent.key)) {
     return true
-  } else if (/[a-zA-Z]/.test(keyEvent.key)) {
-    return false
   } else {
-    return true
+    return false
   }
 }
