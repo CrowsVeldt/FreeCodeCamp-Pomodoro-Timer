@@ -17,7 +17,7 @@ function createInputElement (name, value) {
   input.setAttribute('type', 'number')
   input.setAttribute('min', minValue)
   input.setAttribute('max', maxValue)
-  input.onkeypress = function (event) {
+  input.onkeydown = function (event) {
     if (!isAnAllowedKey(event)) {
       event.preventDefault()
     }
@@ -29,7 +29,7 @@ function createInputElement (name, value) {
   label.appendChild(input)
 
   input.addEventListener('input', function () {
-    if (timerActive === false && input.value > minValue && input.value <= maxValue) {
+    if (timerActive === false && input.value >= minValue && input.value <= maxValue) {
       updateTimerView({
         title: name,
         time: input.value * seconds
