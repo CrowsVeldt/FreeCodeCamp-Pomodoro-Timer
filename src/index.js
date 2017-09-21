@@ -1,6 +1,6 @@
 import styles from './index.css'
 
-import {createSettingsView, createSettingsButton} from './input/input.js'
+import {createSettingsView, createSettingsButton, allowNumbersOnly} from './input/input.js'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 

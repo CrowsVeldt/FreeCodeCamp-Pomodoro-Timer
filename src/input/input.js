@@ -17,6 +17,13 @@ function createInputElement (name, value) {
   input.setAttribute('type', 'number')
   input.setAttribute('min', minValue)
   input.setAttribute('max', maxValue)
+  input.onkeypress = function (event) {
+    if (isAnAllowedKey(event)) {
+      // allIsGood
+    } else {
+      event.preventDefault()
+    }
+  }
   input.setAttribute('onpaste', 'return false')
   const label = document.createElement('label')
   label.innerHTML = name + ' Length'
@@ -109,5 +116,16 @@ export function getInputValue (inputElement) {
     return maxValue * seconds
   } else if (element.value % 1 !== 0) {
     return 0
+  }
+}
+
+function isAnAllowedKey (keyEvent) {
+  console.log(keyEvent.key)
+  if (/Enter/.test(keyEvent.key)) {
+    return true
+  } else if (/[a-zA-Z]/.test(keyEvent.key)) {
+    return false
+  } else {
+    return true
   }
 }
