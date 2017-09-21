@@ -28,20 +28,17 @@ function createInputElement (name, value) {
         title: name,
         time: input.value * seconds
       })
-    } else if (timerActive === false && input.value % 1 === 0 && input.value < 1) { // Testing for < 1 because === 0 didn't work (???)
-      updateTimerView({
-        title: name,
-        time: 0
-      })
-    } else if (timerActive === false && input.value % 1 === 0 && input.value > maxValue) {
+    } else if (timerActive === false && input.value > maxValue) {
+      input.value = maxValue
       updateTimerView({
         title: name,
         time: maxValue * seconds
       })
-    } else {
+    } else { // If value is a floating point number, round down to the nearest whole number
+      input.value = Math.floor(input.value)
       updateTimerView({
-        title: 'error',
-        time: 0
+        title: name,
+        time: Math.floor(input.value) * seconds
       })
     }
   })
