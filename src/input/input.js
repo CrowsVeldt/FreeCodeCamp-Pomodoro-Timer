@@ -29,6 +29,7 @@ function createInputElement (name, value) {
   label.appendChild(input)
 
   input.addEventListener('input', function () {
+    // Update timer view as appropriate
     if (timerActive === false && input.value >= minValue && input.value <= maxValue) {
       updateTimerView({
         title: name,
@@ -40,6 +41,10 @@ function createInputElement (name, value) {
         title: name,
         time: input.value * seconds
       })
+    }
+    // Prevent ugly values like '06'
+    if (input.value.toString().charAt(0) === '0' && input.value > 0) {
+      input.value = input.value.toString().substr(1)
     }
   })
 
