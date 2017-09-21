@@ -23,7 +23,8 @@ function createInputElement (name, value) {
   label.appendChild(input)
 
   input.addEventListener('change', function () {
-    if (timerActive === false && input.value % 1 === 0 && input.value > minValue && input.value <= maxValue) {
+    if (timerActive === false && input.value > minValue && input.value <= maxValue) {
+      input.value = Math.floor(input.value)
       updateTimerView({
         title: name,
         time: input.value * seconds
@@ -34,7 +35,13 @@ function createInputElement (name, value) {
         title: name,
         time: maxValue * seconds
       })
-    } else { // If value is a floating point number, round down to the nearest whole number
+    } else if (timerActive === false && input.value < minValue) {
+      input.value = Math.floor(-input.value)
+      updateTimerView({
+        title: name,
+        time: input.value * seconds
+      })
+    } else {
       input.value = Math.floor(input.value)
       updateTimerView({
         title: name,
