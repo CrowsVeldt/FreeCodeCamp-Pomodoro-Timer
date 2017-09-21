@@ -29,7 +29,7 @@ function createInputElement (name, value) {
         title: name,
         time: input.value * seconds
       })
-    } else if (timerActive === false && input.value > maxValue) {
+    } else if (timerActive === false && Math.abs(input.value) > maxValue) {
       input.value = maxValue
       updateTimerView({
         title: name,
@@ -40,6 +40,12 @@ function createInputElement (name, value) {
       updateTimerView({
         title: name,
         time: input.value * seconds
+      })
+    } else {
+      input.value = 0
+      updateTimerView({
+        title: name,
+        time: 0
       })
     }
   })
