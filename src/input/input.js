@@ -24,7 +24,7 @@ function createInputElement (name, value) {
 
   input.addEventListener('change', function () {
     if (timerActive === false && input.value > minValue && input.value <= maxValue) {
-      input.value = Math.floor(input.value)
+      input.value = Math.round(input.value)
       updateTimerView({
         title: name,
         time: input.value * seconds
@@ -33,19 +33,13 @@ function createInputElement (name, value) {
       input.value = maxValue
       updateTimerView({
         title: name,
-        time: maxValue * seconds
+        time: input.value * seconds
       })
     } else if (timerActive === false && input.value < minValue) {
-      input.value = Math.floor(-input.value)
+      input.value = Math.round(-input.value)
       updateTimerView({
         title: name,
         time: input.value * seconds
-      })
-    } else {
-      input.value = Math.floor(input.value)
-      updateTimerView({
-        title: name,
-        time: Math.floor(input.value) * seconds
       })
     }
   })
