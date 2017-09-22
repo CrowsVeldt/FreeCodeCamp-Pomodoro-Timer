@@ -46,6 +46,7 @@ label {
  content: '< < <';
  right: 120%;
  top: 50%;
+ transform: scaleY(1.5); 
  position: absolute;
  visibility: visible;
 }
@@ -54,6 +55,7 @@ label {
  content: '> > >';
  right: 120%;
  top: 50%;
+ transform: scaleY(1.5); 
  position: absolute;
  visibility: visible;
 }

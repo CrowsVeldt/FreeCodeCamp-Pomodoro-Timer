@@ -33,22 +33,17 @@ function createInputElement (name, value) {
   })
 
   input.addEventListener('input', function () {
-    // Update timer view as appropriate
-    if (timerActive === false && input.value >= minValue && input.value <= maxValue) {
-      updateTimerView({
-        title: name,
-        time: input.value * seconds
-      })
-    } else if (timerActive === false && input.value > maxValue) {
+    if (input.value > maxValue) {
+      // prevent values that are too large
       input.value = maxValue
+    } else if (input.value.toString().charAt(0) === '0' && input.value > 0) {
+      // Prevent ugly values like '06'
+      input.value = input.value.toString().substr(1)
+    } else if (timerActive === false && input.value >= minValue && input.value <= maxValue) {
       updateTimerView({
         title: name,
         time: input.value * seconds
       })
-    }
-    // Prevent ugly values like '06'
-    if (input.value.toString().charAt(0) === '0' && input.value > 0) {
-      input.value = input.value.toString().substr(1)
     }
   })
 
