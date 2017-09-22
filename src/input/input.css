@@ -1,6 +1,18 @@
 .settingsView {
   right: 0;
   position: absolute;
+
+  height: 80vh;
+  padding: 10px;
+
+
+  background-color: tan;
+  border: 1px solid black;
+}
+
+input {
+  width: 3em;
+  margin-top: 10px;
 }
 
 .settingsButton {
@@ -15,5 +27,4 @@
 .visible {
   display: flex;
   flex-direction: column;
-  justify-content: center
 }
