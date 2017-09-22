@@ -6,8 +6,6 @@ import {createTimerView, updateTimerView} from './timer/timerView.js'
 
 document.body.appendChild(createSettingsView())
 
-document.body.appendChild(createSettingsButton())
-
 document.body.appendChild(createTimerView())
 
 updateTimerView()

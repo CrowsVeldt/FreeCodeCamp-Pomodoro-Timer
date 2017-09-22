@@ -81,6 +81,7 @@ export function createSettingsView () {
   settingsView.appendChild(pomodoro)
   settingsView.appendChild(short)
   settingsView.appendChild(long)
+  settingsView.appendChild(createSettingsButton())
 
   return settingsView
 }

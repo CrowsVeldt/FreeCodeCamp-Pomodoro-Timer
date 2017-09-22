@@ -16,12 +16,13 @@ input {
 }
 
 .settingsButton {
-  right: 0;
+  right: 100%;
+  top: 50%;
   position: absolute;
 }
 
 .hidden {
-  display: none;
+  left: 100%;
 }
 
 .visible {
