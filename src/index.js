@@ -1,10 +1,10 @@
 import styles from './index.css'
 
-import inputStyles from './input/input.css'
-
 import {createSettingsView, toggleSettingsView} from './input/input.js'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
+
+import {beginTimer, endTimer, timerActive} from './timer/timer.js'
 
 document.body.appendChild(createSettingsView())
 
@@ -17,6 +17,12 @@ document.body.addEventListener('keydown', function (event) {
       toggleSettingsView('show')
     } else {
       toggleSettingsView('hide')
+    }
+  } else if (event.key === ' ' || event.key === 'Spacebar') {
+    if (timerActive === false) {
+      beginTimer()
+    } else {
+      endTimer()
     }
   }
 })
