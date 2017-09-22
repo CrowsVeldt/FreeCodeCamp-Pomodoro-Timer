@@ -8,7 +8,7 @@ import {updateTimerView} from '../timer/timerView.js'
 
 const seconds = 60
 const maxValue = 60
-const minValue = 0
+const minValue = 1
 
 function createInputElement (name, value) {
   const input = document.createElement('input')
@@ -44,6 +44,12 @@ function createInputElement (name, value) {
         title: name,
         time: input.value * seconds
       })
+    }
+  })
+
+  input.addEventListener('change', function () {
+    if (input.value < minValue) {
+      input.value = minValue
     }
   })
 
@@ -95,7 +101,9 @@ export function toggleSettingsView (value) {
 export function getInputValue (inputElement) {
   const element = document.getElementById(inputElement)
 
-  if (element.value % 1 === 0 && element.value < maxValue) {
+  if (element.value <= minValue) {
+    return minValue * seconds
+  } else if (element.value % 1 === 0 && element.value < maxValue) {
     return element.value * seconds
   } else if (element.value >= maxValue) {
     return maxValue * seconds

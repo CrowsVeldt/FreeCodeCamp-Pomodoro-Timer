@@ -56,6 +56,10 @@ function checkTimer (timerToCheck, display) {
 }
 
 function finishTimer (previousTimer) {
+  /**
+   * if previousTimer.pomodoro === 0, skip to next timer
+   */
+  
   if (document.getElementById('alarm') !== null) {
     let alarm = document.getElementById('alarm')
     alarm.play()
