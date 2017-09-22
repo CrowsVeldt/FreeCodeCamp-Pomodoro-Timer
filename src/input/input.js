@@ -51,13 +51,12 @@ function createInputElement (name, value) {
   return label
 }
 
-export function createSettingsButton () {
-  const button = document.createElement('button')
-  button.setAttribute('id', 'settingsButton')
-  button.innerHTML = 'settings'
-  button.classList.add(styles.settingsButton)
+export function createSettingsView () {
+  const settingsParent = document.createElement('div')
+  settingsParent.setAttribute('id', 'settingsParent')
+  settingsParent.classList.add(styles.settingsParent)
 
-  button.addEventListener('click', () => {
+  settingsParent.addEventListener('click', () => {
     const settings = document.getElementById('settingsView')
     if (settings.classList.contains(styles.visible)) {
       toggleSettingsView('hide')
@@ -65,14 +64,6 @@ export function createSettingsButton () {
       toggleSettingsView('show')
     }
   })
-
-  return button
-}
-
-export function createSettingsView () {
-  const settingsParent = document.createElement('div')
-  settingsParent.setAttribute('id', 'settingsParent')
-  settingsParent.classList.add(styles.settingsParent)
 
   const settingsView = document.createElement('div')
   settingsView.setAttribute('id', 'settingsView')
@@ -85,7 +76,6 @@ export function createSettingsView () {
   settingsView.appendChild(pomodoro)
   settingsView.appendChild(short)
   settingsView.appendChild(long)
-  settingsView.appendChild(createSettingsButton())
   settingsParent.appendChild(settingsView)
 
   return settingsParent
