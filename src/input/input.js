@@ -23,10 +23,14 @@ function createInputElement (name, value) {
     }
   }
   input.setAttribute('onpaste', 'return false')
+
   const label = document.createElement('label')
   label.innerHTML = name + ' Length'
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
+  label.addEventListener('click', function (event) {
+    event.stopPropagation()
+  })
 
   input.addEventListener('input', function () {
     // Update timer view as appropriate
@@ -66,9 +70,6 @@ export function createSettingsView () {
   })
 
   const settingsView = document.createElement('div')
-  settingsView.addEventListener('click', function (event) {
-    event.stopPropagation()
-  })
   settingsView.setAttribute('id', 'settingsView')
   settingsView.classList.add(styles.settingsView, styles.visible)
 
