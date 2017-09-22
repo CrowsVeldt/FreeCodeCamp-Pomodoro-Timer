@@ -66,6 +66,9 @@ export function createSettingsView () {
   })
 
   const settingsView = document.createElement('div')
+  settingsView.addEventListener('click', function (event) {
+    event.stopPropagation()
+  })
   settingsView.setAttribute('id', 'settingsView')
   settingsView.classList.add(styles.settingsView, styles.visible)
 
