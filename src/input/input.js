@@ -71,7 +71,7 @@ export function createSettingsView () {
 
   const settingsView = document.createElement('div')
   settingsView.setAttribute('id', 'settingsView')
-  settingsView.classList.add(styles.settingsView, styles.visible)
+  settingsView.classList.add(styles.settingsView, styles.hidden)
 
   const pomodoro = createInputElement('Pomodoro', '25')
   const short = createInputElement('Short Break', '5')
