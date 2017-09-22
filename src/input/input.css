@@ -19,10 +19,12 @@ label {
 .settingsView {
   position: absolute;
   height: 80vh;
+  width: 150px;
   top: calc(50% - 40vh);
 
   background-color: tan;
   border: 1px solid black;
+  transition: visibility 0.05s, left 0.2s;
 }
 
 .settingsButton {
@@ -32,11 +34,13 @@ label {
 }
 
 .hidden {
+  visibility: hidden;
   left: 105%;
 }
 
 .visible {
-  right: 0;
+  visibility: visible;
+  left: 25%;
   display: flex;
   flex-direction: column;
 }
