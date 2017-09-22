@@ -9,4 +9,6 @@ body{
   align-items: center;
   
   background-color: aqua;
+
+  overflow: hidden;
 }

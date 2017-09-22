@@ -1,12 +1,15 @@
 .timer {
+  position: absolute;
+  top: calc(50vh - 50vmin / 2);
+  left: calc(50vw - 50vmin / 2);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  height: 50vh;
-  width: 50vw;
+  height: 50vmin;
+  width: 50vmin;
 
   font-family: Courier New, Courier, monospace;
   font-size: 30px;

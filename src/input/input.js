@@ -70,9 +70,13 @@ export function createSettingsButton () {
 }
 
 export function createSettingsView () {
+  const settingsParent = document.createElement('div')
+  settingsParent.setAttribute('id', 'settingsParent')
+  settingsParent.classList.add(styles.settingsParent)
+
   const settingsView = document.createElement('div')
   settingsView.setAttribute('id', 'settingsView')
-  settingsView.classList.add(styles.visible, styles.settingsView)
+  settingsView.classList.add(styles.settingsView, styles.visible)
 
   const pomodoro = createInputElement('Pomodoro', '25')
   const short = createInputElement('Short Break', '5')
@@ -82,8 +86,9 @@ export function createSettingsView () {
   settingsView.appendChild(short)
   settingsView.appendChild(long)
   settingsView.appendChild(createSettingsButton())
+  settingsParent.appendChild(settingsView)
 
-  return settingsView
+  return settingsParent
 }
 
 export function toggleSettingsView (value) {
