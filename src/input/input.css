@@ -19,6 +19,7 @@ label {
 .settingsView {
   position: absolute;
   height: 80vh;
+  top: calc(50% - 40vh);
 
   background-color: tan;
   border: 1px solid black;
@@ -31,7 +32,7 @@ label {
 }
 
 .hidden {
-  left: 100%;
+  left: 105%;
 }
 
 .visible {
