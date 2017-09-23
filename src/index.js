@@ -6,9 +6,16 @@ import {createTimerView, updateTimerView} from './timer/timerView.js'
 
 import {beginTimer, endTimer, timerActive} from './timer/timer.js'
 
+import {createProgressCircle} from './timer/progressCircle.js'
+
 document.body.appendChild(createSettingsView())
 
 document.body.appendChild(createTimerView())
+
+let height = document.documentElement.clientHeight
+let width = document.documentElement.clientWidth
+let minDimension = height < width ? height : width
+document.body.appendChild((createProgressCircle(minDimension / 2, height, width)))
 
 document.body.addEventListener('keydown', function (event) {
   let settings = window.getComputedStyle(document.getElementById('settingsView')).getPropertyValue('visibility')

@@ -6,8 +6,6 @@ import styles from './timer.css'
 
 import {Timer, timerActive, beginTimer, endTimer} from './timer.js'
 
-import {createProgressCircle} from './progressCircle.js'
-
 export const TimerView = ({
   title = 'Pomodoro',
   time = Timer().pomodoro
@@ -40,8 +38,6 @@ export function createTimerView () {
       endTimer()
     }
   })
-
-  newTimerView.appendChild(createProgressCircle())
 
   return newTimerView
 }
