@@ -1,0 +1,22 @@
+.container {
+  z-index: -1;
+  position: absolute;
+  top: calc(-50vh + 25vmin);
+  left: calc(-50vw + 25vmin);
+  height: 100vh;
+  width: 100vw;
+}
+
+.svg {
+  height: 100vh;
+  width: 100vw;
+  transform: rotate(270deg) 
+}
+
+.circle {
+
+}
+
+.coverCircle {
+
+}

@@ -34,7 +34,6 @@ function createInputElement (name, value) {
 
   input.addEventListener('input', function () {
     if (input.value > maxValue) {
-      // prevent values that are too large
       input.value = maxValue
     } else if (input.value.toString().charAt(0) === '0' && input.value > 0) {
       // Prevent ugly values like '06'
