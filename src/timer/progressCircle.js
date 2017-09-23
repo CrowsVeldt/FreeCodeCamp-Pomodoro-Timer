@@ -14,7 +14,7 @@ export function createProgressCircle (radius, viewBox, amountDone) {
   svg.setAttribute('class', styles.svg)
 
   let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-  circle.setAttribute('class', styles.circle)
+  // circle.setAttribute('class', styles.circle)
   circle.setAttribute('id', 'circle')
   circle.setAttribute('fill', 'transparent')
   circle.setAttribute('stroke', 'red')
@@ -25,7 +25,7 @@ export function createProgressCircle (radius, viewBox, amountDone) {
   circle.setAttribute('stroke-dasharray', circumference)
 
   let coverCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-  coverCircle.setAttribute('class', styles.coverCircle)
+  // coverCircle.setAttribute('class', styles.coverCircle)
   coverCircle.setAttribute('id', 'cover-circle')
   coverCircle.setAttribute('fill', 'transparent')
   coverCircle.setAttribute('stroke', 'lightgrey')
@@ -41,4 +41,9 @@ export function createProgressCircle (radius, viewBox, amountDone) {
   container.appendChild(svg)
 
   return (container)
+}
+
+function updateProgressCircle (amountDone) {
+  // access coverCircle with id
+  // update the dashoffset with the new amountDone
 }
