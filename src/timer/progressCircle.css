@@ -1,6 +1,10 @@
 .container {
   z-index: -1;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   top: 0;
   left: 0;
   height: 100vh;
@@ -8,8 +12,8 @@
 }
 
 .svg {
-  height: 100vh;
-  width: 100vw;
+  height: 50vh;
+  width: 50vw;
   transform: rotate(270deg) 
 }
 
