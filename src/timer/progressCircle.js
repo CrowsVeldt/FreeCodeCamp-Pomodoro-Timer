@@ -1,6 +1,6 @@
 import styles from './progressCircle.css'
 
-export function createProgressCircle (radius, viewBox, height, width, amountDone) {
+export function createProgressCircle (radius, viewBox, amountDone) {
   let circumference = 2 * radius * Math.PI
 
   let container = document.createElement('div')
@@ -41,8 +41,4 @@ export function createProgressCircle (radius, viewBox, height, width, amountDone
   container.appendChild(svg)
 
   return (container)
-}
-
-function updateProgressCircle (percentage) {
-  //
 }
