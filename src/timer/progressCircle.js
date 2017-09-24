@@ -1,6 +1,13 @@
 import styles from './progressCircle.css'
 
-export function createProgressCircle (radius, viewBox, amountDone) {
+let height = document.documentElement.clientHeight
+let width = document.documentElement.clientWidth
+let minDimension = height < width ? height : width
+let radius = minDimension / 8
+let viewBox = minDimension / 3.8
+let circumference = 2 * radius * Math.PI
+
+export function createProgressCircle () {
   let circumference = 2 * radius * Math.PI
 
   let container = document.createElement('div')
@@ -14,7 +21,6 @@ export function createProgressCircle (radius, viewBox, amountDone) {
   svg.setAttribute('class', styles.svg)
 
   let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-  // circle.setAttribute('class', styles.circle)
   circle.setAttribute('id', 'circle')
   circle.setAttribute('fill', 'transparent')
   circle.setAttribute('stroke', 'red')
@@ -22,10 +28,8 @@ export function createProgressCircle (radius, viewBox, amountDone) {
   circle.setAttribute('r', radius)
   circle.setAttribute('cx', '50%')
   circle.setAttribute('cy', '50%')
-  circle.setAttribute('stroke-dasharray', circumference)
 
   let coverCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-  // coverCircle.setAttribute('class', styles.coverCircle)
   coverCircle.setAttribute('id', 'cover-circle')
   coverCircle.setAttribute('fill', 'transparent')
   coverCircle.setAttribute('stroke', 'lightgrey')
@@ -33,7 +37,7 @@ export function createProgressCircle (radius, viewBox, amountDone) {
   coverCircle.setAttribute('r', radius)
   coverCircle.setAttribute('cx', '50%')
   coverCircle.setAttribute('cy', '50%')
-  coverCircle.setAttribute('stroke-dashoffset', -(circumference / 360) * amountDone)
+  coverCircle.setAttribute('stroke-dashoffset', 0)
   coverCircle.setAttribute('stroke-dasharray', circumference)
 
   svg.appendChild(circle)
@@ -43,7 +47,8 @@ export function createProgressCircle (radius, viewBox, amountDone) {
   return (container)
 }
 
-function updateProgressCircle (amountDone) {
-  // access coverCircle with id
-  // update the dashoffset with the new amountDone
+export function updateProgressCircle (total, amountDone) {
+  let coverCircle = document.getElementById('cover-circle')
+
+  coverCircle.setAttribute('stroke-dashoffset', -(circumference / total) * amountDone)
 }

@@ -12,10 +12,7 @@ document.body.appendChild(createSettingsView())
 
 document.body.appendChild(createTimerView())
 
-let height = document.documentElement.clientHeight
-let width = document.documentElement.clientWidth
-let minDimension = height < width ? height : width
-document.body.appendChild((createProgressCircle((minDimension / 8), (minDimension / 3.8), 1)))
+document.body.appendChild(createProgressCircle())
 
 document.body.addEventListener('keydown', function (event) {
   let settings = window.getComputedStyle(document.getElementById('settingsView')).getPropertyValue('visibility')
