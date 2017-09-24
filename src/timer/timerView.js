@@ -20,6 +20,7 @@ export function createTimerView () {
 
   const timerTitle = document.createElement('label')
   timerTitle.setAttribute('for', 'timer')
+  timerTitle.setAttribute('class', styles.title)
 
   const timerDisplay = document.createElement('p')
 
