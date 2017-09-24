@@ -1,8 +1,28 @@
 # Overview
 
-A pomodoro timer inspired by [FreeCodeCamp](https://www.freecodecamp.com). I'm going to write it initially as a simple web app, but I intend to port it as a browser extension afterwards. I'm going to try to write it in a functional, and modular, style, and with TDD.
+A pomodoro timer inspired by [FreeCodeCamp's](https://www.freecodecamp.com) Front End course. I've written it initially as a simple web app, but I intend to refactor it as a browser extension as well.
 
-My original intention was to use this project as an opportunity to learn how to write and use unit tests with Jest, but after falling down the tooling hole for a while I've built up a more complete/complex tooling chain also including Webpack and Babel. This diversion did take some time away from actual programming, but I feel it was worth it to familiarize myself with more of the tools and processes used in professional web developement.
+You can check it out [here!](https://crowsveldt.github.io/FreeCodeCamp-Pomodoro-Timer/)
+
+## My original plan (as written):
+"I'm going to try to write it in a functional, and modular, style, and with TDD.
+
+My original intention was to use this project as an opportunity to learn how to write and use unit tests with Jest, but after falling down the tooling hole for a while I've built up a more complete/complex tooling chain also including Webpack and Babel. This diversion did take some time away from actual programming, but I feel it was worth it to familiarize myself with more of the tools and processes used in professional web developement."
+
+## What's actually happened:
+### TDD: 
+At first I tried to stick to strict TDD, but I found that I couldn't maintain motivation that way and, especially since I'm fitting this in around my full time job etc, maintaining motivation really has to be my priority right now. I tried writing tests after code, but it was very difficult to figure out *how* to test the code. Obviously this is due to a larger problem of my not yet knowing how to write testable code, besides not having experience writing tests.
+
+Nevertheless, I do not consider this to be a failure. I have started learning:
+- How to set up a testing framework
+- How to write tests
+- How to integrate testing into my workflow
+and I've started thinking more critically about how I write code, and specifically about how I can write it to be testable.
+
+### Modular:
+I think I've done a fairly good job at this. I've certainly learned how to write and use modular Javascript, along with some of the pitfalls of paths and file structure.
+I've learned to set up and use Webpack, at least at a basic level, and have integrated it into my workflow. It has certainly given me trouble along the way, and if I had to do it over again I *might* have decided started with a simpler build tool, but on the other hand I think the experience and knowledge I have gained is entirely commensurate to the effort it required.
+
 
 
 ## User Stories:
