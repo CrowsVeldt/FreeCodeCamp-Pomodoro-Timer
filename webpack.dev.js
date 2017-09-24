@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './build'
+    contentBase: './docs'
   },
   module: {
     rules: [
@@ -33,7 +33,7 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin('build'),
+    new CleanWebpackPlugin('docs'),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('developement')
     }),
