@@ -41,6 +41,7 @@ export function beginTimer (timer = Timer(), display = TimerView()) {
 export function endTimer () {
   timerActive = false
   clearTimeout(timerID)
+  toggleSettingsView('show')
   updateTimerView()
   updateProgressCircle(0, 0)
 }
