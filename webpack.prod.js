@@ -4,6 +4,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const common = require('./webpack.common.js')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(common, {
   devtool: 'source-map',
@@ -34,6 +35,10 @@ module.exports = merge(common, {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new CleanWebpackPlugin('build'),
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+    new HtmlWebpackPlugin({
+      title: 'Pomodoro Timer',
+      filename: '../index.html'
+    })
   ]
 })
