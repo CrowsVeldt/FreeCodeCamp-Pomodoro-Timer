@@ -8,15 +8,19 @@
   justify-content: center;
   align-items: center;
 
-  height: 50vmin;
-  width: 50vmin;
+  height: calc(50vmin - 1px);
+  width: calc(50vmin - 1px);
 
   font-family: Courier New, Courier, monospace;
   font-size: 30px;
 
-  /* border: 1px solid black;
-  border-radius: 50%; */
+  border: 1px solid black;
+  border-radius: 50%;     
 
   user-select: none;
+  cursor: pointer;
+}
+
+.title {
   cursor: pointer;
 }

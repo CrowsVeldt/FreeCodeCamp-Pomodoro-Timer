@@ -125,22 +125,26 @@ label {
       -ms-flex-align: center;
           align-items: center;
 
-  height: 50vmin;
-  width: 50vmin;
+  height: calc(50vmin - 1px);
+  width: calc(50vmin - 1px);
 
   font-family: Courier New, Courier, monospace;
   font-size: 30px;
 
-  /* border: 1px solid black;
-  border-radius: 50%; */
+  border: 1px solid black;
+  border-radius: 50%;     
 
-  -webkit-user-select: none;
+  -webkit-user-select: none;     
 
-     -moz-user-select: none;
+     -moz-user-select: none;     
 
-      -ms-user-select: none;
+      -ms-user-select: none;     
 
           user-select: none;
+  cursor: pointer;
+}
+
+._1hget2_IAh_7OHG1eFWSfX {
   cursor: pointer;
 }._3gRYcbyFm7maThkUT9YprY {
   z-index: -1;
