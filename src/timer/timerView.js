@@ -1,7 +1,6 @@
 'use strict'
 
 import watchAlarm from '../static/watchAlarm.mp3'
-import gongAlarm from '../static/gongAlarm.mp3'
 
 import styles from './timer.css'
 
@@ -49,11 +48,6 @@ export function updateTimerView (view = TimerView()) {
 
   timerElement.childNodes[0].innerHTML = view.title
   timerElement.childNodes[1].innerHTML = formatTime(view.time)
-}
-
-export function chooseAlarmSound (name) {
-  let alarm = document.getElementById('alarm')
-  alarm.setAttribute('src', name)
 }
 
 function formatTime (timeInSeconds) {
