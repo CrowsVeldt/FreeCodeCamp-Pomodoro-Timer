@@ -26,9 +26,9 @@ export function createAlarmPicker () {
 
   dropdown.addEventListener('change', function (event) {
     if (document.getElementById('alarmDropdown').value === 'Watch Alarm') {
-      console.log('watch')
+      chooseAlarmSound(watchAlarm)
     } else if (document.getElementById('alarmDropdown').value === 'Gong') {
-      console.log('gong')
+      chooseAlarmSound(gongAlarm)
     }
   })
 
