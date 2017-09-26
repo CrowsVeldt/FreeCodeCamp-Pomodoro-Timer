@@ -6,7 +6,7 @@ import {toggleSettingsView, getInputValue} from '../input/input.js'
 
 import {updateProgressCircle} from './progressCircle.js'
 
-import Icon from '../static/icon.svg'
+import Icon from '../static/icon.png'
 
 export let timerActive = false
 let timerID = 0
