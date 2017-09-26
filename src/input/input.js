@@ -4,6 +4,8 @@ import styles from './input.css'
 
 import {timerActive} from '../timer/timer.js'
 
+import {createAlarmPicker} from './alarmPicker'
+
 import {updateTimerView} from '../timer/timerView.js'
 
 const seconds = 60
@@ -76,10 +78,11 @@ export function createSettingsView () {
   const pomodoro = createInputElement('Pomodoro', '25')
   const short = createInputElement('Short Break', '5')
   const long = createInputElement('Long Break', '15')
-
+  
   settingsView.appendChild(pomodoro)
   settingsView.appendChild(short)
   settingsView.appendChild(long)
+  settingsView.appendChild(createAlarmPicker())
   settingsParent.appendChild(settingsView)
 
   return settingsParent

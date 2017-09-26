@@ -6,8 +6,7 @@ import gongAlarm from '../static/gongAlarm.mp3'
 import styles from './alarmPicker.css'
 
 export function createAlarmPicker () {
-  let dropdown = document.createElement('input')
-  dropdown.setAttribute('type', 'select')
+  let dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
 
   let watchOption = document.createElement('option')
@@ -20,6 +19,11 @@ export function createAlarmPicker () {
 
   dropdown.appendChild(watchOption)
   dropdown.appendChild(gongOption)
+
+  dropdown.addEventListener('click', function (event) {
+    event.stopPropagation()
+  })
+
 
   return dropdown
 }
