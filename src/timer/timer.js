@@ -6,6 +6,8 @@ import {toggleSettingsView, getInputValue} from '../input/input.js'
 
 import {updateProgressCircle} from './progressCircle.js'
 
+import Icon from '../static/icon.png'
+
 export let timerActive = false
 let timerID = 0
 const milliseconds = 1000
@@ -74,7 +76,7 @@ function finishTimer (previousTimer) {
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
     let newEndtime = newStartTime + (previousTimer.shortBreak * milliseconds)
 
-    notify('You finished! Good work! Take a short break, you deserve it', 'Short Break Started')
+    notify('You finished, Take a short break!', 'Short Break Started')
     beginTimer(Timer({
       pomodoro: previousTimer.pomodoro,
       shortBreak: previousTimer.shortBreak,
@@ -90,7 +92,7 @@ function finishTimer (previousTimer) {
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
     let newEndtime = newStartTime + (previousTimer.longBreak * milliseconds)
 
-    notify('Four in a row! Awesome! Take a long one, dude.', 'Long Break Started')
+    notify('Four in a row! Take a long one, dude.', 'Long Break Started')
     beginTimer(Timer({
       pomodoro: previousTimer.pomodoro,
       shortBreak: previousTimer.shortBreak,
@@ -123,7 +125,8 @@ function finishTimer (previousTimer) {
 
 function notify (theBody, theTitle) {
   let options = {
-    body: theBody
+    body: theBody,
+    icon: Icon
   }
   let n = new Notification(theTitle, options)
   // close the notification for systems which don't close it automatically

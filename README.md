@@ -63,4 +63,6 @@ Although I didn't mention it explicitly in the above paragraph my overall goal w
 
 ## Attributions: 
 
-Alarm sound is copyright of Daniel Simion. Many thanks. Found at: http://soundbible.com/2197-Analog-Watch-Alarm.html
+Alarm sound is copyright of Daniel Simion. Many thanks. Found at: [soundbible link](http://soundbible.com/2197-Analog-Watch-Alarm.html)
+
+Timer Icon: Created by [ngamlerdlek.design](https://thenounproject.com/ngamlerdlek.video/) from the Noun project
