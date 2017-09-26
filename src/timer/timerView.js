@@ -50,6 +50,11 @@ export function updateTimerView (view = TimerView()) {
   timerElement.childNodes[1].innerHTML = formatTime(view.time)
 }
 
+export function chooseAlarm (name) {
+  let alarm = document.getElementById('alarm')
+  alarm.setAttribute('src', name)
+}
+
 function formatTime (timeInSeconds) {
   let seconds = timeInSeconds % 60
   let minutes = Math.floor(timeInSeconds / 60)
