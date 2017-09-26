@@ -63,6 +63,8 @@ Although I didn't mention it explicitly in the above paragraph my overall goal w
 
 ## Attributions: 
 
-Alarm sound is copyright of Daniel Simion. Many thanks. Found at: [soundbible link](http://soundbible.com/2197-Analog-Watch-Alarm.html)
+Watch alarm sound is copyright of Daniel Simion. Many thanks. Found at [soundbible](http://soundbible.com/2197-Analog-Watch-Alarm.html)
 
-Timer Icon: Created by [ngamlerdlek.design](https://thenounproject.com/ngamlerdlek.video/) from the Noun project
+Gong alarm sound created by cdiupe, who graciously donated it to the creative commons. Found at [Freesound](https://freesound.org/people/cdiupe/) 
+
+Timer Icon Created by [ngamlerdlek.design](https://thenounproject.com/ngamlerdlek.video/), found at the Noun project
