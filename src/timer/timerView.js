@@ -1,6 +1,6 @@
 'use strict'
 
-import alarmFile from '../static/alarm.mp3'
+import watchAlarm from '../static/watchAlarm.mp3'
 
 import styles from './timer.css'
 
@@ -25,7 +25,7 @@ export function createTimerView () {
   const timerDisplay = document.createElement('p')
 
   const alarmElement = document.createElement('audio')
-  alarmElement.setAttribute('src', alarmFile)
+  alarmElement.setAttribute('src', watchAlarm)
   alarmElement.setAttribute('id', 'alarm')
 
   newTimerView.appendChild(timerTitle)

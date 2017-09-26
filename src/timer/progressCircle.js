@@ -23,7 +23,7 @@ export function createProgressCircle () {
   let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
   circle.setAttribute('id', 'circle')
   circle.setAttribute('fill', 'transparent')
-  circle.setAttribute('stroke', 'red')
+  circle.setAttribute('stroke', 'orange')
   circle.setAttribute('stroke-width', '5%')
   circle.setAttribute('r', radius)
   circle.setAttribute('cx', '50%')
