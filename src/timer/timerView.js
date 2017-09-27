@@ -2,6 +2,8 @@
 
 import watchAlarm from '../static/watchAlarm.mp3'
 
+import tick from '../static/tick.mp3'
+
 import styles from './timer.css'
 
 import {Timer, timerActive, beginTimer, endTimer} from './timer.js'
@@ -28,9 +30,15 @@ export function createTimerView () {
   alarmElement.setAttribute('src', watchAlarm)
   alarmElement.setAttribute('id', 'alarm')
 
+  const tickElement = document.createElement('audio')
+  tickElement.setAttribute('src', tick)
+  tickElement.setAttribute('id', 'tick')
+  tickElement.setAttribute('loop', 'true')
+
   newTimerView.appendChild(timerTitle)
   newTimerView.appendChild(timerDisplay)
   newTimerView.appendChild(alarmElement)
+  newTimerView.appendChild(tickElement)
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
     if (timerActive === false) {

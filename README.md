@@ -67,4 +67,6 @@ Watch alarm sound is copyright of Daniel Simion. Many thanks. Found at [soundbib
 
 Gong alarm sound created by cdiupe, who graciously donated it to the creative commons. Found at [Freesound](https://freesound.org/people/cdiupe/) 
 
+Clock Tick sound is property of the very generous [FreeSFX](http://www.freesfx.co.uk)
+
 Timer Icon Created by [ngamlerdlek.design](https://thenounproject.com/ngamlerdlek.video/), found at the Noun project

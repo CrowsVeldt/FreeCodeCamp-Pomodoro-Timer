@@ -55,6 +55,8 @@ function checkTimer (timerToCheck, display) {
     title: display.title,
     time: timerToCheck.timeLeft
   }))
+  let timerTick = document.getElementById('tick')
+  timerTick.play()
 
   let totalTime = (timerToCheck.endTime - timerToCheck.startTime) / 1000
   updateProgressCircle(totalTime, (totalTime - timerToCheck.timeLeft))
