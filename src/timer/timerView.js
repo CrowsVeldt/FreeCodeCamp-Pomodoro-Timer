@@ -33,7 +33,7 @@ export function createTimerView () {
   const tickElement = document.createElement('audio')
   tickElement.setAttribute('src', tick)
   tickElement.setAttribute('id', 'tick')
-  tickElement.setAttribute('loop', 'true')
+  tickElement.setAttribute('loop', true)
 
   newTimerView.appendChild(timerTitle)
   newTimerView.appendChild(timerDisplay)
