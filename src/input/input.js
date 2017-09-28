@@ -12,7 +12,7 @@ const seconds = 60
 const maxValue = 60
 const minValue = 1
 
-function createInputElement (name, value) {
+function createTimeInput (name, value) {
   const input = document.createElement('input')
   input.setAttribute('id', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   input.setAttribute('value', value)
@@ -75,14 +75,24 @@ export function createSettingsView () {
   settingsView.setAttribute('id', 'settingsView')
   settingsView.classList.add(styles.settingsView, styles.hidden)
 
-  const pomodoro = createInputElement('Pomodoro', '25')
-  const short = createInputElement('Short Break', '5')
-  const long = createInputElement('Long Break', '15')
-  
+  const pomodoro = createTimeInput('Pomodoro', '25')
+  const short = createTimeInput('Short Break', '5')
+  const long = createTimeInput('Long Break', '15')
+
+  const tickToggleLabel = document.createElement('label')
+  tickToggleLabel.setAttribute('for', 'tickToggle')
+  tickToggleLabel.innerHTML = 'Ticking:'
+
+  const tickToggle = document.createElement('input')
+  tickToggle.setAttribute('type', 'checkbox')
+  tickToggle.setAttribute('id', 'tickToggle')
+  tickToggleLabel.appendChild(tickToggle)
+
   settingsView.appendChild(pomodoro)
   settingsView.appendChild(short)
   settingsView.appendChild(long)
   settingsView.appendChild(createAlarmPicker())
+  settingsView.appendChild(tickToggleLabel)
   settingsParent.appendChild(settingsView)
 
   return settingsParent
