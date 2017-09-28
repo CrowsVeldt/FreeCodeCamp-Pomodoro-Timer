@@ -7,16 +7,16 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(mp3)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.mp3$/,
+        loader: 'file-loader'
       },
       {
-        test: /\.(svg||png)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.wav$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.(png)$/,
+        loader: 'file-loader'
       },
       {
         test: /\.js$/,
