@@ -11,7 +11,7 @@ module.exports = {
         loader: 'file-loader'
       },
       {
-        test: /\.wav$/,
+        test: /\.ogg$/,
         loader: 'file-loader'
       },
       {

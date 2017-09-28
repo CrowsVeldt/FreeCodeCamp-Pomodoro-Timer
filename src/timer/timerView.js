@@ -2,7 +2,7 @@
 
 import watchAlarm from '../static/watchAlarm.mp3'
 
-import tick from '../static/tick.wav'
+import tick from '../static/tick.ogg'
 
 import styles from './timer.css'
 
