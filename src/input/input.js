@@ -68,6 +68,14 @@ function createTickToggle () {
   tickToggle.checked = true
   tickToggleLabel.appendChild(tickToggle)
 
+  tickToggleLabel.addEventListener('change', function () {
+    if (!tickingIsDesired() && timerActive) {
+      document.getElementById('tick').pause()
+    } else if (tickingIsDesired && timerActive) {
+      document.getElementById('tick').play()
+    }
+  })
+
   return tickToggleLabel
 }
 
@@ -127,6 +135,10 @@ export function getInputValue (inputElement) {
   } else if (element.value % 1 !== 0) {
     return 0
   }
+}
+
+export function tickingIsDesired () {
+  return document.getElementById('tickToggle').checked
 }
 
 function isAnAllowedKey (keyEvent) {

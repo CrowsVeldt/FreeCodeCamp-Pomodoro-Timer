@@ -2,7 +2,7 @@
 
 import {TimerView, updateTimerView} from './timerView.js'
 
-import {toggleSettingsView, getInputValue} from '../input/input.js'
+import {toggleSettingsView, getInputValue, tickingIsDesired} from '../input/input.js'
 
 import {updateProgressCircle} from './progressCircle.js'
 
@@ -33,8 +33,10 @@ timeLeft = pomodoro
 })
 
 export function beginTimer (timer = Timer(), display = TimerView()) {
-  let timerTick = document.getElementById('tick')
-  timerTick.play()
+  if (tickingIsDesired()) {
+    let timerTick = document.getElementById('tick')
+    timerTick.play()
+  }
 
   timerActive = true
   timerID = setTimeout(checkTimer, 1000, timer, display)
