@@ -30,9 +30,6 @@ function createTimeInput (name, value) {
   label.innerHTML = name + ' Length'
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
-  label.addEventListener('click', function (event) {
-    event.stopPropagation()
-  })
 
   input.addEventListener('input', function () {
     if (input.value > maxValue) {
@@ -96,6 +93,10 @@ export function createSettingsView () {
   const settingsView = document.createElement('div')
   settingsView.setAttribute('id', 'settingsView')
   settingsView.classList.add(styles.settingsView, styles.hidden)
+
+  settingsView.addEventListener('click', function (event) {
+    event.stopPropagation()
+  })
 
   const pomodoro = createTimeInput('Pomodoro', '25')
   const short = createTimeInput('Short Break', '5')

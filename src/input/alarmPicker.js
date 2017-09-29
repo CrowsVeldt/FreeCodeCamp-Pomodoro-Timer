@@ -20,10 +20,6 @@ export function createAlarmPicker () {
   dropdown.appendChild(watchOption)
   dropdown.appendChild(gongOption)
 
-  dropdown.addEventListener('click', function (event) {
-    event.stopPropagation()
-  })
-
   dropdown.addEventListener('change', function (event) {
     if (document.getElementById('alarmDropdown').value === 'Watch Alarm') {
       chooseAlarmSound(watchAlarm)
