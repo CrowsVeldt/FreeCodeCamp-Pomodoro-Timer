@@ -2,7 +2,7 @@
 
 import styles from './settingsMenu.css'
 
-import {timerActive} from '../timer/timer.js'
+import {createTickToggle} from './tickToggle'
 
 import {createAlarmPicker} from './alarmPicker'
 
@@ -11,28 +11,6 @@ import {createTimeInput} from './timeInput'
 const seconds = 60
 const maxValue = 60
 const minValue = 1
-
-function createTickToggle () {
-  const tickToggleLabel = document.createElement('label')
-  tickToggleLabel.setAttribute('for', 'tickToggle')
-  tickToggleLabel.innerHTML = 'Ticking:'
-
-  const tickToggle = document.createElement('input')
-  tickToggle.setAttribute('type', 'checkbox')
-  tickToggle.setAttribute('id', 'tickToggle')
-  tickToggle.checked = true
-  tickToggleLabel.appendChild(tickToggle)
-
-  tickToggleLabel.addEventListener('change', function () {
-    if (!tickingIsDesired() && timerActive) {
-      document.getElementById('tick').pause()
-    } else if (tickingIsDesired && timerActive) {
-      document.getElementById('tick').play()
-    }
-  })
-
-  return tickToggleLabel
-}
 
 export function createSettingsMenu () {
   const settingsParent = document.createElement('div')
@@ -94,8 +72,4 @@ export function getInputValue (inputElement) {
   } else if (element.value % 1 !== 0) {
     return 0
   }
-}
-
-export function tickingIsDesired () {
-  return document.getElementById('tickToggle').checked
 }
