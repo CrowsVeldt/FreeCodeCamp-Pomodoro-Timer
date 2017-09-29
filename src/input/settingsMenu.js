@@ -19,7 +19,7 @@ export function createSettingsMenu () {
 
   const settingsMenu = document.createElement('div')
   settingsMenu.setAttribute('id', 'settingsMenu')
-  settingsMenu.classList.add(styles.settingsMenu, styles.hidden)
+  settingsMenu.classList.add(styles.settingsMenu, styles.visible)
 
   settingsMenu.addEventListener('click', function (event) {
     event.stopPropagation()
@@ -28,7 +28,7 @@ export function createSettingsMenu () {
   const settingsToggle = document.createElement('button')
   settingsToggle.innerHTML = '< < <'
   settingsToggle.setAttribute('id', 'settingsToggle')
-  settingsToggle.classList.add(styles.settingsToggle, styles.toggleWhenMenuHidden)
+  settingsToggle.classList.add(styles.settingsToggle, styles.toggleWhenMenuVisible)
 
   settingsToggle.addEventListener('click', () => {
     const settings = document.getElementById('settingsMenu')
