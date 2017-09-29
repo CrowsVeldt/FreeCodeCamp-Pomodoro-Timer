@@ -2,7 +2,7 @@
 
 import {TimerView, updateTimerView} from './timerView.js'
 
-import {toggleSettingsView, getInputValue, tickingIsDesired} from '../input/settingsMenu.js'
+import {toggleSettingsMenu, getInputValue, tickingIsDesired} from '../input/settingsMenu.js'
 
 import {updateProgressCircle} from './progressCircle.js'
 
@@ -40,7 +40,7 @@ export function beginTimer (timer = Timer(), display = TimerView()) {
 
   timerActive = true
   timerID = setTimeout(checkTimer, 1000, timer, display)
-  toggleSettingsView('hide')
+  toggleSettingsMenu('hide')
   updateProgressCircle(0, 0)
   updateTimerView(display)
 }
@@ -48,7 +48,7 @@ export function beginTimer (timer = Timer(), display = TimerView()) {
 export function endTimer () {
   timerActive = false
   clearTimeout(timerID)
-  toggleSettingsView('show')
+  toggleSettingsMenu('show')
   updateTimerView()
   updateProgressCircle(0, 0)
 

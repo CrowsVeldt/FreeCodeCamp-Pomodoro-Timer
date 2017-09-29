@@ -15,7 +15,7 @@ document.body.appendChild(createTimerView())
 document.body.appendChild(createProgressCircle())
 
 document.body.addEventListener('keydown', function (event) {
-  let settings = window.getComputedStyle(document.getElementById('settingsView')).getPropertyValue('visibility')
+  let settings = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
   if (event.key === 'Escape') {
     if (settings === 'hidden') {
       toggleSettingsMenu('show')
