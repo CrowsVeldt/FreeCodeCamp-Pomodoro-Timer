@@ -6,53 +6,11 @@ import {timerActive} from '../timer/timer.js'
 
 import {createAlarmPicker} from './alarmPicker'
 
-import {updateTimerView} from '../timer/timerView.js'
+import {createTimeInput} from './timeInput'
 
 const seconds = 60
 const maxValue = 60
 const minValue = 1
-
-function createTimeInput (name, value) {
-  const input = document.createElement('input')
-  input.setAttribute('id', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
-  input.setAttribute('value', value)
-  input.setAttribute('type', 'number')
-  input.setAttribute('min', minValue)
-  input.setAttribute('max', maxValue)
-  input.onkeydown = function (event) {
-    if (!isAnAllowedKey(event)) {
-      event.preventDefault()
-    }
-  }
-  input.setAttribute('onpaste', 'return false')
-
-  const label = document.createElement('label')
-  label.innerHTML = name + ' Length'
-  label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
-  label.appendChild(input)
-
-  input.addEventListener('input', function () {
-    if (input.value > maxValue) {
-      input.value = maxValue
-    } else if (input.value.toString().charAt(0) === '0' && input.value > 0) {
-      // Prevent ugly values like '06'
-      input.value = input.value.toString().substr(1)
-    } else if (timerActive === false && input.value >= minValue && input.value <= maxValue) {
-      updateTimerView({
-        title: name,
-        time: input.value * seconds
-      })
-    }
-  })
-
-  input.addEventListener('change', function () {
-    if (input.value < minValue) {
-      input.value = minValue
-    }
-  })
-
-  return label
-}
 
 function createTickToggle () {
   const tickToggleLabel = document.createElement('label')
@@ -98,9 +56,9 @@ export function createSettingsView () {
     event.stopPropagation()
   })
 
-  const pomodoro = createTimeInput('Pomodoro', '25')
-  const short = createTimeInput('Short Break', '5')
-  const long = createTimeInput('Long Break', '15')
+  const pomodoro = createTimeInput('Pomodoro', '25', minValue, maxValue)
+  const short = createTimeInput('Short Break', '5', minValue, maxValue)
+  const long = createTimeInput('Long Break', '15', minValue, maxValue)
 
   settingsView.appendChild(pomodoro)
   settingsView.appendChild(short)
@@ -140,12 +98,4 @@ export function getInputValue (inputElement) {
 
 export function tickingIsDesired () {
   return document.getElementById('tickToggle').checked
-}
-
-function isAnAllowedKey (keyEvent) {
-  if (/Enter|Backspace|Tab|ArrowUp|ArrowDown|ArrowRight|ArrowLeft|End|Home|Escape|Delete|[\d]/.test(keyEvent.key)) {
-    return true
-  } else {
-    return false
-  }
 }
