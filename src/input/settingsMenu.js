@@ -1,6 +1,6 @@
 'use strict'
 
-import styles from './input.css'
+import styles from './settingsMenu.css'
 
 import {timerActive} from '../timer/timer.js'
 
