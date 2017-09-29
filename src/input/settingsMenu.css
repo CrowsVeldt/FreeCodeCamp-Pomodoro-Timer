@@ -19,7 +19,7 @@ label {
   cursor: pointer;
 }
 
-.settingsView {
+.settingsMenu {
   position: absolute;
   height: 80vh;
   width: 150px;
