@@ -34,25 +34,25 @@ function createTickToggle () {
   return tickToggleLabel
 }
 
-export function createSettingsView () {
+export function createSettingsMenu () {
   const settingsParent = document.createElement('div')
   settingsParent.setAttribute('id', 'settingsParent')
   settingsParent.classList.add(styles.settingsParent)
 
   settingsParent.addEventListener('click', () => {
-    const settings = document.getElementById('settingsView')
+    const settings = document.getElementById('settingsMenu')
     if (settings.classList.contains(styles.visible)) {
-      toggleSettingsView('hide')
+      toggleSettingsMenu('hide')
     } else if (settings.classList.contains(styles.hidden)) {
-      toggleSettingsView('show')
+      toggleSettingsMenu('show')
     }
   })
 
-  const settingsView = document.createElement('div')
-  settingsView.setAttribute('id', 'settingsView')
-  settingsView.classList.add(styles.settingsView, styles.hidden)
+  const settingsMenu = document.createElement('div')
+  settingsMenu.setAttribute('id', 'settingsMenu')
+  settingsMenu.classList.add(styles.settingsMenu, styles.hidden)
 
-  settingsView.addEventListener('click', function (event) {
+  settingsMenu.addEventListener('click', function (event) {
     event.stopPropagation()
   })
 
@@ -60,18 +60,18 @@ export function createSettingsView () {
   const short = createTimeInput('Short Break', '5', minValue, maxValue)
   const long = createTimeInput('Long Break', '15', minValue, maxValue)
 
-  settingsView.appendChild(pomodoro)
-  settingsView.appendChild(short)
-  settingsView.appendChild(long)
-  settingsView.appendChild(createAlarmPicker())
-  settingsView.appendChild(createTickToggle())
-  settingsParent.appendChild(settingsView)
+  settingsMenu.appendChild(pomodoro)
+  settingsMenu.appendChild(short)
+  settingsMenu.appendChild(long)
+  settingsMenu.appendChild(createAlarmPicker())
+  settingsMenu.appendChild(createTickToggle())
+  settingsParent.appendChild(settingsMenu)
 
   return settingsParent
 }
 
-export function toggleSettingsView (value) {
-  const settings = document.getElementById('settingsView')
+export function toggleSettingsMenu (value) {
+  const settings = document.getElementById('settingsMenu')
 
   if (value === 'show') {
     settings.classList.add(styles.visible)
