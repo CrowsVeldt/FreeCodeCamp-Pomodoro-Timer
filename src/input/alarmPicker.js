@@ -3,8 +3,6 @@
 import watchAlarm from '../static/watchAlarm.mp3'
 import gongAlarm from '../static/gongAlarm.mp3'
 
-import styles from './alarmPicker.css'
-
 export function createAlarmPicker () {
   let dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
