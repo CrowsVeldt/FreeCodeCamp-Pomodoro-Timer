@@ -2,7 +2,9 @@
 
 import {TimerView, updateTimerView} from './timerView.js'
 
-import {toggleSettingsMenu, getInputValue, tickingIsDesired} from '../input/settingsMenu.js'
+import {toggleSettingsMenu, getInputValue} from '../input/settingsMenu.js'
+
+import {tickingIsDesired} from '../input/tickToggle'
 
 import {updateProgressCircle} from './progressCircle.js'
 
