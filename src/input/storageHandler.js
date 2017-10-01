@@ -25,8 +25,8 @@ export function storageAvailable (type) {
   }
 }
 
-if (storageAvailable('localStorage')) {
-  console.log('available')
-} else {
-  console.log('not available')
-}
+// if (storageAvailable('localStorage')) {
+//   console.log('available')
+// } else {
+//   console.log('not available')
+// }

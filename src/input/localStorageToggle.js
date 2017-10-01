@@ -11,12 +11,12 @@ export function createStorageToggle () {
   storageToggle.setAttribute('type', 'checkbox')
   storageToggle.setAttribute('id', 'storageToggle')
 
-  if (!storageAvailable()) {
+  if (storageAvailable('localStorage')) {
+    console.log('available')
+  } else {
+    console.log('not available')
     storageToggle.disabled = 'disabled'
     storageToggle.indeterminate = true
-  } else {
-    storageToggle.disabled = ''
-    storageToggle.indeterminate = false
   }
 
   storageToggleLabel.appendChild(storageToggle)
