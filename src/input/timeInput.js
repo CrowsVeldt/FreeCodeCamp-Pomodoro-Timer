@@ -1,3 +1,5 @@
+'use strict'
+
 import {timerActive} from '../timer/timer.js'
 
 import {updateTimerView} from '../timer/timerView.js'
