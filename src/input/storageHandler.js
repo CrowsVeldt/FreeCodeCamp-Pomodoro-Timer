@@ -36,4 +36,7 @@ export function populateStorage () {
   window.localStorage.setItem('pomodoroTime', document.getElementById('pomodoroInput').value)
   window.localStorage.setItem('shortBreakTime', document.getElementById('shortBreakInput').value)
   window.localStorage.setItem('longBreakTime', document.getElementById('longBreakInput').value)
+  window.localStorage.setItem('alarmDropdown', document.getElementById('alarmDropdown').value)
+  window.localStorage.setItem('ticking', document.getElementById('tickToggle').checked)
+  window.localStorage.setItem('storageToggle', document.getElementById('storageToggle').checked)
 }
