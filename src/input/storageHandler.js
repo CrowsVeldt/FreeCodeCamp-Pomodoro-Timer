@@ -40,3 +40,7 @@ export function populateStorage () {
   window.localStorage.setItem('ticking', document.getElementById('tickToggle').checked)
   window.localStorage.setItem('storageToggle', document.getElementById('storageToggle').checked)
 }
+
+export function emptyStorage () {
+  window.localStorage.clear()
+}
