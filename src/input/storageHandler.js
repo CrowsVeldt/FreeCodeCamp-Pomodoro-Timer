@@ -25,8 +25,9 @@ export function storageAvailable (type) {
   }
 }
 
-// if (storageAvailable('localStorage')) {
-//   console.log('available')
-// } else {
-//   console.log('not available')
-// }
+function storagePopulated () {
+  if (Storage.length !== 0) {
+    console.log('populated')
+    return true
+  }
+}
