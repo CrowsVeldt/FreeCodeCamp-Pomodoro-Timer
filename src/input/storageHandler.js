@@ -25,9 +25,15 @@ export function storageAvailable (type) {
   }
 }
 
-function storagePopulated () {
-  if (Storage.length !== 0) {
+export function storagePopulated () {
+  if (window.localStorage.length !== 0) {
     console.log('populated')
     return true
   }
+}
+
+export function populateStorage () {
+  window.localStorage.setItem('pomodoroTime', document.getElementById('pomodoroInput').value)
+  window.localStorage.setItem('shortBreakTime', document.getElementById('shortBreakInput').value)
+  window.localStorage.setItem('longBreakTime', document.getElementById('longBreakInput').value)
 }
