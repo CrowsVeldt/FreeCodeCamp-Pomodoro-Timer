@@ -11,7 +11,6 @@ import {beginTimer, endTimer, timerActive} from './timer/timer.js'
 import {createProgressCircle} from './timer/progressCircle.js'
 
 document.body.appendChild(createSettingsMenu())
-console.log(window.localStorage)
 if (storageAvailable() && window.localStorage.getItem('pomodoro')) {
   getStoredSettings()
   console.log('is called')

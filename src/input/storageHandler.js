@@ -25,12 +25,6 @@ export function storageAvailable (type) {
   }
 }
 
-// export function storagePopulated () {
-//   if (window.localStorage.length !== 0) {
-//     return true
-//   }
-// }
-
 export function populateStorage () {
   window.localStorage.setItem('pomodoro', document.getElementById('pomodoroInput').value)
   window.localStorage.setItem('shortBreak', document.getElementById('shortBreakInput').value)
