@@ -1,7 +1,7 @@
 'use strict'
 
-// Code thanks to MDN
 export function storageAvailable (type) {
+  // this function is from MDN
   try {
     let storage = window[type]
     let x = '__storage_test__'
@@ -25,22 +25,37 @@ export function storageAvailable (type) {
   }
 }
 
-export function storagePopulated () {
-  if (window.localStorage.length !== 0) {
-    console.log('populated')
-    return true
-  }
-}
+// export function storagePopulated () {
+//   if (window.localStorage.length !== 0) {
+//     return true
+//   }
+// }
 
 export function populateStorage () {
-  window.localStorage.setItem('pomodoroTime', document.getElementById('pomodoroInput').value)
-  window.localStorage.setItem('shortBreakTime', document.getElementById('shortBreakInput').value)
-  window.localStorage.setItem('longBreakTime', document.getElementById('longBreakInput').value)
-  window.localStorage.setItem('alarmDropdown', document.getElementById('alarmDropdown').value)
+  window.localStorage.setItem('pomodoro', document.getElementById('pomodoroInput').value)
+  window.localStorage.setItem('shortBreak', document.getElementById('shortBreakInput').value)
+  window.localStorage.setItem('longBreak', document.getElementById('longBreakInput').value)
+  window.localStorage.setItem('alarm', document.getElementById('alarmDropdown').value)
   window.localStorage.setItem('ticking', document.getElementById('tickToggle').checked)
-  window.localStorage.setItem('storageToggle', document.getElementById('storageToggle').checked)
+  window.localStorage.setItem('storage', document.getElementById('storageToggle').checked)
 }
 
 export function emptyStorage () {
   window.localStorage.clear()
+}
+
+export function getStoredSettings () {
+  const pomodoro = window.localStorage.getItem('pomodoro')
+  const shortBreak = window.localStorage.getItem('shortBreak')
+  const longBreak = window.localStorage.getItem('longBreak')
+  const alarm = window.localStorage.getItem('alarm')
+  const ticking = window.localStorage.getItem('ticking')
+  const storage = window.localStorage.getItem('storage')
+
+  document.getElementById('pomodoroInput').value = pomodoro
+  document.getElementById('shortBreakInput').value = shortBreak
+  document.getElementById('longBreakInput').value = longBreak
+  document.getElementById('alarmDropdown').value = alarm
+  document.getElementById('tickToggle').value = ticking
+  document.getElementById('storageToggle').value = storage
 }
