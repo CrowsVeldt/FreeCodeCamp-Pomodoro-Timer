@@ -14,9 +14,7 @@ export function createStorageToggle () {
     populateStorage()
   })
 
-  if (storageAvailable('localStorage')) {
-    // ask user if they want to save their settings
-  } else {
+  if (!storageAvailable('localStorage')) {
     storageToggle.disabled = 'disabled'
     storageToggle.indeterminate = true
   }
