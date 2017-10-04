@@ -1,3 +1,5 @@
+'use strict'
+
 import styles from './progressCircle.css'
 
 let height = document.documentElement.clientHeight

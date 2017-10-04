@@ -35,16 +35,16 @@ timeLeft = pomodoro
 })
 
 export function beginTimer (timer = Timer(), display = TimerView()) {
-  if (tickingIsDesired()) {
-    let timerTick = document.getElementById('tick')
-    timerTick.play()
-  }
-
   timerActive = true
   timerID = setTimeout(checkTimer, 1000, timer, display)
   toggleSettingsMenu('hide')
   updateProgressCircle(0, 0)
   updateTimerView(display)
+
+  let timerTick = document.getElementById('tick')
+  if (tickingIsDesired()) {
+    timerTick.play()
+  }
 }
 
 export function endTimer () {

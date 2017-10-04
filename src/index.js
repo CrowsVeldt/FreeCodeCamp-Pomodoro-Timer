@@ -1,5 +1,7 @@
 import styles from './index.css'
 
+import {storageAvailable, getStoredSettings} from './input/storageHandler'
+
 import {createSettingsMenu, toggleSettingsMenu} from './input/settingsMenu.js'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
@@ -9,6 +11,10 @@ import {beginTimer, endTimer, timerActive} from './timer/timer.js'
 import {createProgressCircle} from './timer/progressCircle.js'
 
 document.body.appendChild(createSettingsMenu())
+
+if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
+  getStoredSettings()
+}
 
 document.body.appendChild(createTimerView())
 

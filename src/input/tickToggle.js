@@ -1,4 +1,8 @@
+'use strict'
+
 import {timerActive} from '../timer/timer.js'
+
+import {storageAvailable, populateStorage} from './storageHandler'
 
 export function createTickToggle () {
   const tickToggleLabel = document.createElement('label')
@@ -8,7 +12,6 @@ export function createTickToggle () {
   const tickToggle = document.createElement('input')
   tickToggle.setAttribute('type', 'checkbox')
   tickToggle.setAttribute('id', 'tickToggle')
-  tickToggle.checked = true
   tickToggleLabel.appendChild(tickToggle)
 
   tickToggleLabel.addEventListener('change', function () {
@@ -16,6 +19,10 @@ export function createTickToggle () {
       document.getElementById('tick').pause()
     } else if (tickingIsDesired && timerActive) {
       document.getElementById('tick').play()
+    }
+
+    if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
+      populateStorage()
     }
   })
 

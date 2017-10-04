@@ -3,6 +3,8 @@
 import watchAlarm from '../static/watchAlarm.mp3'
 import gongAlarm from '../static/gongAlarm.mp3'
 
+import {storageAvailable, populateStorage} from './storageHandler'
+
 export function createAlarmPicker () {
   let dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
@@ -23,6 +25,10 @@ export function createAlarmPicker () {
       chooseAlarmSound(watchAlarm)
     } else if (document.getElementById('alarmDropdown').value === 'Gong') {
       chooseAlarmSound(gongAlarm)
+    }
+
+    if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
+      populateStorage()
     }
   })
 
