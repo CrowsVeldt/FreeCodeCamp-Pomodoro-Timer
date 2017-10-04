@@ -52,7 +52,7 @@ Maybe a little? I've definitely found myself falling back on global (or at least
 I am still interested in making this project into a browser extension, but as it gets closer to being feature complete I am honestly losing interest in it. I am going to finish this project off to as high a level of polish as my motivation and ability will allow, and then I'll move onto something else, different learning goals. As I wrote above, maintaining motivation is the main priority for now. Besides: I'm in this for the long haul, there will be plenty of time to practice making browser extensions yet :-)
 
 ### Overall:
-Although I didn't mention it explicitly in the above paragraph my overall goal with this project, as with all of my projects, was too further familiarize myself with the techniques and tools of Fron End developement, and in that regard it has been an *enormous* success. Besides learning the basics of build tools and testing: I have improved my underastanding of JavaScript, the DOM, and the web platform as a whole. 
+Although I didn't mention it explicitly in the above paragraph my overall goal with this project, as with all of my projects, was too further familiarize myself with the techniques and tools of front-end web developement, and in that regard it has been an *enormous* success. Besides learning the basics of build tools and testing: I have improved my underastanding of JavaScript, the DOM, and the web platform as a whole. 
 
 ## Attributions: 
 
