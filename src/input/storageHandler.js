@@ -32,7 +32,6 @@ export function populateStorage () {
     window.localStorage.setItem('longBreak', document.getElementById('longBreakInput').value)
     window.localStorage.setItem('alarm', document.getElementById('alarmDropdown').value)
     window.localStorage.setItem('ticking', document.getElementById('tickToggle').checked)
-    window.localStorage.setItem('storage', document.getElementById('storageToggle').checked)
     // console.log(window.localStorage)
   } else {
     emptyStorage()
@@ -50,12 +49,12 @@ export function getStoredSettings () {
   const longBreak = window.localStorage.getItem('longBreak')
   const alarm = window.localStorage.getItem('alarm')
   const ticking = window.localStorage.getItem('ticking')
-  const storage = window.localStorage.getItem('storage')
 
   document.getElementById('pomodoroInput').value = pomodoro
   document.getElementById('shortBreakInput').value = shortBreak
   document.getElementById('longBreakInput').value = longBreak
   document.getElementById('alarmDropdown').value = alarm
   document.getElementById('tickToggle').checked = ticking
-  document.getElementById('storageToggle').checked = storage
+  // if this function is called then by definition storage should be true
+  document.getElementById('storageToggle').checked = true
 }
