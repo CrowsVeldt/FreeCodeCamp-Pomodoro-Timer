@@ -1,6 +1,6 @@
 # Overview
 
-A pomodoro timer inspired by [FreeCodeCamp's](https://www.freecodecamp.com) Front End course. I've written it initially as a simple web app, but I intend to refactor it as a browser extension as well.
+A pomodoro timer inspired by [FreeCodeCamp's](https://www.freecodecamp.com) Front End course.
 
 You can check it out [here!](https://crowsveldt.github.io/FreeCodeCamp-Pomodoro-Timer/)
 
@@ -13,26 +13,12 @@ You can check it out [here!](https://crowsveldt.github.io/FreeCodeCamp-Pomodoro-
  - I can push a button to open the settings menu, without stopping the timer.
  - When the timer reaches 0 an alarm sound plays, and a notification pops up. Then a timer starts for a break.
  - After 4 work periods there is a longer break.
-
- ### Extension:
- - I can add the extension to my browser, when I do a button appears on my toolbar.
- - When I click on the toolbar button a popup appears with a timer on it, I can start and stop the timer by pushing a button (or maybe clicking on the timer itself).
- - As the timer runs down the button will visibly change to show how much time has passed/is left
- - When the timer reaches 0, an alarm sound plays and a notification pops up
- - I can change the time of the timer
-
+ 
 ## UI:
 
  ### Full page: 
  - The timer will be the center of the view, with the settings menu hidden on the right side.
  - The timer will fill up clockwise as time passes
-
- ### Extension:
- - A toolbar button which opens a popup
- - The popup shows the time remaining, has buttons to stop/start, and the time can be changed
- - An indicator will show approximately how much time has passed/is left. Either change the toolbar button itself, or add a badge to it. (or both)
- - other than that it should work with the same code as the full page view.
-
 
 
 # Post (mid) Mortem:
@@ -40,6 +26,10 @@ You can check it out [here!](https://crowsveldt.github.io/FreeCodeCamp-Pomodoro-
 "I'm going to try to write it in a functional, and modular, style, and with TDD.
 
 My original intention was to use this project as an opportunity to learn how to write and use unit tests with Jest, but after falling down the tooling hole for a while I've built up a more complete/complex tooling chain also including Webpack and Babel. This diversion did take some time away from actual programming, but I feel it was worth it to familiarize myself with more of the tools and processes used in professional web developement."
+
+## And:
+
+"I've written it initially as a simple web app, but I intend to refactor it as a browser extension as well."
 
 ## What's actually happened:
 ### TDD: 
@@ -57,6 +47,9 @@ I've learned to set up and use Webpack, at least at a basic level, and have inte
 
 ### Functional:
 Maybe a little? I've definitely found myself falling back on global (or at least shared) variables more than I wanted, but I do think I've done a better job at reducing side effects and coupling than in my previous projects
+
+### Extension: 
+I am still interested in making this project into a browser extension, but as it gets closer to being feature complete I am honestly losing interest in it. I am going to finish this project off to as high a level of polish as my motivation and ability will allow, and then I'll move onto something else, different learning goals. As I wrote above, maintaining motivation is the main priority for now. Besides: I'm in this for the long haul, there will be plenty of time to practice making browser extensions yet :-)
 
 ### Overall:
 Although I didn't mention it explicitly in the above paragraph my overall goal with this project, as with all of my projects, was too further familiarize myself with the techniques and tools of Fron End developement, and in that regard it has been an *enormous* success. Besides learning the basics of build tools and testing: I have improved my underastanding of JavaScript, the DOM, and the web platform as a whole. 
