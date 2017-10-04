@@ -32,8 +32,10 @@ export function populateStorage () {
     window.localStorage.setItem('longBreak', document.getElementById('longBreakInput').value)
     window.localStorage.setItem('alarm', document.getElementById('alarmDropdown').value)
     window.localStorage.setItem('ticking', document.getElementById('tickToggle').checked)
+    // console.log(window.localStorage)
   } else {
     emptyStorage()
+    // console.log(window.localStorage)
   }
 }
 
@@ -42,6 +44,7 @@ export function emptyStorage () {
 }
 
 export function getStoredSettings () {
+  // console.log(window.localStorage)
   const pomodoro = window.localStorage.getItem('pomodoro')
   const shortBreak = window.localStorage.getItem('shortBreak')
   const longBreak = window.localStorage.getItem('longBreak')

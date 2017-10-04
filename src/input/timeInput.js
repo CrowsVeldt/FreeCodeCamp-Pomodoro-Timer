@@ -2,6 +2,8 @@
 
 import {timerActive} from '../timer/timer.js'
 
+import {storageAvailable, populateStorage} from './storageHandler'
+
 import {updateTimerView} from '../timer/timerView.js'
 
 const seconds = 60
@@ -42,6 +44,10 @@ export function createTimeInput (name, value, minValue, maxValue) {
   input.addEventListener('change', function () {
     if (input.value < minValue) {
       input.value = minValue
+    }
+
+    if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
+      populateStorage()
     }
   })
 
