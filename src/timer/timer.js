@@ -40,6 +40,11 @@ export function beginTimer (timer = Timer(), display = TimerView()) {
   toggleSettingsMenu('hide')
   updateProgressCircle(0, 0)
   updateTimerView(display)
+
+  let timerTick = document.getElementById('tick')
+  if (tickingIsDesired()) {
+    timerTick.play()
+  }
 }
 
 export function endTimer () {
