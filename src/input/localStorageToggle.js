@@ -1,6 +1,6 @@
 'use strict'
 
-import {storageAvailable} from './storageHandler'
+import {storageAvailable, populateStorage} from './storageHandler'
 
 export function createStorageToggle () {
   const storageToggleLabel = document.createElement('label')
@@ -10,6 +10,9 @@ export function createStorageToggle () {
   const storageToggle = document.createElement('input')
   storageToggle.setAttribute('type', 'checkbox')
   storageToggle.setAttribute('id', 'storageToggle')
+  storageToggle.addEventListener('change', function () {
+    populateStorage()
+  })
 
   if (storageAvailable('localStorage')) {
     // ask user if they want to save their settings
