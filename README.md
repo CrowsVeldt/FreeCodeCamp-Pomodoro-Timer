@@ -4,6 +4,7 @@ A pomodoro timer inspired by [FreeCodeCamp's](https://www.freecodecamp.com) Fron
 
 You can check it out [here!](https://crowsveldt.github.io/FreeCodeCamp-Pomodoro-Timer/)
 
+Note: I'm aware that as a general rule build files should not be comitted to source control. In this case I did it so I can host the timer on GitHub Pages.
 
 ## User Stories:
 
