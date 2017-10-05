@@ -7,8 +7,6 @@ You can check it out [here!](https://crowsveldt.github.io/FreeCodeCamp-Pomodoro-
 Note: I'm aware that as a general rule build files should not be comitted to source control. In this case I did it so I can host the timer on GitHub Pages.
 
 ## User Stories:
-
- ### Full Page:
  - When I open the app I see a timer. I can press on the timer to start it. I can stop the timer by pressing on it again.
  - When I stop the timer a settings menu opens where I can change the times for the work and break periods.
  - I can push a button to open the settings menu, without stopping the timer.
@@ -16,8 +14,6 @@ Note: I'm aware that as a general rule build files should not be comitted to sou
  - After 4 work periods there is a longer break.
  
 ## UI:
-
- ### Full page: 
  - The timer will be the center of the view, with the settings menu hidden on the right side.
  - The timer will fill up clockwise as time passes
 
