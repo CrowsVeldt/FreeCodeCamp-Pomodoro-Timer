@@ -59,8 +59,8 @@ export function updateTimerView (view = TimerView()) {
 }
 
 function formatTime (timeInSeconds) {
-  let seconds = timeInSeconds % 60
-  let minutes = Math.floor(timeInSeconds / 60)
+  const seconds = timeInSeconds % 60
+  const minutes = Math.floor(timeInSeconds / 60)
 
   if (seconds === 0) {
     return minutes + ':00'

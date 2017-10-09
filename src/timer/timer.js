@@ -41,7 +41,7 @@ export function beginTimer (timer = Timer(), display = TimerView()) {
   updateProgressCircle(0, 0)
   updateTimerView(display)
 
-  let timerTick = document.getElementById('tick')
+  const timerTick = document.getElementById('tick')
   if (tickingIsDesired()) {
     timerTick.play()
   }
@@ -54,19 +54,19 @@ export function endTimer () {
   updateTimerView()
   updateProgressCircle(0, 0)
 
-  let timerTick = document.getElementById('tick')
+  const timerTick = document.getElementById('tick')
   timerTick.pause()
 }
 
 function checkTimer (timerToCheck, display) {
-  let currentTime = new Date().getTime()
+  const currentTime = new Date().getTime()
   timerToCheck.timeLeft--
   updateTimerView(TimerView({
     title: display.title,
     time: timerToCheck.timeLeft
   }))
 
-  let totalTime = (timerToCheck.endTime - timerToCheck.startTime) / 1000
+  const totalTime = (timerToCheck.endTime - timerToCheck.startTime) / 1000
   updateProgressCircle(totalTime, (totalTime - timerToCheck.timeLeft))
 
   if (currentTime >= timerToCheck.endTime) {
@@ -77,14 +77,14 @@ function checkTimer (timerToCheck, display) {
 }
 
 function finishTimer (previousTimer) {
-  let newStartTime = new Date().getTime()
+  const newStartTime = new Date().getTime()
 
   if (document.getElementById('alarm') !== null) {
-    let alarm = document.getElementById('alarm')
+    const alarm = document.getElementById('alarm')
     alarm.play()
   }
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
-    let newEndtime = newStartTime + (previousTimer.shortBreak * milliseconds)
+    const newEndtime = newStartTime + (previousTimer.shortBreak * milliseconds)
 
     notify('You finished, Take a short break!', 'Short Break Started')
     beginTimer(Timer({
@@ -100,7 +100,7 @@ function finishTimer (previousTimer) {
       time: previousTimer.shortBreak
     }))
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
-    let newEndtime = newStartTime + (previousTimer.longBreak * milliseconds)
+    const newEndtime = newStartTime + (previousTimer.longBreak * milliseconds)
 
     notify('Four in a row! Take a long one, dude.', 'Long Break Started')
     beginTimer(Timer({
@@ -116,7 +116,7 @@ function finishTimer (previousTimer) {
       time: previousTimer.longBreak
     }))
   } else {
-    let newEndtime = newStartTime + (previousTimer.pomodoro * milliseconds)
+    const newEndtime = newStartTime + (previousTimer.pomodoro * milliseconds)
 
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     beginTimer(Timer({
@@ -134,17 +134,17 @@ function finishTimer (previousTimer) {
 }
 
 function notify (theBody, theTitle) {
-  let options = {
+  const options = {
     body: theBody,
     icon: Icon
   }
-  let n = new Notification(theTitle, options)
+  const n = new Notification(theTitle, options)
   // close the notification for systems which don't close it automatically
   setTimeout(n.close.bind(n), 7000)
 
   n.onclick = function (event) {
     if (document.getElementById('alarm') !== null) {
-      let alarm = document.getElementById('alarm')
+      const alarm = document.getElementById('alarm')
       alarm.pause()
     }
   }

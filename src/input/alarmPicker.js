@@ -6,14 +6,14 @@ import gongAlarm from '../static/gongAlarm.mp3'
 import {storageAvailable, populateStorage} from './storageHandler'
 
 export function createAlarmPicker () {
-  let dropdown = document.createElement('select')
+  const dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
 
-  let watchOption = document.createElement('option')
+  const watchOption = document.createElement('option')
   watchOption.setAttribute('value', 'Watch Alarm')
   watchOption.innerHTML = 'Watch Alarm'
 
-  let gongOption = document.createElement('option')
+  const gongOption = document.createElement('option')
   gongOption.setAttribute('value', 'Gong')
   gongOption.innerHTML = 'Gong'
 
@@ -36,6 +36,6 @@ export function createAlarmPicker () {
 }
 
 export function chooseAlarmSound (name) {
-  let alarm = document.getElementById('alarm')
+  const alarm = document.getElementById('alarm')
   alarm.setAttribute('src', name)
 }
