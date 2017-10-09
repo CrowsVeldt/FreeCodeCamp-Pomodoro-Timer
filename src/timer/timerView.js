@@ -1,5 +1,3 @@
-'use strict'
-
 import watchAlarm from '../static/watchAlarm.mp3'
 
 import tick from '../static/tick.ogg'

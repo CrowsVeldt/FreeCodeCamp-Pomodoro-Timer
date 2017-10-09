@@ -1,5 +1,3 @@
-'use strict'
-
 import {timerActive} from '../timer/timer.js'
 
 import {storageAvailable, populateStorage} from './storageHandler'

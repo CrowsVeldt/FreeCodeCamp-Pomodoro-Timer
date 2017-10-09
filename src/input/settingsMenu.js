@@ -1,5 +1,3 @@
-'use strict'
-
 import styles from './settingsMenu.css'
 
 import {createTickToggle} from './tickToggle'

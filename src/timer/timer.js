@@ -1,5 +1,3 @@
-'use strict'
-
 import {TimerView, updateTimerView} from './timerView.js'
 
 import {toggleSettingsMenu, getInputValue} from '../input/settingsMenu.js'

@@ -1,5 +1,3 @@
-'use strict'
-
 export function storageAvailable (type) {
   // this function is from MDN
   try {
