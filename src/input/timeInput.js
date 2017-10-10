@@ -1,5 +1,3 @@
-'use strict'
-
 import {timerActive} from '../timer/timer.js'
 
 import {storageAvailable, populateStorage} from './storageHandler'
@@ -34,10 +32,7 @@ export function createTimeInput (name, value, minValue, maxValue) {
       // Prevent ugly values like '06'
       input.value = input.value.toString().substr(1)
     } else if (timerActive === false && input.value >= minValue && input.value <= maxValue) {
-      updateTimerView({
-        title: name,
-        time: input.value * seconds
-      })
+      updateTimerView(name, input.value * seconds)
     }
   })
 

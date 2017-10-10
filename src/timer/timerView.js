@@ -1,20 +1,10 @@
-'use strict'
-
 import watchAlarm from '../static/watchAlarm.mp3'
 
 import tick from '../static/tick.ogg'
 
 import styles from './timer.css'
 
-import {Timer, timerActive, beginTimer, endTimer} from './timer.js'
-
-export const TimerView = ({
-  title = 'Pomodoro',
-  time = Timer().pomodoro
-} = {}) => ({
-  title,
-  time
-})
+import {timerActive, beginTimer, endTimer} from './timer.js'
 
 export function createTimerView () {
   const newTimerView = document.createElement('div')
@@ -42,7 +32,7 @@ export function createTimerView () {
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
     if (timerActive === false) {
-      beginTimer(Timer(), TimerView())
+      beginTimer()
     } else if (timerActive === true) {
       endTimer()
     }
@@ -51,16 +41,16 @@ export function createTimerView () {
   return newTimerView
 }
 
-export function updateTimerView (view = TimerView()) {
+export function updateTimerView (title, time) {
   const timerElement = document.getElementById('timer')
 
-  timerElement.childNodes[0].innerHTML = view.title
-  timerElement.childNodes[1].innerHTML = formatTime(view.time)
+  timerElement.childNodes[0].innerHTML = title
+  timerElement.childNodes[1].innerHTML = formatTime(time)
 }
 
 function formatTime (timeInSeconds) {
-  let seconds = timeInSeconds % 60
-  let minutes = Math.floor(timeInSeconds / 60)
+  const seconds = timeInSeconds % 60
+  const minutes = Math.floor(timeInSeconds / 60)
 
   if (seconds === 0) {
     return minutes + ':00'

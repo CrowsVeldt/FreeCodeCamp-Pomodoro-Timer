@@ -1,5 +1,3 @@
-'use strict'
-
 import {storageAvailable, populateStorage} from './storageHandler'
 
 export function createStorageToggle () {
