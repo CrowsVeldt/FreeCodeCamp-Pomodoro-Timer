@@ -1,4 +1,4 @@
-import {TimerView, updateTimerView} from './timerView.js'
+import {updateTimerView} from './timerView.js'
 
 import {toggleSettingsMenu, getInputValue} from '../input/settingsMenu.js'
 
@@ -90,10 +90,7 @@ function finishTimer (previousTimer) {
       currentActivity: 'shortBreak',
       endTime: newEndtime,
       timeLeft: previousTimer.shortBreak
-    }), TimerView({
-      title: 'Short Break',
-      time: previousTimer.shortBreak
-    }))
+    }), 'Short Break', previousTimer.shortBreak)
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
     const newEndtime = newStartTime + (previousTimer.longBreak * milliseconds)
 
@@ -106,10 +103,7 @@ function finishTimer (previousTimer) {
       currentActivity: 'longBreak',
       endTime: newEndtime,
       timeLeft: previousTimer.longBreak
-    }), TimerView({
-      title: 'Long Break',
-      time: previousTimer.longBreak
-    }))
+    }), 'Long Break', previousTimer.longBreak)
   } else {
     const newEndtime = newStartTime + (previousTimer.pomodoro * milliseconds)
 
@@ -121,10 +115,7 @@ function finishTimer (previousTimer) {
       pomodoroCount: previousTimer.pomodoroCount,
       endTime: newEndtime,
       timeLeft: previousTimer.pomodoro
-    }), TimerView({
-      title: 'Pomodoro',
-      time: previousTimer.pomodoro
-    }))
+    }), 'Pomodoro', previousTimer.pomodoro)
   }
 }
 
