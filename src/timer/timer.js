@@ -13,15 +13,15 @@ let timerID = 0
 const milliseconds = 1000
 
 export const Timer = ({
-startTime = new Date().getTime(),
-pomodoro = getInputValue('pomodoroInput'),
-shortBreak = getInputValue('shortBreakInput'),
-longBreak = getInputValue('longBreakInput'),
-pomodoroCount = 0,
-currentActivity = 'pomodoro',
-endTime = startTime + (pomodoro * milliseconds),
-timeLeft = pomodoro
-} = {}) => ({
+startTime,
+pomodoro,
+shortBreak,
+longBreak,
+pomodoroCount,
+currentActivity,
+endTime,
+timeLeft
+}) => ({
   startTime,
   pomodoro,
   shortBreak,
@@ -32,7 +32,16 @@ timeLeft = pomodoro
   timeLeft
 })
 
-export function beginTimer (timer = Timer(), title, time) {
+export function beginTimer (timer = Timer({
+  startTime: new Date().getTime(),
+  pomodoro: getInputValue('pomodoroInput'),
+  shortBreak: getInputValue('shortBreakInput'),
+  longBreak: getInputValue('longBreakInput'),
+  pomodoroCount: 0,
+  currentActivity: 'pomodoro',
+  endTime: new Date().getTime() + (getInputValue('pomodoroInput') * milliseconds),
+  timeLeft: getInputValue('pomodoroInput')
+}), title = 'Pomodoro', time = getInputValue('pomodoroInput')) {
   timerActive = true
   timerID = setTimeout(checkTimer, 1000, timer, title, time)
   toggleSettingsMenu('hide')
@@ -49,8 +58,6 @@ export function endTimer () {
   timerActive = false
   clearTimeout(timerID)
   toggleSettingsMenu('show')
-  updateTimerView('Pomodoro', Timer().pomodoro)
-  updateProgressCircle(0, 0)
 
   const timerTick = document.getElementById('tick')
   timerTick.pause()
@@ -72,17 +79,17 @@ function checkTimer (timerToCheck, title, time) {
 }
 
 function finishTimer (previousTimer) {
-  const newStartTime = new Date().getTime()
-
   if (document.getElementById('alarm') !== null) {
     const alarm = document.getElementById('alarm')
     alarm.play()
   }
   if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
+    const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.shortBreak * milliseconds)
 
     notify('You finished, Take a short break!', 'Short Break Started')
     beginTimer(Timer({
+      startTime: newStartTime,
       pomodoro: previousTimer.pomodoro,
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
@@ -92,10 +99,12 @@ function finishTimer (previousTimer) {
       timeLeft: previousTimer.shortBreak
     }), 'Short Break', previousTimer.shortBreak)
   } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
+    const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.longBreak * milliseconds)
 
     notify('Four in a row! Take a long one, dude.', 'Long Break Started')
     beginTimer(Timer({
+      startTime: newStartTime,
       pomodoro: previousTimer.pomodoro,
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
@@ -105,14 +114,17 @@ function finishTimer (previousTimer) {
       timeLeft: previousTimer.longBreak
     }), 'Long Break', previousTimer.longBreak)
   } else {
+    const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.pomodoro * milliseconds)
 
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     beginTimer(Timer({
+      startTime: newStartTime,
       pomodoro: previousTimer.pomodoro,
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
       pomodoroCount: previousTimer.pomodoroCount,
+      currentActivity: 'pomodoro',
       endTime: newEndtime,
       timeLeft: previousTimer.pomodoro
     }), 'Pomodoro', previousTimer.pomodoro)

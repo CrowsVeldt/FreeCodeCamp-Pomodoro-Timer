@@ -4,7 +4,7 @@ import tick from '../static/tick.ogg'
 
 import styles from './timer.css'
 
-import {Timer, timerActive, beginTimer, endTimer} from './timer.js'
+import {timerActive, beginTimer, endTimer} from './timer.js'
 
 export function createTimerView () {
   const newTimerView = document.createElement('div')
@@ -32,7 +32,7 @@ export function createTimerView () {
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
     if (timerActive === false) {
-      beginTimer(Timer(), 'Pomodoro', Timer().pomodoro)
+      beginTimer()
     } else if (timerActive === true) {
       endTimer()
     }

@@ -6,7 +6,7 @@ import {createSettingsMenu, toggleSettingsMenu} from './input/settingsMenu.js'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
-import {Timer, beginTimer, endTimer, timerActive} from './timer/timer.js'
+import {beginTimer, endTimer, timerActive} from './timer/timer.js'
 
 import {createProgressCircle} from './timer/progressCircle.js'
 
@@ -35,7 +35,7 @@ document.body.addEventListener('keydown', function (event) {
     }
   } else if (event.key === ' ' || event.key === 'Spacebar') {
     if (timerActive === false) {
-      beginTimer(Timer(), 'Pomodoro', Timer().pomodoro)
+      beginTimer()
     } else {
       endTimer()
     }
