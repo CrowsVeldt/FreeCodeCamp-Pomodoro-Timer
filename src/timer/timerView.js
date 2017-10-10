@@ -6,14 +6,6 @@ import styles from './timer.css'
 
 import {Timer, timerActive, beginTimer, endTimer} from './timer.js'
 
-export const TimerView = ({
-  title = 'Pomodoro',
-  time = Timer().pomodoro
-} = {}) => ({
-  title,
-  time
-})
-
 export function createTimerView () {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
@@ -40,7 +32,7 @@ export function createTimerView () {
   newTimerView.classList.add(styles.timer)
   newTimerView.addEventListener('click', () => {
     if (timerActive === false) {
-      beginTimer(Timer(), TimerView())
+      beginTimer(Timer(), 'Pomodoro', Timer().pomodoro)
     } else if (timerActive === true) {
       endTimer()
     }
@@ -49,11 +41,11 @@ export function createTimerView () {
   return newTimerView
 }
 
-export function updateTimerView (view = TimerView()) {
+export function updateTimerView (title, time) {
   const timerElement = document.getElementById('timer')
 
-  timerElement.childNodes[0].innerHTML = view.title
-  timerElement.childNodes[1].innerHTML = formatTime(view.time)
+  timerElement.childNodes[0].innerHTML = title
+  timerElement.childNodes[1].innerHTML = formatTime(time)
 }
 
 function formatTime (timeInSeconds) {

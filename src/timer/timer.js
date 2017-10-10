@@ -32,12 +32,12 @@ timeLeft = pomodoro
   timeLeft
 })
 
-export function beginTimer (timer = Timer(), display = TimerView()) {
+export function beginTimer (timer = Timer(), title, time) {
   timerActive = true
-  timerID = setTimeout(checkTimer, 1000, timer, display)
+  timerID = setTimeout(checkTimer, 1000, timer, title, time)
   toggleSettingsMenu('hide')
   updateProgressCircle(0, 0)
-  updateTimerView(display)
+  updateTimerView(title, time)
 
   const timerTick = document.getElementById('tick')
   if (tickingIsDesired()) {
@@ -49,20 +49,17 @@ export function endTimer () {
   timerActive = false
   clearTimeout(timerID)
   toggleSettingsMenu('show')
-  updateTimerView()
+  updateTimerView('Pomodoro', Timer().pomodoro)
   updateProgressCircle(0, 0)
 
   const timerTick = document.getElementById('tick')
   timerTick.pause()
 }
 
-function checkTimer (timerToCheck, display) {
+function checkTimer (timerToCheck, title, time) {
   const currentTime = new Date().getTime()
   timerToCheck.timeLeft--
-  updateTimerView(TimerView({
-    title: display.title,
-    time: timerToCheck.timeLeft
-  }))
+  updateTimerView(title, timerToCheck.timeLeft)
 
   const totalTime = (timerToCheck.endTime - timerToCheck.startTime) / 1000
   updateProgressCircle(totalTime, (totalTime - timerToCheck.timeLeft))
@@ -70,7 +67,7 @@ function checkTimer (timerToCheck, display) {
   if (currentTime >= timerToCheck.endTime) {
     finishTimer(timerToCheck)
   } else {
-    timerID = setTimeout(checkTimer, 1000, timerToCheck, display)
+    timerID = setTimeout(checkTimer, 1000, timerToCheck, title, time)
   }
 }
 
