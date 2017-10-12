@@ -18,21 +18,24 @@ export function createAlarmPicker () {
   dropdown.appendChild(watchOption)
   dropdown.appendChild(gongOption)
 
-  dropdown.addEventListener('change', function (event, optionalUrl) {
-    if (document.getElementById('alarmDropdown').value === 'watchAlarm') {
-      chooseAlarmSound(watchAlarm)
-    } else if (document.getElementById('alarmDropdown').value === 'gong') {
-      chooseAlarmSound(gongAlarm)
-    } /* else if (document.getElementById('alarmDropdown').value === 'userInputAlarm') {
-      chooseAlarmSound(optionalUrl)
-    } */
-
-    if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
-      populateStorage()
-    }
-  })
+  dropdown.addEventListener('change', setAlarm)
 
   return dropdown
+}
+
+function setAlarm (alarmID) {
+  if (document.getElementById('alarmDropdown').value === 'watchAlarm') {
+    chooseAlarmSound(watchAlarm)
+  } else if (document.getElementById('alarmDropdown').value === 'gong') {
+    chooseAlarmSound(gongAlarm)
+  }
+  // else if (document.getElementById('alarmDropdown').value === 'userInputAlarm') {
+  //   chooseAlarmSound(optionalUrl)
+  // }
+
+  if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
+    populateStorage()
+  }
 }
 
 export function chooseAlarmSound (name) {
