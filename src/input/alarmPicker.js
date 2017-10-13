@@ -3,56 +3,72 @@ import gongAlarm from '../static/gongAlarm.mp3'
 
 import {storageAvailable, populateStorage} from './storageHandler'
 
+const alarmOptions = [
+  {
+    name: 'Watch',
+    value: '0',
+    source: watchAlarm
+  },
+  {
+    name: 'Gong',
+    value: '1',
+    source: gongAlarm
+  }
+
+]
+
 export function createAlarmPicker () {
   const dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
 
-  const watchOption = document.createElement('option')
-  watchOption.setAttribute('value', 'watchAlarm')
-  watchOption.innerHTML = 'Watch Alarm'
+  alarmOptions.forEach(function (option) {
+    const watchOption = document.createElement('option')
+    watchOption.setAttribute('value', option.value)
+    watchOption.innerHTML = option.name
+    dropdown.appendChild(watchOption)
+  })
 
-  const gongOption = document.createElement('option')
-  gongOption.setAttribute('value', 'gongAlarm')
-  gongOption.innerHTML = 'Gong'
-
-  dropdown.appendChild(watchOption)
-  dropdown.appendChild(gongOption)
-
-  dropdown.addEventListener('change', setAlarm)
+  dropdown.addEventListener('change', function () {
+    setAlarm(document.getElementById('alarmDropdown').value)
+  })
 
   return dropdown
 }
 
-function setAlarm () {
-  if (document.getElementById('alarmDropdown').value === 'watchAlarm') {
-    chooseAlarmSound(watchAlarm)
-  } else if (document.getElementById('alarmDropdown').value === 'gongAlarm') {
-    chooseAlarmSound(gongAlarm)
-  }
-  // else if (document.getElementById('alarmDropdown').value === 'userInputAlarm') {
-  //   chooseAlarmSound(optionalUrl)
-  // }
+function updateAlarmPicker () {
+  const dropdown = document.getElementById('alarmDropdown')
 
+  while (dropdown.hasChildNodes()) {
+    dropdown.removeChild(dropdown.lastChild)
+  }
+
+  alarmOptions.forEach(function (option) {
+    const watchOption = document.createElement('option')
+    watchOption.setAttribute('value', option.value)
+    watchOption.innerHTML = option.name
+    dropdown.appendChild(watchOption)
+  })
+}
+
+function setAlarm (number) {
+  const alarm = document.getElementById('alarm')
+  alarm.setAttribute('src', alarmOptions[number].source)
+  // How can I save user added alarms? Save file location?
   if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
     populateStorage()
   }
 }
 
-export function chooseAlarmSound (name) {
-  const alarm = document.getElementById('alarm')
-  alarm.setAttribute('src', name)
-}
-
 export function addAlarm (URL, fileName) {
-  chooseAlarmSound(URL)
+  alarmOptions.push({
+    // remove file suffix with String.prototype.slice
+    name: fileName,
+    value: alarmOptions.length,
+    source: URL
+  })
+  setAlarm(alarmOptions.length - 1)
+  updateAlarmPicker()
 
-  // How to get the objectURL to the event listener on the dropdown menu?
-  const alarmDropdown = document.getElementById('alarmDropdown')
-  const userAlarm = document.createElement('option')
-
-  userAlarm.setAttribute('value', 'userInputAlarm')
-  // use String.replace to clean up the fileName here
-  userAlarm.innerHTML = fileName
-
-  alarmDropdown.appendChild(userAlarm)
+  const dropdown = document.getElementById('alarmDropdown')
+  dropdown.value = alarmOptions.length - 1
 }
