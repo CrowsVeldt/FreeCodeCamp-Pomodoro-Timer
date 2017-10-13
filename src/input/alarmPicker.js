@@ -23,10 +23,10 @@ export function createAlarmPicker () {
   return dropdown
 }
 
-function setAlarm (alarmID) {
+function setAlarm () {
   if (document.getElementById('alarmDropdown').value === 'watchAlarm') {
     chooseAlarmSound(watchAlarm)
-  } else if (document.getElementById('alarmDropdown').value === 'gong') {
+  } else if (document.getElementById('alarmDropdown').value === 'gongAlarm') {
     chooseAlarmSound(gongAlarm)
   }
   // else if (document.getElementById('alarmDropdown').value === 'userInputAlarm') {

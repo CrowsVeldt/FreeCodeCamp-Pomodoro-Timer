@@ -15,13 +15,9 @@ export function createFilePicker () {
   filePicker.addEventListener('change', function () {
     // Check the file is a valid audio file here
     const selectedFile = document.getElementById('file').files[0]
-    handleFiles(selectedFile, selectedFile.name)
+    const objectURL = window.URL.createObjectURL(selectedFile)
+    addAlarm(objectURL, selectedFile.name)
   })
 
   return fileLabel
-}
-
-function handleFiles (file, fileName) {
-  const objectURL = window.URL.createObjectURL(file)
-  addAlarm(objectURL, fileName)
 }
