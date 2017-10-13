@@ -34,7 +34,7 @@ module.exports = merge(common, {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
-    new CleanWebpackPlugin('docs'),
+    new CleanWebpackPlugin('build'),
     new ExtractTextPlugin('style.css'),
     new HtmlWebpackPlugin({
       title: 'Pomodoro Timer'
