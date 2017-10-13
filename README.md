@@ -4,7 +4,7 @@ A pomodoro timer inspired by [FreeCodeCamp's](https://www.freecodecamp.com) Fron
 
 ~~Note: I'm aware that as a general rule build files should not be comitted to source control. In this case I did it so I can host the timer on GitHub Pages.~~
 
-Now deployed to Surge! [Check it out here!](pomodorotimer.surge.sh)
+Now deployed to Surge! [Check it out here!](https://www.pomodorotimer.surge.sh)
 
 ## User Stories:
  - When I open the app I see a timer. I can press on the timer to start it. I can stop the timer by pressing on it again.
