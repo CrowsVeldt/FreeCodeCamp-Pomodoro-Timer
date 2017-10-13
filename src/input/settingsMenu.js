@@ -8,6 +8,8 @@ import {createTimeInput} from './timeInput'
 
 import {createStorageToggle} from './localStorageToggle'
 
+import {createFilePicker} from './filePicker'
+
 const seconds = 60
 const maxValue = 60
 const minValue = 1
@@ -49,6 +51,7 @@ export function createSettingsMenu () {
   settingsMenu.appendChild(createAlarmPicker())
   settingsMenu.appendChild(createTickToggle())
   settingsMenu.appendChild(createStorageToggle())
+  settingsMenu.appendChild(createFilePicker())
   settingsParent.appendChild(settingsToggle)
   settingsParent.appendChild(settingsMenu)
 
