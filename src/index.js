@@ -1,10 +1,10 @@
 import styles from './index.css'
 
-import {storageAvailable, getStoredSettings} from './input/storageHandler'
+import {storageAvailable, getStoredSettings} from './settings/storageHandler'
 
-import {createSettingsMenu, toggleSettingsMenu} from './input/settingsMenu.js'
+import {createSettingsMenu, toggleSettingsMenu} from './settings/settingsMenu.js'
 
-import {createSettingsToggle} from './input/settingsMenuToggle'
+import {createSettingsToggle} from './settings/settingsMenuToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
