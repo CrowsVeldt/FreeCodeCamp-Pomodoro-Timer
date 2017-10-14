@@ -54,6 +54,8 @@ function formatTime (timeInSeconds) {
 
   if (seconds === 0) {
     return minutes + ':00'
+  } else if (minutes <= 0 && timeInSeconds < 60) {
+    return seconds
   } else if (seconds < 10) {
     return minutes + ':0' + seconds
   } else {
