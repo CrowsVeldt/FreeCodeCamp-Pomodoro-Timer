@@ -4,19 +4,21 @@ import {storageAvailable, getStoredSettings} from './input/storageHandler'
 
 import {createSettingsMenu, toggleSettingsMenu} from './input/settingsMenu.js'
 
-import {createTimerView, updateTimerView} from './timer/timerView.js'
+import {createSettingsToggle} from './input/settingsMenuToggle'
 
-import {beginTimer, endTimer, timerActive} from './timer/timer.js'
+import {createTimerView, updateTimerView} from './timer/timerView.js'
 
 import {createProgressCircle} from './timer/progressCircle.js'
 
 const seconds = 60
 
-document.body.appendChild(createSettingsMenu())
-
 document.body.appendChild(createTimerView())
 
 document.body.appendChild(createProgressCircle())
+
+document.body.appendChild(createSettingsToggle())
+
+document.body.appendChild(createSettingsMenu())
 
 if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
   getStoredSettings()
@@ -33,12 +35,13 @@ document.body.addEventListener('keydown', function (event) {
     } else {
       toggleSettingsMenu('hide')
     }
-  } else if (event.key === ' ' || event.key === 'Spacebar') {
-    if (timerActive === false) {
-      beginTimer()
-    } else {
-      endTimer()
-    }
+  }
+})
+
+document.body.addEventListener('click', function () {
+  let settings = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
+  if (settings === 'visible') {
+    toggleSettingsMenu('hide')
   }
 })
 

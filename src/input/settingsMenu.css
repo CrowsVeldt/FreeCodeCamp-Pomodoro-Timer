@@ -11,52 +11,26 @@ label {
   user-select: none;
 }
 
-.settingsParent {
-  position: relative;
-  align-self: flex-end;
-  height: 100vh;
-  width: 200px;
-}
-
-.settingsToggle {
-  position: absolute;
-  top: calc(50% - 50px);
-  height: 100px;
-  width: 30px;
-  font-size: 20px;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  transition: left 0.2s;
-}
-
-.toggleWhenMenuHidden {
-  left: 180px;
-}
-
-.toggleWhenMenuVisible {
-  left: 20px;
-}
-
 .settingsMenu {
   position: absolute;
-  height: 80vh;
-  width: 150px;
-  top: calc(50% - 40vh);
+  top: 1vh;
+  height: 99vh;
+  width: 33vw;
 
   background-color: tan;
-  border: 1px solid black;
-  transition: visibility 0.05s, left 0.2s;
+  border: 1px solid black; 
+
+  transition: visibility 0.05s, right 0.1s;
 }
 
 .hidden {
   visibility: hidden;
-  left: 105%;
+  right: -50px;
 }
 
 .visible {
   visibility: visible;
-  left: 25%;
+  right: 0px;
   display: flex;
   flex-direction: column;
 }

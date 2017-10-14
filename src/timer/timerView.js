@@ -9,6 +9,7 @@ import {timerActive, beginTimer, endTimer} from './timer.js'
 export function createTimerView () {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
+  newTimerView.setAttribute('tabindex', '0')
 
   const timerTitle = document.createElement('p')
   timerTitle.setAttribute('class', styles.title)
@@ -33,11 +34,22 @@ export function createTimerView () {
   newTimerView.appendChild(alarmElement)
   newTimerView.appendChild(tickElement)
   newTimerView.classList.add(styles.timer)
+
   newTimerView.addEventListener('click', () => {
     if (timerActive === false) {
       beginTimer()
     } else if (timerActive === true) {
       endTimer()
+    }
+  })
+
+  newTimerView.addEventListener('keydown', function (event) {
+    if (event.key === ' ' || event.key === 'Spacebar') {
+      if (timerActive === false) {
+        beginTimer()
+      } else {
+        endTimer()
+      }
     }
   })
 

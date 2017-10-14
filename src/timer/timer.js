@@ -1,6 +1,6 @@
 import {updateTimerView} from './timerView.js'
 
-import {toggleSettingsMenu, getInputValue} from '../input/settingsMenu.js'
+import {getInputValue} from '../input/settingsMenu.js'
 
 import {tickingIsDesired} from '../input/tickToggle'
 
@@ -44,7 +44,6 @@ export function beginTimer (timer = Timer({
 })) {
   timerActive = true
   timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)
-  toggleSettingsMenu('hide')
   updateProgressCircle(0, 0)
   updateTimerView(timer.currentActivity, timer.timeLeft, timer.pomodoroCount)
 
@@ -57,7 +56,6 @@ export function beginTimer (timer = Timer({
 export function endTimer () {
   timerActive = false
   clearTimeout(timerID)
-  toggleSettingsMenu('show')
 
   const timerTick = document.getElementById('tick')
   timerTick.pause()
