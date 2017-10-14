@@ -24,3 +24,7 @@
 .title {
   cursor: pointer;
 }
+
+.pomodoroCounter {
+  color: red;
+}

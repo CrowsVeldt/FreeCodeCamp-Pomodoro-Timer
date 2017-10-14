@@ -16,6 +16,7 @@ export function createTimerView () {
   const timerDisplay = document.createElement('p')
 
   const pomodoroCounter = document.createElement('p')
+  pomodoroCounter.setAttribute('class', styles.pomodoroCounter)
 
   const alarmElement = document.createElement('audio')
   alarmElement.setAttribute('src', watchAlarm)
@@ -48,7 +49,7 @@ export function updateTimerView (title, time, pomodoroCount) {
 
   timerElement.childNodes[0].innerHTML = title
   timerElement.childNodes[1].innerHTML = formatTime(time)
-  timerElement.childNodes[2].innerHTML = pomodoroCount
+  timerElement.childNodes[2].innerHTML = 'X'.repeat(pomodoroCount)
 }
 
 function formatTime (timeInSeconds) {

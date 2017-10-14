@@ -38,15 +38,15 @@ export function beginTimer (timer = Timer({
   shortBreak: getInputValue('shortBreakInput'),
   longBreak: getInputValue('longBreakInput'),
   pomodoroCount: 0,
-  currentActivity: 'pomodoro',
+  currentActivity: 'Pomodoro',
   endTime: new Date().getTime() + (getInputValue('pomodoroInput') * milliseconds),
   timeLeft: getInputValue('pomodoroInput')
-}), title = 'Pomodoro', time = getInputValue('pomodoroInput')) {
+})) {
   timerActive = true
-  timerID = setTimeout(checkTimer, 1000, timer, title, time)
+  timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)
   toggleSettingsMenu('hide')
   updateProgressCircle(0, 0)
-  updateTimerView(title, time, timer.pomodoroCount)
+  updateTimerView(timer.currentActivity, timer.timeLeft, timer.pomodoroCount)
 
   const timerTick = document.getElementById('tick')
   if (tickingIsDesired()) {
@@ -83,7 +83,7 @@ function finishTimer (previousTimer) {
     const alarm = document.getElementById('alarm')
     alarm.play()
   }
-  if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount < 3) {
+  if (previousTimer.currentActivity === 'Pomodoro' && previousTimer.pomodoroCount < 3) {
     const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.shortBreak * milliseconds)
 
@@ -94,11 +94,11 @@ function finishTimer (previousTimer) {
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
       pomodoroCount: previousTimer.pomodoroCount + 1,
-      currentActivity: 'shortBreak',
+      currentActivity: 'Short Break',
       endTime: newEndtime,
       timeLeft: previousTimer.shortBreak
-    }), 'Short Break', previousTimer.shortBreak)
-  } else if (previousTimer.currentActivity === 'pomodoro' && previousTimer.pomodoroCount >= 3) {
+    }))
+  } else if (previousTimer.currentActivity === 'Pomodoro' && previousTimer.pomodoroCount >= 3) {
     const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.longBreak * milliseconds)
 
@@ -109,10 +109,10 @@ function finishTimer (previousTimer) {
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
       pomodoroCount: 0,
-      currentActivity: 'longBreak',
+      currentActivity: 'Long Break',
       endTime: newEndtime,
       timeLeft: previousTimer.longBreak
-    }), 'Long Break', previousTimer.longBreak)
+    }))
   } else {
     const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.pomodoro * milliseconds)
@@ -124,10 +124,10 @@ function finishTimer (previousTimer) {
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
       pomodoroCount: previousTimer.pomodoroCount,
-      currentActivity: 'pomodoro',
+      currentActivity: 'Pomodoro',
       endTime: newEndtime,
       timeLeft: previousTimer.pomodoro
-    }), 'Pomodoro', previousTimer.pomodoro)
+    }))
   }
 }
 
