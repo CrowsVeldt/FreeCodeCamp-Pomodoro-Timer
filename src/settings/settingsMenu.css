@@ -13,24 +13,26 @@ label {
 
 .settingsMenu {
   position: absolute;
-  top: 1vh;
-  height: 99vh;
-  width: 33vw;
+
+    height: 99vh;
 
   background-color: tan;
   border: 1px solid black; 
 
-  transition: visibility 0.05s, right 0.1s;
+  transition: visibility 0.05s, right 0.1s, width 0.1s;
 }
 
 .hidden {
   visibility: hidden;
-  right: -50px;
+  right: 0px;
+  width: 0.1px;
+  overflow: hidden;
 }
 
 .visible {
   visibility: visible;
   right: 0px;
+  width: 33vw;
   display: flex;
   flex-direction: column;
 }
