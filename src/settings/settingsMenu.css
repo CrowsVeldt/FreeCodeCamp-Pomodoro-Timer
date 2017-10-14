@@ -1,0 +1,36 @@
+input {
+  width: 3em;
+  margin-top: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  user-select: none;
+}
+
+.settingsMenu {
+  position: absolute;
+  top: 1vh;
+  height: 99vh;
+  width: 33vw;
+
+  background-color: tan;
+  border: 1px solid black; 
+
+  transition: visibility 0.05s, right 0.1s;
+}
+
+.hidden {
+  visibility: hidden;
+  right: -50px;
+}
+
+.visible {
+  visibility: visible;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+}
