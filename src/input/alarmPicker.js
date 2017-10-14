@@ -53,7 +53,7 @@ function updateAlarmPicker () {
 function setAlarm (number) {
   const alarm = document.getElementById('alarm')
   alarm.setAttribute('src', alarmOptions[number].source)
-  // How can I save user added alarms? Save file location?
+  // Save user alarms with indexedDB via LocalForage
   if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
     populateStorage()
   }
@@ -61,8 +61,7 @@ function setAlarm (number) {
 
 export function addAlarm (URL, fileName) {
   alarmOptions.push({
-    // remove file suffix with String.prototype.slice
-    name: fileName,
+    name: fileName.replace('.mp3', ''),
     value: alarmOptions.length,
     source: URL
   })

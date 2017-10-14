@@ -49,9 +49,9 @@ export function createSettingsMenu () {
   settingsMenu.appendChild(short)
   settingsMenu.appendChild(long)
   settingsMenu.appendChild(createAlarmPicker())
+  settingsMenu.appendChild(createFilePicker())
   settingsMenu.appendChild(createTickToggle())
   settingsMenu.appendChild(createStorageToggle())
-  settingsMenu.appendChild(createFilePicker())
   settingsParent.appendChild(settingsToggle)
   settingsParent.appendChild(settingsMenu)
 
