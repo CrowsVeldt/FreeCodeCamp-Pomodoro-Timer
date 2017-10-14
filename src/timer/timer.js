@@ -144,6 +144,8 @@ function notify (theBody, theTitle) {
     if (document.getElementById('alarm') !== null) {
       const alarm = document.getElementById('alarm')
       alarm.pause()
+      alarm.currentTime = 0
     }
+    n.close()
   }
 }
