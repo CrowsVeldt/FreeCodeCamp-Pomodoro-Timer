@@ -20,9 +20,9 @@ document.body.appendChild(createProgressCircle())
 
 if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
   getStoredSettings()
-  updateTimerView('Pomodoro', window.localStorage.getItem('pomodoro') * seconds)
+  updateTimerView('Pomodoro', window.localStorage.getItem('pomodoro') * seconds, 0)
 } else {
-  updateTimerView('Pomodoro', 25 * seconds)
+  updateTimerView('Pomodoro', 25 * seconds, 0)
 }
 
 document.body.addEventListener('keydown', function (event) {

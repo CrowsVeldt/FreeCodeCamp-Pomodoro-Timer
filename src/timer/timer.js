@@ -46,7 +46,7 @@ export function beginTimer (timer = Timer({
   timerID = setTimeout(checkTimer, 1000, timer, title, time)
   toggleSettingsMenu('hide')
   updateProgressCircle(0, 0)
-  updateTimerView(title, time)
+  updateTimerView(title, time, timer.pomodoroCount)
 
   const timerTick = document.getElementById('tick')
   if (tickingIsDesired()) {
@@ -66,7 +66,7 @@ export function endTimer () {
 function checkTimer (timerToCheck, title, time) {
   const currentTime = new Date().getTime()
   timerToCheck.timeLeft--
-  updateTimerView(title, timerToCheck.timeLeft)
+  updateTimerView(title, timerToCheck.timeLeft, timerToCheck.pomodoroCount)
 
   const totalTime = (timerToCheck.endTime - timerToCheck.startTime) / 1000
   updateProgressCircle(totalTime, (totalTime - timerToCheck.timeLeft))
