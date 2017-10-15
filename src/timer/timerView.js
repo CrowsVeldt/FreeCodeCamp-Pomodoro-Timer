@@ -36,7 +36,8 @@ export function createTimerView () {
   newTimerView.classList.add(styles.timer)
 
   newTimerView.addEventListener('click', () => {
-    if (timerActive === false) {
+    const settingsVisibility = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
+    if (timerActive === false && settingsVisibility === 'hidden') {
       beginTimer()
     } else if (timerActive === true) {
       endTimer()
