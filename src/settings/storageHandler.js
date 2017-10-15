@@ -51,7 +51,11 @@ export function getStoredSettings () {
   document.getElementById('longBreakInput').value = longBreak
   document.getElementById('alarmDropdown').value = alarm
 
-  ticking === 'true' ? document.getElementById('tickToggle').checked = true : document.getElementById('tickToggle').checked = false
+  if (ticking === 'true') {
+    document.getElementById('tickToggle').checked = true
+  } else {
+    document.getElementById('tickToggle').checked = false
+  }
 
   // if getStoredSettings is called then by definition storage is true
   document.getElementById('storageToggle').checked = true

@@ -12,27 +12,27 @@ label {
 }
 
 .settingsMenu {
-  position: absolute;
+  align-self: end;
 
-    height: 99vh;
+  height: 99%;
 
   background-color: tan;
   border: 1px solid black; 
 
-  transition: visibility 0.05s, right 0.1s, width 0.1s;
+  transition: visibility 0.1s, width 0.2s, transform 0.2s;
 }
 
 .hidden {
-  visibility: hidden;
-  right: 0px;
-  width: 0.1px;
+  visibility: hidden; 
+  width: 0.1px;  
   overflow: hidden;
+  transform: translateX(0.1px); 
 }
 
 .visible {
-  visibility: visible;
-  right: 0px;
+  visibility: visible; 
   width: 33vw;
   display: flex;
   flex-direction: column;
+  transform: translateX(0vw);
 }
