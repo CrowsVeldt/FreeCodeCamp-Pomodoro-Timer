@@ -27,7 +27,7 @@ if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro'))
   updateTimerView('Pomodoro', 25 * seconds, 0)
 }
 
-document.body.addEventListener('keydown', function (event) {
+document.body.addEventListener('keydown', event => {
   let settings = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
   if (event.key === 'Escape') {
     if (settings === 'hidden') {
@@ -38,7 +38,7 @@ document.body.addEventListener('keydown', function (event) {
   }
 })
 
-document.body.addEventListener('click', function () {
+document.body.addEventListener('click', () => {
   let settings = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
   if (settings === 'visible') {
     toggleSettingsMenu('hide')

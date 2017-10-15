@@ -17,7 +17,7 @@ export function createFilePicker () {
 
   fileLabel.appendChild(filePicker)
 
-  filePicker.addEventListener('change', function () {
+  filePicker.addEventListener('change', () => {
     const selectedFile = document.getElementById('file').files[0]
     const objectURL = window.URL.createObjectURL(selectedFile)
     addAlarm(objectURL, selectedFile.name)

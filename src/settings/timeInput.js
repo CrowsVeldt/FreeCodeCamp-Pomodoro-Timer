@@ -13,7 +13,7 @@ export function createTimeInput (name, value, minValue, maxValue) {
   input.setAttribute('type', 'number')
   input.setAttribute('min', minValue)
   input.setAttribute('max', maxValue)
-  input.onkeydown = function (event) {
+  input.onkeydown = event => {
     if (!isAnAllowedKey(event)) {
       event.preventDefault()
     }
@@ -25,7 +25,7 @@ export function createTimeInput (name, value, minValue, maxValue) {
   label.setAttribute('for', name[0].toLowerCase() + name.substr(1).replace(/\s/g, '') + 'Input')
   label.appendChild(input)
 
-  input.addEventListener('input', function () {
+  input.addEventListener('input', () => {
     if (input.value > maxValue) {
       input.value = maxValue
     } else if (input.value.toString().charAt(0) === '0' && input.value > 0) {
@@ -36,7 +36,7 @@ export function createTimeInput (name, value, minValue, maxValue) {
     }
   })
 
-  input.addEventListener('change', function () {
+  input.addEventListener('change', () => {
     if (input.value < minValue) {
       input.value = minValue
     }

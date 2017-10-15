@@ -12,7 +12,7 @@ export function createTickToggle () {
   tickToggle.setAttribute('id', 'tickToggle')
   tickToggleLabel.appendChild(tickToggle)
 
-  tickToggleLabel.addEventListener('change', function () {
+  tickToggleLabel.addEventListener('change', () => {
     if (!tickingIsDesired() && timerActive) {
       document.getElementById('tick').pause()
     } else if (tickingIsDesired && timerActive) {

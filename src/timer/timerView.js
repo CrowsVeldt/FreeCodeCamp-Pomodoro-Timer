@@ -43,7 +43,7 @@ export function createTimerView () {
     }
   })
 
-  newTimerView.addEventListener('keydown', function (event) {
+  newTimerView.addEventListener('keydown', (event) => {
     if (event.key === ' ' || event.key === 'Spacebar') {
       if (timerActive === false) {
         beginTimer()
