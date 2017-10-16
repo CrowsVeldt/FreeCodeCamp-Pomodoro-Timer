@@ -10,7 +10,6 @@ import {createStorageToggle} from './localStorageToggle'
 
 import {createFilePicker} from './filePicker'
 
-const seconds = 60
 const maxValue = 60
 const minValue = 1
 
@@ -49,16 +48,16 @@ export function toggleSettingsMenu (value) {
   }
 }
 
-export function getInputValue (inputElement) {
-  const element = document.getElementById(inputElement)
+// export function getInputValue (inputElement) {
+//   const element = document.getElementById(inputElement)
 
-  if (element.value <= minValue) {
-    return minValue * seconds
-  } else if (element.value % 1 === 0 && element.value < maxValue) {
-    return element.value * seconds
-  } else if (element.value >= maxValue) {
-    return maxValue * seconds
-  } else if (element.value % 1 !== 0) {
-    return 0
-  }
-}
+//   if (element.value <= minValue) {
+//     return minValue * seconds
+//   } else if (element.value % 1 === 0 && element.value < maxValue) {
+//     return element.value * seconds
+//   } else if (element.value >= maxValue) {
+//     return maxValue * seconds
+//   } else if (element.value % 1 !== 0) {
+//     return 0
+//   }
+// }

@@ -1,16 +1,14 @@
+import {state} from '../state'
+
 import {updateTimerView} from './timerView.js'
 
-import {getInputValue} from '../settings/settingsMenu.js'
+// import {getInputValue} from '../settings/settingsMenu.js'
 
 import {tickingIsDesired} from '../settings/tickToggle'
 
 import {updateProgressCircle} from './progressCircle.js'
 
 import Icon from '../static/icon.png'
-
-export let timerActive = false
-let timerID = 0
-const milliseconds = 1000
 
 export const Timer = ({
 startTime,
@@ -34,16 +32,16 @@ timeLeft
 
 export function beginTimer (timer = Timer({
   startTime: new Date().getTime(),
-  pomodoro: getInputValue('pomodoroInput'),
-  shortBreak: getInputValue('shortBreakInput'),
-  longBreak: getInputValue('longBreakInput'),
+  pomodoro: state.pomodoroLength,
+  shortBreak: state.shortBreakLength,
+  longBreak: state.longBreakLength,
   pomodoroCount: 0,
   currentActivity: 'Pomodoro',
-  endTime: new Date().getTime() + (getInputValue('pomodoroInput') * milliseconds),
-  timeLeft: getInputValue('pomodoroInput')
+  endTime: new Date().getTime() + (state.pomodoroLength * state.milliseconds),
+  timeLeft: state.pomodoroLength
 })) {
-  timerActive = true
-  timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)
+  state.timerActive = true
+  state.timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)
   updateProgressCircle(0, 0)
   updateTimerView(timer.currentActivity, timer.timeLeft, timer.pomodoroCount)
 
@@ -54,8 +52,8 @@ export function beginTimer (timer = Timer({
 }
 
 export function endTimer () {
-  timerActive = false
-  clearTimeout(timerID)
+  state.timerActive = false
+  clearTimeout(state.timerID)
 
   const timerTick = document.getElementById('tick')
   timerTick.pause()
@@ -72,7 +70,7 @@ function checkTimer (timerToCheck, title, time) {
   if (currentTime >= timerToCheck.endTime) {
     finishTimer(timerToCheck)
   } else {
-    timerID = setTimeout(checkTimer, 1000, timerToCheck, title, time)
+    state.timerID = setTimeout(checkTimer, 1000, timerToCheck, title, time)
   }
 }
 
@@ -83,7 +81,7 @@ function finishTimer (previousTimer) {
   }
   if (previousTimer.currentActivity === 'Pomodoro' && previousTimer.pomodoroCount < 3) {
     const newStartTime = new Date().getTime()
-    const newEndtime = newStartTime + (previousTimer.shortBreak * milliseconds)
+    const newEndtime = newStartTime + (previousTimer.shortBreak * state.milliseconds)
 
     notify('You finished, Take a short break!', 'Short Break Started')
     beginTimer(Timer({
@@ -98,7 +96,7 @@ function finishTimer (previousTimer) {
     }))
   } else if (previousTimer.currentActivity === 'Pomodoro' && previousTimer.pomodoroCount >= 3) {
     const newStartTime = new Date().getTime()
-    const newEndtime = newStartTime + (previousTimer.longBreak * milliseconds)
+    const newEndtime = newStartTime + (previousTimer.longBreak * state.milliseconds)
 
     notify('Four in a row! Take a long one, dude.', 'Long Break Started')
     beginTimer(Timer({
@@ -113,7 +111,7 @@ function finishTimer (previousTimer) {
     }))
   } else {
     const newStartTime = new Date().getTime()
-    const newEndtime = newStartTime + (previousTimer.pomodoro * milliseconds)
+    const newEndtime = newStartTime + (previousTimer.pomodoro * state.milliseconds)
 
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     beginTimer(Timer({

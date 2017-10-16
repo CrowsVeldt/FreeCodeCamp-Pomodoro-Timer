@@ -2,9 +2,11 @@ import watchAlarm from '../static/watchAlarm.mp3'
 
 import tick from '../static/tick.ogg'
 
+import {state} from '../state'
+
 import styles from './timer.css'
 
-import {timerActive, beginTimer, endTimer} from './timer.js'
+import {beginTimer, endTimer} from './timer.js'
 
 export function createTimerView () {
   const newTimerView = document.createElement('div')
@@ -37,16 +39,16 @@ export function createTimerView () {
 
   newTimerView.addEventListener('click', () => {
     const settingsVisibility = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
-    if (timerActive === false && settingsVisibility === 'hidden') {
+    if (state.timerActive === false && settingsVisibility === 'hidden') {
       beginTimer()
-    } else if (timerActive === true) {
+    } else if (state.timerActive === true) {
       endTimer()
     }
   })
 
   newTimerView.addEventListener('keydown', (event) => {
     if (event.key === ' ' || event.key === 'Spacebar') {
-      if (timerActive === false) {
+      if (state.timerActive === false) {
         beginTimer()
       } else {
         endTimer()

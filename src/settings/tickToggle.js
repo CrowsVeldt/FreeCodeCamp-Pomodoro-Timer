@@ -1,4 +1,4 @@
-import {timerActive} from '../timer/timer.js'
+import {state} from '../state'
 
 import {storageAvailable, populateStorage} from './storageHandler'
 
@@ -13,9 +13,9 @@ export function createTickToggle () {
   tickToggleLabel.appendChild(tickToggle)
 
   tickToggleLabel.addEventListener('change', () => {
-    if (!tickingIsDesired() && timerActive) {
+    if (!tickingIsDesired() && state.timerActive) {
       document.getElementById('tick').pause()
-    } else if (tickingIsDesired && timerActive) {
+    } else if (tickingIsDesired && state.timerActive) {
       document.getElementById('tick').play()
     }
 

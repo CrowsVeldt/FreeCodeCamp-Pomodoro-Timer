@@ -1,10 +1,8 @@
-import {timerActive} from '../timer/timer.js'
+import {state} from '../state'
 
 import {storageAvailable, populateStorage} from './storageHandler'
 
 import {updateTimerView} from '../timer/timerView.js'
-
-const seconds = 60
 
 export function createTimeInput (name, value, minValue, maxValue) {
   const input = document.createElement('input')
@@ -31,8 +29,8 @@ export function createTimeInput (name, value, minValue, maxValue) {
     } else if (input.value.toString().charAt(0) === '0' && input.value > 0) {
       // Prevent ugly values like '06'
       input.value = input.value.toString().substr(1)
-    } else if (timerActive === false && input.value >= minValue && input.value <= maxValue) {
-      updateTimerView(name, input.value * seconds, 0)
+    } else if (state.timerActive === false && input.value >= minValue && input.value <= maxValue) {
+      updateTimerView(name, input.value * state.seconds, 0)
     }
   })
 
