@@ -34,8 +34,7 @@ document.body.addEventListener('keydown', event => {
 })
 
 document.body.addEventListener('click', () => {
-  const settingsElement = document.getElementById('settingsMenu')
-  if (window.getComputedStyle(settingsElement).getPropertyValue('visibility') === 'visible') {
+  if (state.settingsMenuOpen) {
     toggleSettingsMenu()
   }
 })

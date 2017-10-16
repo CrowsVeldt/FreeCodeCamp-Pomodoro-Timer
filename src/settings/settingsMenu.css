@@ -26,6 +26,8 @@ label {
   
   transform: translateX(0vw);
 
+  filter: blur(0px) !important; 
+
   transition: visibility 0.1s, width 0.2s, transform 0.2s;
 }
 
@@ -34,4 +36,9 @@ label {
   width: 0.1px;  
   overflow: hidden;
   transform: translateX(0.1px); 
+}
+
+
+.settingsOpen {
+  filter: blur(2px)
 }

@@ -8,6 +8,7 @@ export const state = {
   timerID: 0,
   inputMinValue: 1,
   inputMaxValue: 60,
+  settingsMenuOpen: false,
   activities: [
     {
       name: 'Pomodoro',
