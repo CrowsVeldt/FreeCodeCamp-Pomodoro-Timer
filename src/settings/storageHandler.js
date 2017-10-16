@@ -25,9 +25,9 @@ export function storageAvailable (type) {
 
 export function populateStorage () {
   if (document.getElementById('storageToggle').checked === true) {
-    window.localStorage.setItem('pomodoro', document.getElementById('pomodoroInput').value)
-    window.localStorage.setItem('shortBreak', document.getElementById('shortBreakInput').value)
-    window.localStorage.setItem('longBreak', document.getElementById('longBreakInput').value)
+    window.localStorage.setItem('pomodoro', document.getElementById('pomodoroLength').value)
+    window.localStorage.setItem('shortBreak', document.getElementById('shortBreakLength').value)
+    window.localStorage.setItem('longBreak', document.getElementById('longBreakLength').value)
     window.localStorage.setItem('alarm', document.getElementById('alarmDropdown').value)
     window.localStorage.setItem('ticking', document.getElementById('tickToggle').checked)
   } else {
@@ -46,9 +46,9 @@ export function getStoredSettings () {
   const alarm = window.localStorage.getItem('alarm')
   const ticking = window.localStorage.getItem('ticking')
 
-  document.getElementById('pomodoroInput').value = pomodoro
-  document.getElementById('shortBreakInput').value = shortBreak
-  document.getElementById('longBreakInput').value = longBreak
+  document.getElementById('pomodoroLength').value = pomodoro
+  document.getElementById('shortBreakLength').value = shortBreak
+  document.getElementById('longBreakLength').value = longBreak
   document.getElementById('alarmDropdown').value = alarm
 
   if (ticking === 'true') {
