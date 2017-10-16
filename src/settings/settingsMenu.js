@@ -4,14 +4,11 @@ import {createTickToggle} from './tickToggle'
 
 import {createAlarmPicker} from './alarmPicker'
 
-import {createTimeInput} from './timeInput'
+import {createTimeInputs} from './timeInput'
 
 import {createStorageToggle} from './localStorageToggle'
 
 import {createFilePicker} from './filePicker'
-
-const maxValue = 60
-const minValue = 1
 
 export function createSettingsMenu () {
   const settingsMenu = document.createElement('div')
@@ -22,13 +19,9 @@ export function createSettingsMenu () {
     event.stopPropagation()
   })
 
-  const pomodoro = createTimeInput('Pomodoro', '25', minValue, maxValue)
-  const short = createTimeInput('Short Break', '5', minValue, maxValue)
-  const long = createTimeInput('Long Break', '15', minValue, maxValue)
-
-  settingsMenu.appendChild(pomodoro)
-  settingsMenu.appendChild(short)
-  settingsMenu.appendChild(long)
+  createTimeInputs().map(item => {
+    settingsMenu.appendChild(item)
+  })
   settingsMenu.appendChild(createAlarmPicker())
   settingsMenu.appendChild(createFilePicker())
   settingsMenu.appendChild(createTickToggle())
@@ -47,17 +40,3 @@ export function toggleSettingsMenu (value) {
     settings.classList.add(styles.hidden)
   }
 }
-
-// export function getInputValue (inputElement) {
-//   const element = document.getElementById(inputElement)
-
-//   if (element.value <= minValue) {
-//     return minValue * seconds
-//   } else if (element.value % 1 === 0 && element.value < maxValue) {
-//     return element.value * seconds
-//   } else if (element.value >= maxValue) {
-//     return maxValue * seconds
-//   } else if (element.value % 1 !== 0) {
-//     return 0
-//   }
-// }

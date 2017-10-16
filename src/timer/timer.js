@@ -32,13 +32,13 @@ timeLeft
 
 export function beginTimer (timer = Timer({
   startTime: new Date().getTime(),
-  pomodoro: state.pomodoroLength,
-  shortBreak: state.shortBreakLength,
-  longBreak: state.longBreakLength,
+  pomodoro: state.activities[0].length,
+  shortBreak: state.activities[1].length,
+  longBreak: state.activities[2].length,
   pomodoroCount: 0,
   currentActivity: 'Pomodoro',
-  endTime: new Date().getTime() + (state.pomodoroLength * state.milliseconds),
-  timeLeft: state.pomodoroLength
+  endTime: new Date().getTime() + (state.activities[0].length * state.milliseconds),
+  timeLeft: state.activities[0].length
 })) {
   state.timerActive = true
   state.timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)
