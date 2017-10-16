@@ -13,8 +13,12 @@ const alarmOptions = [
     name: 'Gong',
     value: '1',
     source: gongAlarm
+  },
+  {
+    name: 'Silent',
+    value: '2',
+    source: ''
   }
-
 ]
 
 export function createAlarmPicker () {
