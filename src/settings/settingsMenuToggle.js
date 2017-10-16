@@ -9,13 +9,7 @@ export function createSettingsToggle () {
   settingsToggle.classList.add(styles.settingsToggle)
 
   settingsToggle.addEventListener('click', () => {
-    const settings = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
-
-    if (settings === 'visible') {
-      toggleSettingsMenu('hide')
-    } else if (settings === 'hidden') {
-      toggleSettingsMenu('show')
-    }
+    toggleSettingsMenu()
   })
 
   return settingsToggle

@@ -28,20 +28,14 @@ if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro'))
 }
 
 document.body.addEventListener('keydown', event => {
-  let settings = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
   if (event.key === 'Escape') {
-    if (settings === 'hidden') {
-      toggleSettingsMenu('show')
-    } else {
-      toggleSettingsMenu('hide')
-    }
+    toggleSettingsMenu()
   }
 })
 
 document.body.addEventListener('click', () => {
-  let settings = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
-  if (settings === 'visible') {
-    toggleSettingsMenu('hide')
+  if (state.settingsMenuOpen) {
+    toggleSettingsMenu()
   }
 })
 

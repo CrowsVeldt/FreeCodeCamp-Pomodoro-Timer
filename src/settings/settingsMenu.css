@@ -15,9 +15,16 @@ label {
   align-self: end;
 
   height: 99%;
+  width: 33vw;
 
   background-color: tan;
   border: 1px solid black; 
+
+  visibility: visible; 
+  display: flex;
+  flex-direction: column;
+  
+  transform: translateX(0vw);
 
   transition: visibility 0.1s, width 0.2s, transform 0.2s;
 }
@@ -27,12 +34,4 @@ label {
   width: 0.1px;  
   overflow: hidden;
   transform: translateX(0.1px); 
-}
-
-.visible {
-  visibility: visible; 
-  width: 33vw;
-  display: flex;
-  flex-direction: column;
-  transform: translateX(0vw);
 }

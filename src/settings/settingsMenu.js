@@ -1,5 +1,7 @@
 import styles from './settingsMenu.css'
 
+import {state} from '../state'
+
 import {createTickToggle} from './tickToggle'
 
 import {createAlarmPicker} from './alarmPicker'
@@ -29,14 +31,9 @@ export function createSettingsMenu () {
   return settingsMenu
 }
 
-export function toggleSettingsMenu (value) {
+export function toggleSettingsMenu () {
   const settings = document.getElementById('settingsMenu')
 
-  if (value === 'show') {
-    settings.classList.add(styles.visible)
-    settings.classList.remove(styles.hidden)
-  } else if (value === 'hide') {
-    settings.classList.remove(styles.visible)
-    settings.classList.add(styles.hidden)
-  }
+  settings.classList.toggle(styles.hidden)
+  state.settingsMenuOpen = !state.settingsMenuOpen
 }
