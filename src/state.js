@@ -1,8 +1,13 @@
+import watchAlarm from './static/watchAlarm.mp3'
+import gongAlarm from './static/gongAlarm.mp3'
+
 export const state = {
   seconds: 60,
   milliseconds: 1000,
   timerActive: false,
   timerID: 0,
+  inputMinValue: 1,
+  inputMaxValue: 60,
   activities: [
     {
       name: 'Pomodoro',
@@ -17,6 +22,21 @@ export const state = {
       length: 15 * 60
     }
   ],
-  inputMinValue: 1,
-  inputMaxValue: 60
+  alarmOptions: [
+    {
+      name: 'Watch',
+      value: '0',
+      source: watchAlarm
+    },
+    {
+      name: 'Gong',
+      value: '1',
+      source: gongAlarm
+    },
+    {
+      name: 'Silent',
+      value: '2',
+      source: ''
+    }
+  ]
 }

@@ -1,31 +1,12 @@
-import watchAlarm from '../static/watchAlarm.mp3'
-import gongAlarm from '../static/gongAlarm.mp3'
+import {state} from '../state'
 
 import {storageAvailable, populateStorage} from './storageHandler'
-
-const alarmOptions = [
-  {
-    name: 'Watch',
-    value: '0',
-    source: watchAlarm
-  },
-  {
-    name: 'Gong',
-    value: '1',
-    source: gongAlarm
-  },
-  {
-    name: 'Silent',
-    value: '2',
-    source: ''
-  }
-]
 
 export function createAlarmPicker () {
   const dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
 
-  alarmOptions.forEach(function (option) {
+  state.alarmOptions.forEach(function (option) {
     const watchOption = document.createElement('option')
     watchOption.setAttribute('value', option.value)
     watchOption.innerHTML = option.name
@@ -46,7 +27,7 @@ function updateAlarmPicker () {
     dropdown.removeChild(dropdown.lastChild)
   }
 
-  alarmOptions.forEach(function (option) {
+  state.alarmOptions.forEach(function (option) {
     const watchOption = document.createElement('option')
     watchOption.setAttribute('value', option.value)
     watchOption.innerHTML = option.name
@@ -56,22 +37,22 @@ function updateAlarmPicker () {
 
 function setAlarm (number) {
   const alarm = document.getElementById('alarm')
-  alarm.setAttribute('src', alarmOptions[number].source)
-  // Save user alarms with indexedDB via LocalForage
+  alarm.setAttribute('src', state.alarmOptions[number].source)
+
   if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
     populateStorage()
   }
 }
 
 export function addAlarm (URL, fileName) {
-  alarmOptions.push({
+  state.alarmOptions.push({
     name: fileName.replace('.mp3', ''),
-    value: alarmOptions.length,
+    value: state.alarmOptions.length,
     source: URL
   })
-  setAlarm(alarmOptions.length - 1)
+  setAlarm(state.alarmOptions.length - 1)
   updateAlarmPicker()
 
   const dropdown = document.getElementById('alarmDropdown')
-  dropdown.value = alarmOptions.length - 1
+  dropdown.value = state.alarmOptions.length - 1
 }
