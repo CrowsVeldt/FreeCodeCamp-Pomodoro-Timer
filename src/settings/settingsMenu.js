@@ -1,7 +1,5 @@
 import styles from './settingsMenu.css'
 
-import {state} from '../state'
-
 import {createTickToggle} from './tickToggle'
 
 import {createAlarmPicker} from './alarmPicker'
@@ -34,5 +32,4 @@ export function createSettingsMenu () {
 
 export function toggleSettingsMenu () {
   document.getElementById('settingsMenu').classList.toggle(styles.hidden)
-  state.settingsMenuOpen = !state.settingsMenuOpen
 }
