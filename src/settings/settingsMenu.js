@@ -24,6 +24,7 @@ export function createSettingsMenu () {
   createTimeInputs().map(item => {
     settingsMenu.appendChild(item)
   })
+
   settingsMenu.appendChild(createAlarmPicker())
   settingsMenu.appendChild(createFilePicker())
   settingsMenu.appendChild(createTickToggle())
@@ -32,8 +33,6 @@ export function createSettingsMenu () {
 }
 
 export function toggleSettingsMenu () {
-  const settings = document.getElementById('settingsMenu')
-
-  settings.classList.toggle(styles.hidden)
+  document.getElementById('settingsMenu').classList.toggle(styles.hidden)
   state.settingsMenuOpen = !state.settingsMenuOpen
 }
