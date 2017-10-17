@@ -3,6 +3,7 @@ import styles from './settingsSection.css'
 export function createSettingsSection (title, ...children) {
   const sectionLabel = document.createElement('label')
   sectionLabel.innerHTML = title
+  sectionLabel.classList.add(styles.label)
   sectionLabel.setAttribute('for', title + 'Section')
 
   const section = document.createElement('section')

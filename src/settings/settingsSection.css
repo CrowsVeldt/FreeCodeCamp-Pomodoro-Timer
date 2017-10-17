@@ -1,14 +1,32 @@
+.label {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+
+  user-select: none;
+}
+
 .section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 0.5px solid black;
+  margin: 5px;
 
+  opacity: 1;
+  visibility: visible;
+  background-color: DarkGray;
+  color: black;
+
+  transition: height 0.06s ease-in, opacity 0.05s linear, visibility 0.05s linear;
 }
 
 .closedSection {
+  opacity: 0;
   visibility: hidden;
   height: 0px;
   overflow: hidden;
