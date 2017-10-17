@@ -2,8 +2,6 @@ import {state} from '../state'
 
 import {updateTimerView} from './timerView.js'
 
-// import {getInputValue} from '../settings/settingsMenu.js'
-
 import {tickingIsDesired} from '../settings/tickToggle'
 
 import {updateProgressCircle} from './progressCircle.js'
@@ -32,13 +30,13 @@ timeLeft
 
 export function beginTimer (timer = Timer({
   startTime: new Date().getTime(),
-  pomodoro: state.activities[0].length,
-  shortBreak: state.activities[1].length,
-  longBreak: state.activities[2].length,
+  pomodoro: state.activities.pomodoro.length,
+  shortBreak: state.activities.shortBreak.length,
+  longBreak: state.activities.longBreak.length,
   pomodoroCount: 0,
   currentActivity: 'Pomodoro',
-  endTime: new Date().getTime() + (state.activities[0].length * state.milliseconds),
-  timeLeft: state.activities[0].length
+  endTime: new Date().getTime() + (state.activities.pomodoro.length * state.milliseconds),
+  timeLeft: state.activities.pomodoro.length
 })) {
   state.timerActive = true
   state.timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)

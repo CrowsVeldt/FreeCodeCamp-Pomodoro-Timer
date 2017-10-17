@@ -3,12 +3,18 @@ import styles from './settingsSection.css'
 export function createSettingsSection (title, ...children) {
   const sectionLabel = document.createElement('label')
   sectionLabel.innerHTML = title
+  sectionLabel.setAttribute('for', title + 'Section')
 
   const section = document.createElement('section')
   section.classList.add(styles.section, styles.closedSection)
+  section.setAttribute('id', title + 'Section')
 
-  section.addEventListener('click', () => {
+  sectionLabel.addEventListener('click', () => {
     section.classList.toggle(styles.closedSection)
+  })
+
+  section.addEventListener('click', event => {
+    event.stopPropagation()
   })
 
   children.map(child => {

@@ -9,20 +9,20 @@ export const state = {
   inputMinValue: 1,
   inputMaxValue: 60,
   settingsMenuOpen: false,
-  activities: [
-    {
+  activities: {
+    pomodoro: {
       name: 'Pomodoro',
       length: 25 * 60
     },
-    {
+    shortBreak: {
       name: 'Short Break',
       length: 5 * 60
     },
-    {
+    longBreak: {
       name: 'Long Break',
       length: 15 * 60
     }
-  ],
+  },
   alarmOptions: [
     {
       name: 'Watch',
@@ -33,11 +33,6 @@ export const state = {
       name: 'Gong',
       value: '1',
       source: gongAlarm
-    },
-    {
-      name: 'Silent',
-      value: '2',
-      source: ''
     }
   ]
 }

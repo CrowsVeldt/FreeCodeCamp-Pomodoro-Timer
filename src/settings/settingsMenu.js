@@ -19,16 +19,21 @@ export function createSettingsMenu () {
   settingsMenu.setAttribute('id', 'settingsMenu')
   settingsMenu.classList.add(styles.settingsMenu, styles.hidden)
 
-  settingsMenu.addEventListener('click', function (event) {
+  settingsMenu.addEventListener('click', event => {
     event.stopPropagation()
   })
 
-  const timeInputs = state.activities.map(createTimeInput)
-
-  settingsMenu.appendChild((createSettingsSection('Time Settings', timeInputs[0], timeInputs[1], timeInputs[2])))
-  settingsMenu.appendChild(createSettingsSection('Alarm Settings', createAlarmPicker(), createFilePicker()))
-  settingsMenu.appendChild(createSettingsSection('Audio Settings', createTickToggle()))
-  settingsMenu.appendChild(createSettingsSection('Storage Settings', createStorageToggle()))
+  settingsMenu.appendChild((createSettingsSection('Time Settings',
+  createTimeInput(state.activities.pomodoro),
+  createTimeInput(state.activities.shortBreak),
+  createTimeInput(state.activities.longBreak))))
+  settingsMenu.appendChild(createSettingsSection('Alarm Settings',
+  createAlarmPicker(),
+  createFilePicker()))
+  settingsMenu.appendChild(createSettingsSection('Audio Settings',
+  createTickToggle()))
+  settingsMenu.appendChild(createSettingsSection('Storage Settings',
+  createStorageToggle()))
 
   return settingsMenu
 }
