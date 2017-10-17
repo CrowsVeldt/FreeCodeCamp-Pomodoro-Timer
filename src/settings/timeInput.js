@@ -27,13 +27,13 @@ export function createTimeInput (index) {
   input.addEventListener('input', () => {
     if (input.value > state.inputMaxValue) {
       input.value = state.inputMaxValue
-      state.activities[index].length = input.value * state.seconds
+      index.length = input.value * state.seconds
     } else if (input.value.toString().charAt(0) === '0' && input.value > 0) {
       // Prevent ugly values like '06'
       input.value = input.value.toString().substr(1)
-      state.activities[index].length = input.value * state.seconds
+      index.length = input.value * state.seconds
     } else if (input.value >= state.inputMinValue && input.value <= state.inputMaxValue) {
-      state.activities[index].length = input.value * state.seconds
+      index.length = input.value * state.seconds
     }
   })
 
