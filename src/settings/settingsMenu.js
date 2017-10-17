@@ -2,11 +2,13 @@ import styles from './settingsMenu.css'
 
 import {state} from '../state'
 
+import {createSettingsSection} from './settingsSection'
+
 import {createTickToggle} from './tickToggle'
 
 import {createAlarmPicker} from './alarmPicker'
 
-import {createTimeInputs} from './timeInput'
+import {createTimeInput} from './timeInput'
 
 import {createStorageToggle} from './localStorageToggle'
 
@@ -21,14 +23,13 @@ export function createSettingsMenu () {
     event.stopPropagation()
   })
 
-  createTimeInputs().map(item => {
-    settingsMenu.appendChild(item)
-  })
+  const timeInputs = state.activities.map(createTimeInput)
 
-  settingsMenu.appendChild(createAlarmPicker())
-  settingsMenu.appendChild(createFilePicker())
-  settingsMenu.appendChild(createTickToggle())
-  settingsMenu.appendChild(createStorageToggle())
+  settingsMenu.appendChild((createSettingsSection('Time Settings', timeInputs[0], timeInputs[1], timeInputs[2])))
+  settingsMenu.appendChild(createSettingsSection('Alarm Settings', createAlarmPicker(), createFilePicker()))
+  settingsMenu.appendChild(createSettingsSection('Audio Settings', createTickToggle()))
+  settingsMenu.appendChild(createSettingsSection('Storage Settings', createStorageToggle()))
+
   return settingsMenu
 }
 

@@ -26,7 +26,8 @@ label {
   
   transform: translateX(0vw);
 
-  filter: blur(0px) !important; 
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, .5);
+  filter: blur(0px) !important;  
 
   transition: visibility 0.1s, width 0.2s, transform 0.2s;
 }
@@ -40,5 +41,5 @@ label {
 
 
 .settingsOpen {
-  filter: blur(2px)
+   filter: blur(0.5px) 
 }
