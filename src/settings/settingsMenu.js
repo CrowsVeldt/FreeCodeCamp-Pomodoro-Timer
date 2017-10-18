@@ -23,17 +23,25 @@ export function createSettingsMenu () {
     event.stopPropagation()
   })
 
-  settingsMenu.appendChild((createSettingsSection('Time Settings',
+  const timeSettings = createSettingsSection('Time Settings',
   createTimeInput(state.activities.pomodoro),
   createTimeInput(state.activities.shortBreak),
-  createTimeInput(state.activities.longBreak))))
-  settingsMenu.appendChild(createSettingsSection('Alarm Settings',
+  createTimeInput(state.activities.longBreak))
+
+  const alarmSettings = createSettingsSection('Alarm Settings',
   createAlarmPicker(),
-  createFilePicker()))
-  settingsMenu.appendChild(createSettingsSection('Audio Settings',
-  createTickToggle()))
-  settingsMenu.appendChild(createSettingsSection('Storage Settings',
-  createStorageToggle()))
+  createFilePicker())
+
+  const audioSettings = createSettingsSection('Audio Settings',
+  createTickToggle())
+
+  const storageSettings = createSettingsSection('Storage Settings',
+  createStorageToggle())
+
+  settingsMenu.appendChild(timeSettings)
+  settingsMenu.appendChild(alarmSettings)
+  settingsMenu.appendChild(audioSettings)
+  settingsMenu.appendChild(storageSettings)
 
   return settingsMenu
 }
