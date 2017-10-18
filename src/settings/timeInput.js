@@ -1,3 +1,5 @@
+import styles from './timeInput.css'
+
 import {state} from '../state'
 
 import {storageAvailable, populateStorage} from './storageHandler'
@@ -11,6 +13,7 @@ export function createTimeInput (index) {
   input.setAttribute('type', 'number')
   input.setAttribute('min', state.inputMinValue)
   input.setAttribute('max', state.inputMaxValue)
+  input.classList.add(styles.input)
   input.onkeydown = event => {
     if (!isAnAllowedKey(event)) {
       event.preventDefault()
