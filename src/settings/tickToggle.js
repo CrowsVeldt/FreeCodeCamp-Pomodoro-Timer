@@ -10,7 +10,6 @@ export function createTickToggle () {
   const tickToggle = document.createElement('input')
   tickToggle.setAttribute('type', 'checkbox')
   tickToggle.setAttribute('id', 'tickToggle')
-  tickToggleLabel.appendChild(tickToggle)
 
   tickToggleLabel.addEventListener('change', () => {
     if (!tickingIsDesired() && state.timerActive) {
@@ -24,7 +23,7 @@ export function createTickToggle () {
     }
   })
 
-  return tickToggleLabel
+  return [tickToggleLabel, tickToggle]
 }
 
 export function tickingIsDesired () {

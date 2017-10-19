@@ -7,7 +7,7 @@ export function createSettingsSection (title, ...children) {
   sectionLabel.setAttribute('for', title + 'Section')
 
   const section = document.createElement('section')
-  section.classList.add(styles.section /*styles.closedSection*/)
+  section.classList.add(styles.section /* styles.closedSection */) // commented out for testing
   section.setAttribute('id', title + 'Section')
 
   sectionLabel.addEventListener('click', () => {
@@ -19,7 +19,9 @@ export function createSettingsSection (title, ...children) {
   })
 
   children.map(child => {
-    section.appendChild(child)
+    child.forEach(item => {
+      section.appendChild(item)
+    })
   })
 
   sectionLabel.appendChild(section)

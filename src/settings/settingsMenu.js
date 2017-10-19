@@ -17,7 +17,7 @@ import {createFilePicker} from './filePicker'
 export function createSettingsMenu () {
   const settingsMenu = document.createElement('div')
   settingsMenu.setAttribute('id', 'settingsMenu')
-  settingsMenu.classList.add(styles.settingsMenu, styles.hidden)
+  settingsMenu.classList.add(styles.settingsMenu /* styles.hidden */)
 
   settingsMenu.addEventListener('click', event => {
     event.stopPropagation()

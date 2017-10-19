@@ -9,6 +9,7 @@ export const state = {
   inputMinValue: 1,
   inputMaxValue: 60,
   settingsMenuOpen: false,
+  ticking: false,
   activities: {
     pomodoro: {
       name: 'Pomodoro',

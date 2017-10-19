@@ -17,7 +17,7 @@ export function createAlarmPicker () {
     setAlarm(document.getElementById('alarmDropdown').value)
   })
 
-  return dropdown
+  return [dropdown]
 }
 
 function updateAlarmPicker () {

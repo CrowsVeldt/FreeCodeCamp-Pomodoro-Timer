@@ -17,7 +17,5 @@ export function createStorageToggle () {
     storageToggle.indeterminate = true
   }
 
-  storageToggleLabel.appendChild(storageToggle)
-
-  return storageToggleLabel
+  return [storageToggleLabel, storageToggle]
 }

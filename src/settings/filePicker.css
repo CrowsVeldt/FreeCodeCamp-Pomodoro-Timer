@@ -12,8 +12,10 @@
   color: black;
   border-radius: 10%;
   cursor: pointer;
-  /* display: inline-block; */
-  text-align: center;         
+  text-align: center;
+  font-size: .9rem;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .fileLabel:hover {

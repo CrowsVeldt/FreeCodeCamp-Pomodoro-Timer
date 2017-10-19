@@ -24,7 +24,6 @@ export function createTimeInput (index) {
   const label = document.createElement('label')
   label.innerHTML = index.name + ' Length'
   label.setAttribute('for', index.name[0].toLowerCase() + index.name.substr(1).replace(/\s/g, '') + 'Length')
-  label.appendChild(input)
 
     // Trim input to acceptable values
   input.addEventListener('input', () => {
@@ -52,7 +51,7 @@ export function createTimeInput (index) {
       populateStorage()
     }
   })
-  return label
+  return [label, input]
 }
 
 function isAnAllowedKey (keyEvent) {

@@ -23,5 +23,5 @@ export function createFilePicker () {
     addAlarm(objectURL, selectedFile.name)
   })
 
-  return fileLabel
+  return [fileLabel, filePicker]
 }
