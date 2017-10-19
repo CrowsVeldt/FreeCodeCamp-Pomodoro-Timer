@@ -22,9 +22,9 @@ document.body.appendChild(createSettingsMenu())
 
 if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
   getStoredSettings()
-  updateTimerView('Pomodoro', window.localStorage.getItem('pomodoro') * state.seconds, 0)
+  updateTimerView('Pomodoro', window.localStorage.getItem('pomodoro'), 0)
 } else {
-  updateTimerView('Pomodoro', state.activities.pomodoro.length, 0)
+  updateTimerView('Pomodoro', state.activities.pomodoro.length / 60, 0)
 }
 
 document.body.addEventListener('keydown', event => {

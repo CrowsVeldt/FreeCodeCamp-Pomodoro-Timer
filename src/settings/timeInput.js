@@ -13,7 +13,7 @@ export function createTimeInput (index) {
   input.setAttribute('type', 'number')
   input.setAttribute('min', state.inputMinValue)
   input.setAttribute('max', state.inputMaxValue)
-  // input.classList.add(styles.input)
+  input.classList.add(styles.input)
   input.onkeydown = event => {
     if (!isAnAllowedKey(event)) {
       event.preventDefault()
@@ -42,7 +42,7 @@ export function createTimeInput (index) {
     // Update view only if the timer isn't active
   input.addEventListener('input', () => {
     if (state.timerActive === false) {
-      updateTimerView(index.name, input.value * state.seconds, 0)
+      updateTimerView(index.name, input.value, 0)
     }
   })
 
