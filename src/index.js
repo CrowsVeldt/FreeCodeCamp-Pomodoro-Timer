@@ -24,7 +24,7 @@ if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro'))
   getStoredSettings()
   updateTimerView('Pomodoro', window.localStorage.getItem('pomodoro'), 0)
 } else {
-  updateTimerView('Pomodoro', state.activities.pomodoro.length / 60, 0)
+  updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 }
 
 document.body.addEventListener('keydown', event => {
