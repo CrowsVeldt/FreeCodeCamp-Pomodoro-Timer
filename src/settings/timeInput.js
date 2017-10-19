@@ -21,9 +21,14 @@ export function createTimeInput (index) {
     const value = parseInt(document.getElementById(name).value)
     if (value > state.inputMinValue) {
       document.getElementById(name).value = value - 1
-      index.length = index.length - 60
+      index.length = input.value * state.seconds
+
       if (!state.timerActive) {
         updateTimerView(index.name, input.value, 0)
+      }
+
+      if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
+        populateStorage()
       }
     }
   })
@@ -36,9 +41,14 @@ export function createTimeInput (index) {
     const value = parseInt(document.getElementById(name).value)
     if (value < state.inputMaxValue) {
       document.getElementById(name).value = value + 1
-      index.length = index.length + 60
+      index.length = input.value * state.seconds
+
       if (!state.timerActive) {
         updateTimerView(index.name, input.value, 0)
+      }
+
+      if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
+        populateStorage()
       }
     }
   })
