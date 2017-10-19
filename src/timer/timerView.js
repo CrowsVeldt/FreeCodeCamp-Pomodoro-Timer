@@ -41,7 +41,7 @@ export function createTimerView () {
     const settingsVisibility = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
     if (state.timerActive === false && settingsVisibility === 'hidden') {
       beginTimer()
-    } else if (state.timerActive === true) {
+    } else if (state.timerActive === true && settingsVisibility === 'hidden') {
       endTimer()
     }
   })

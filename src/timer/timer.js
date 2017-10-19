@@ -8,6 +8,8 @@ import {updateProgressCircle} from './progressCircle.js'
 
 import Icon from '../static/icon.png'
 
+let timerID = 0
+
 export const Timer = ({
 startTime,
 pomodoro,
@@ -39,19 +41,19 @@ export function beginTimer (timer = Timer({
   timeLeft: state.activities.pomodoro.length
 })) {
   state.timerActive = true
-  state.timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)
+  timerID = setTimeout(checkTimer, 1000, timer, timer.currentActivity, timer.timeLeft)
   updateProgressCircle(0, 0)
   updateTimerView(timer.currentActivity, timer.timeLeft, timer.pomodoroCount)
 
   const timerTick = document.getElementById('tick')
-  if (tickingIsDesired()) {
+  if (state.ticking) {
     timerTick.play()
   }
 }
 
 export function endTimer () {
   state.timerActive = false
-  clearTimeout(state.timerID)
+  clearTimeout(timerID)
 
   const timerTick = document.getElementById('tick')
   timerTick.pause()
@@ -68,7 +70,7 @@ function checkTimer (timerToCheck, title, time) {
   if (currentTime >= timerToCheck.endTime) {
     finishTimer(timerToCheck)
   } else {
-    state.timerID = setTimeout(checkTimer, 1000, timerToCheck, title, time)
+    timerID = setTimeout(checkTimer, 1000, timerToCheck, title, time)
   }
 }
 

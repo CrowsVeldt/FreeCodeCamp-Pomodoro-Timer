@@ -5,7 +5,6 @@ export const state = {
   seconds: 60,
   milliseconds: 1000,
   timerActive: false,
-  timerID: 0,
   inputMinValue: 1,
   inputMaxValue: 60,
   settingsMenuOpen: false,

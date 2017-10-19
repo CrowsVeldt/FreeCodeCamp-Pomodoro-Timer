@@ -12,9 +12,15 @@ export function createTickToggle () {
   tickToggle.setAttribute('id', 'tickToggle')
 
   tickToggle.addEventListener('change', () => {
-    if (!tickingIsDesired() && state.timerActive) {
+    if (document.getElementById('tickToggle').checked) {
+      state.ticking = true
+    } else {
+      state.ticking = false
+    }
+
+    if (!state.ticking && state.timerActive) {
       document.getElementById('tick').pause()
-    } else if (tickingIsDesired && state.timerActive) {
+    } else if (state.ticking && state.timerActive) {
       document.getElementById('tick').play()
     }
 
@@ -24,8 +30,4 @@ export function createTickToggle () {
   })
 
   return [tickToggleLabel, tickToggle]
-}
-
-export function tickingIsDesired () {
-  return document.getElementById('tickToggle').checked
 }
