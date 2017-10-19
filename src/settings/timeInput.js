@@ -17,9 +17,31 @@ export function createTimeInput (index) {
   downButton.setAttribute('id', name + 'DownButton')
   downButton.innerHTML = '<'
 
+  downButton.addEventListener('click', () => {
+    const value = parseInt(document.getElementById(name).value)
+    if (value > state.inputMinValue) {
+      document.getElementById(name).value = value - 1
+      index.length = index.length - 60
+      if (!state.timerActive) {
+        updateTimerView(index.name, input.value, 0)
+      }
+    }
+  })
+
   const upButton = document.createElement('button')
   upButton.setAttribute('id', name + 'upButton')
   upButton.innerHTML = '>'
+
+  upButton.addEventListener('click', () => {
+    const value = parseInt(document.getElementById(name).value)
+    if (value < state.inputMaxValue) {
+      document.getElementById(name).value = value + 1
+      index.length = index.length + 60
+      if (!state.timerActive) {
+        updateTimerView(index.name, input.value, 0)
+      }
+    }
+  })
 
   const input = document.createElement('input')
   input.setAttribute('id', name)
@@ -72,11 +94,3 @@ function isAnAllowedKey (keyEvent) {
     return false
   }
 }
-
-// function inputValueAllowed (oldValue, newValue) {
-//   if (newValue < state.inputMinValue && newValue > state.inputMaxValue) {
-//     return false
-//   } else {
-//     return true
-//   }
-// }
