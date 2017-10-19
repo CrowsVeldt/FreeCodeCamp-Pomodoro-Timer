@@ -13,7 +13,7 @@ export function createTimeInput (index) {
   input.setAttribute('type', 'number')
   input.setAttribute('min', state.inputMinValue)
   input.setAttribute('max', state.inputMaxValue)
-  input.classList.add(styles.input)
+  // input.classList.add(styles.input)
   input.onkeydown = event => {
     if (!isAnAllowedKey(event)) {
       event.preventDefault()

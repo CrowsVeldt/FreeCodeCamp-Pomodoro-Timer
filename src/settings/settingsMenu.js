@@ -10,7 +10,7 @@ import {createAlarmPicker} from './alarmPicker'
 
 import {createTimeInput} from './timeInput'
 
-import {createStorageToggle} from './localStorageToggle'
+import {createStorageToggle} from './storageToggle'
 
 import {createFilePicker} from './filePicker'
 

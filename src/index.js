@@ -6,7 +6,7 @@ import {storageAvailable, getStoredSettings} from './settings/storageHandler'
 
 import {createSettingsMenu, toggleSettingsMenu} from './settings/settingsMenu.js'
 
-import {createSettingsToggle} from './settings/settingsMenuToggle'
+import {createSettingsToggle} from './settings/settingsToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
