@@ -1,0 +1,10 @@
+.settingsToggle {
+  position: absolute;
+  height: 100px;
+  width: 30px;
+  font-size: 20px;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  align-self: end;
+}
