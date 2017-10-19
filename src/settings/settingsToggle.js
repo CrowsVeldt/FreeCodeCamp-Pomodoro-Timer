@@ -8,7 +8,7 @@ export function createSettingsToggle () {
   settingsToggle.setAttribute('id', 'settingsToggle')
   settingsToggle.classList.add(styles.settingsToggle)
 
-  settingsToggle.addEventListener('click', (event) => {
+  settingsToggle.addEventListener('click', event => {
     event.stopPropagation()
     toggleSettingsMenu()
   })

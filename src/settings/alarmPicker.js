@@ -6,14 +6,14 @@ export function createAlarmPicker () {
   const dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
 
-  state.alarmOptions.forEach(function (option) {
+  state.alarmOptions.forEach(option => {
     const watchOption = document.createElement('option')
     watchOption.setAttribute('value', option.value)
     watchOption.innerHTML = option.name
     dropdown.appendChild(watchOption)
   })
 
-  dropdown.addEventListener('change', function () {
+  dropdown.addEventListener('change', () => {
     setAlarm(document.getElementById('alarmDropdown').value)
   })
 
@@ -27,7 +27,7 @@ function updateAlarmPicker () {
     dropdown.removeChild(dropdown.lastChild)
   }
 
-  state.alarmOptions.forEach(function (option) {
+  state.alarmOptions.forEach(option => {
     const watchOption = document.createElement('option')
     watchOption.setAttribute('value', option.value)
     watchOption.innerHTML = option.name

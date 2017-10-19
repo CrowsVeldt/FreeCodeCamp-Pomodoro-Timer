@@ -8,7 +8,8 @@ export function createStorageToggle () {
   const storageToggle = document.createElement('input')
   storageToggle.setAttribute('type', 'checkbox')
   storageToggle.setAttribute('id', 'storageToggle')
-  storageToggle.addEventListener('change', function () {
+
+  storageToggle.addEventListener('change', () => {
     populateStorage()
   })
 

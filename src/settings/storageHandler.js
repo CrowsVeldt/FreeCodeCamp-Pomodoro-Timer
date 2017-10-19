@@ -24,7 +24,7 @@ export function storageAvailable (type) {
 }
 
 export function populateStorage () {
-  if (document.getElementById('storageToggle').checked === true) {
+  if (document.getElementById('storageToggle').checked) {
     window.localStorage.setItem('pomodoro', document.getElementById('pomodoroLength').value)
     window.localStorage.setItem('shortBreak', document.getElementById('shortBreakLength').value)
     window.localStorage.setItem('longBreak', document.getElementById('longBreakLength').value)
@@ -51,7 +51,7 @@ export function getStoredSettings () {
   document.getElementById('longBreakLength').value = longBreak
   document.getElementById('alarmDropdown').value = alarm
 
-  if (ticking === 'true') {
+  if (ticking === 'true') { // awkard, but localStorage keeps values as strings
     document.getElementById('tickToggle').checked = true
   } else {
     document.getElementById('tickToggle').checked = false

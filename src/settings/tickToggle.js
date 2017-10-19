@@ -11,7 +11,7 @@ export function createTickToggle () {
   tickToggle.setAttribute('type', 'checkbox')
   tickToggle.setAttribute('id', 'tickToggle')
 
-  tickToggleLabel.addEventListener('change', () => {
+  tickToggle.addEventListener('change', () => {
     if (!tickingIsDesired() && state.timerActive) {
       document.getElementById('tick').pause()
     } else if (tickingIsDesired && state.timerActive) {

@@ -15,8 +15,6 @@ export function createFilePicker () {
   filePicker.setAttribute('accept', '.mp3')
   filePicker.setAttribute('class', styles.filePicker)
 
-  fileLabel.appendChild(filePicker)
-
   filePicker.addEventListener('change', () => {
     const selectedFile = document.getElementById('file').files[0]
     const objectURL = window.URL.createObjectURL(selectedFile)
