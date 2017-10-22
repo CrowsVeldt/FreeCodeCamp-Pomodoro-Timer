@@ -33,12 +33,9 @@ export function createSettingsMenu () {
   const audioSettings = createSettingsSection('Audio Settings',
   createTickToggle())
 
-  const storageSettings = createSettingsSection('Storage Settings')
-
   settingsMenu.appendChild(timeSettings)
   settingsMenu.appendChild(alarmSettings)
   settingsMenu.appendChild(audioSettings)
-  settingsMenu.appendChild(storageSettings)
 
   return settingsMenu
 }

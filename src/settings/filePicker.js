@@ -6,7 +6,7 @@ export function createFilePicker () {
   const fileLabel = document.createElement('label')
   fileLabel.setAttribute('for', 'file')
   fileLabel.setAttribute('class', styles.fileLabel)
-  fileLabel.innerHTML = 'Pick a file:'
+  fileLabel.innerHTML = 'Pick an mp3 file from your computer!'
 
   const filePicker = document.createElement('input')
   filePicker.setAttribute('type', 'file')

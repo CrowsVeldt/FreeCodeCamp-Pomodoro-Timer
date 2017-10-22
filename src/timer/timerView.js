@@ -1,10 +1,8 @@
-import watchAlarm from '../static/watchAlarm.mp3'
-
 import tick from '../static/tick.ogg'
 
-import {state} from '../state'
+import styles from './timerView.css'
 
-import styles from './timer.css'
+import {state} from '../state'
 
 import {beginTimer, endTimer} from './timer.js'
 
@@ -22,7 +20,7 @@ export function createTimerView () {
   pomodoroCounter.setAttribute('class', styles.pomodoroCounter)
 
   const alarmElement = document.createElement('audio')
-  alarmElement.setAttribute('src', watchAlarm)
+  alarmElement.setAttribute('src', state.alarmOptions[0]['source'])
   alarmElement.setAttribute('id', 'alarm')
 
   const tickElement = document.createElement('audio')
@@ -38,10 +36,9 @@ export function createTimerView () {
   newTimerView.classList.add(styles.timer)
 
   newTimerView.addEventListener('click', () => {
-    const settingsVisibility = window.getComputedStyle(document.getElementById('settingsMenu')).getPropertyValue('visibility')
-    if (state.timerActive === false && settingsVisibility === 'hidden') {
+    if (state.timerActive === false) {
       beginTimer()
-    } else if (state.timerActive === true && settingsVisibility === 'hidden') {
+    } else if (state.timerActive === true) {
       endTimer()
     }
   })

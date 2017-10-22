@@ -28,7 +28,7 @@ export function createTimeInput (index) {
   })
 
   const upButton = document.createElement('button')
-  upButton.setAttribute('id', name + 'upButton')
+  upButton.setAttribute('id', name + 'UpButton')
   upButton.innerHTML = '>'
 
   upButton.addEventListener('click', () => {

@@ -7,7 +7,7 @@ export function createSettingsSection (title, ...children) {
   sectionLabel.setAttribute('for', title + 'Section')
 
   const section = document.createElement('section')
-  section.classList.add(styles.section /* styles.closedSection */) // commented out for testing
+  section.classList.add(styles.section /* styles.closedSection */) // commented out while testing
   section.setAttribute('id', title + 'Section')
 
   sectionLabel.addEventListener('click', () => {
