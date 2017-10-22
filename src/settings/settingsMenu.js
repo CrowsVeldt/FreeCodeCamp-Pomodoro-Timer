@@ -10,8 +10,6 @@ import {createAlarmPicker} from './alarmPicker'
 
 import {createTimeInput} from './timeInput'
 
-import {createStorageToggle} from './storageToggle'
-
 import {createFilePicker} from './filePicker'
 
 export function createSettingsMenu () {
@@ -35,8 +33,7 @@ export function createSettingsMenu () {
   const audioSettings = createSettingsSection('Audio Settings',
   createTickToggle())
 
-  const storageSettings = createSettingsSection('Storage Settings',
-  createStorageToggle())
+  const storageSettings = createSettingsSection('Storage Settings')
 
   settingsMenu.appendChild(timeSettings)
   settingsMenu.appendChild(alarmSettings)

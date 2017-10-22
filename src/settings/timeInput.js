@@ -2,8 +2,6 @@ import styles from './timeInput.css'
 
 import {state} from '../state'
 
-import {storageAvailable, populateStorage} from './storageHandler'
-
 import {updateTimerView} from '../timer/timerView.js'
 
 export function createTimeInput (index) {
@@ -26,10 +24,6 @@ export function createTimeInput (index) {
       if (!state.timerActive) {
         updateTimerView(index.name, input.value, 0)
       }
-
-      if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
-        populateStorage()
-      }
     }
   })
 
@@ -45,10 +39,6 @@ export function createTimeInput (index) {
 
       if (!state.timerActive) {
         updateTimerView(index.name, input.value, 0)
-      }
-
-      if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
-        populateStorage()
       }
     }
   })
@@ -89,11 +79,6 @@ export function createTimeInput (index) {
     }
   })
 
-  input.addEventListener('change', () => {
-    if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
-      populateStorage()
-    }
-  })
   return [label, downButton, input, upButton]
 }
 

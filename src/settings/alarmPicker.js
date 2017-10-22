@@ -1,7 +1,5 @@
 import {state} from '../state'
 
-import {storageAvailable, populateStorage} from './storageHandler'
-
 export function createAlarmPicker () {
   const dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
@@ -38,10 +36,6 @@ function updateAlarmPicker () {
 function setAlarm (number) {
   const alarm = document.getElementById('alarm')
   alarm.setAttribute('src', state.alarmOptions[number].source)
-
-  if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
-    populateStorage()
-  }
 }
 
 export function addAlarm (URL, fileName) {

@@ -2,8 +2,6 @@ import styles from './index.css'
 
 import {state} from './state'
 
-import {storageAvailable, getStoredSettings} from './settings/storageHandler'
-
 import {createSettingsMenu, toggleSettingsMenu} from './settings/settingsMenu.js'
 
 import {createSettingsToggle} from './settings/settingsToggle'
@@ -20,12 +18,7 @@ document.body.appendChild(createSettingsToggle())
 
 document.body.appendChild(createSettingsMenu())
 
-if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
-  getStoredSettings()
-  updateTimerView('Pomodoro', window.localStorage.getItem('pomodoro'), 0)
-} else {
-  updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
-}
+updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 
 document.body.addEventListener('keydown', event => {
   if (event.key === 'Escape') {

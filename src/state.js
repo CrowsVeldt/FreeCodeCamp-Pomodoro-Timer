@@ -8,8 +8,7 @@ export const state = {
   inputMinValue: 1,
   inputMaxValue: 60,
   settingsMenuOpen: false,
-  ticking: false, // Not fully implemented yet
-  storage: false, // Not fully implemented yet
+  ticking: false,
   activities: {
     pomodoro: {
       name: 'Pomodoro',

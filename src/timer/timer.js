@@ -2,8 +2,6 @@ import {state} from '../state'
 
 import {updateTimerView} from './timerView.js'
 
-import {tickingIsDesired} from '../settings/tickToggle'
-
 import {updateProgressCircle} from './progressCircle.js'
 
 import Icon from '../static/icon.png'

@@ -1,7 +1,5 @@
 import {state} from '../state'
 
-import {storageAvailable, populateStorage} from './storageHandler'
-
 export function createTickToggle () {
   const tickToggleLabel = document.createElement('label')
   tickToggleLabel.setAttribute('for', 'tickToggle')
@@ -22,10 +20,6 @@ export function createTickToggle () {
       document.getElementById('tick').pause()
     } else if (state.ticking && state.timerActive) {
       document.getElementById('tick').play()
-    }
-
-    if (storageAvailable('localStorage') && window.localStorage.getItem('pomodoro')) {
-      populateStorage()
     }
   })
 
