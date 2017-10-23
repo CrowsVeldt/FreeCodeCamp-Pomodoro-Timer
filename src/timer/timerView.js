@@ -1,4 +1,4 @@
-import tick from '../static/tick.ogg'
+import tick from '../static/tick.wav'
 
 import styles from './timerView.css'
 
