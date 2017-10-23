@@ -1,4 +1,5 @@
 .settingsMenu {
+  z-index: 1;
   align-self: end;
 
   height: 99%;
@@ -29,5 +30,5 @@
 
 
 .settingsOpen {
-   filter: blur(1px);
+   filter: blur(.5px);   
 }

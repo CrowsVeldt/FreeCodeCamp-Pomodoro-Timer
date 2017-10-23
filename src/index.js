@@ -20,6 +20,12 @@ document.body.appendChild(createSettingsMenu())
 
 updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 
+const filter = document.createElement('div')
+filter.setAttribute('class', styles.filter)
+filter.setAttribute('id', 'filter')
+
+document.body.appendChild(filter)
+
 document.body.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     toggleSettingsMenu()

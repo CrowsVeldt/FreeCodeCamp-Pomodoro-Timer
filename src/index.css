@@ -13,3 +13,13 @@ body {
 
   overflow: hidden;
 }
+
+.filter {
+  z-index: -1;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+  background-color: #d3d3d3;
+  opacity: 0;
+}
