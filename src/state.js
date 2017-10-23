@@ -1,5 +1,6 @@
 import watchAlarm from './static/watchAlarm.mp3'
 import gongAlarm from './static/gongAlarm.mp3'
+import birdSongAlarm from './static/Birdsong.mp3'
 
 export const state = {
   seconds: 60,
@@ -33,6 +34,11 @@ export const state = {
       name: 'Gong',
       value: '1',
       source: gongAlarm
+    },
+    {
+      name: 'Bird Song',
+      value: '2',
+      source: birdSongAlarm
     }
   ]
 }

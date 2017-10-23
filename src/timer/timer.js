@@ -102,7 +102,7 @@ function finishTimer (previousTimer) {
       pomodoro: previousTimer.pomodoro,
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
-      pomodoroCount: 0,
+      pomodoroCount: 4,
       currentActivity: 'Long Break',
       endTime: newEndtime,
       timeLeft: previousTimer.longBreak
@@ -111,13 +111,15 @@ function finishTimer (previousTimer) {
     const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.pomodoro * state.milliseconds)
 
+    const currentPomodoroCount = previousTimer.pomodoroCount === 4 ? 0 : previousTimer.pomodoroCount
+
     notify('Recharged a bit? Good! Pick something new and go get \'em!', 'Pomodoro Started')
     beginTimer(Timer({
       startTime: newStartTime,
       pomodoro: previousTimer.pomodoro,
       shortBreak: previousTimer.shortBreak,
       longBreak: previousTimer.longBreak,
-      pomodoroCount: previousTimer.pomodoroCount,
+      pomodoroCount: currentPomodoroCount,
       currentActivity: 'Pomodoro',
       endTime: newEndtime,
       timeLeft: previousTimer.pomodoro
