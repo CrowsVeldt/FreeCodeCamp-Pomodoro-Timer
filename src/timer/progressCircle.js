@@ -8,10 +8,6 @@ const viewBox = minDimension / 3.8
 const circumference = 2 * radius * Math.PI
 
 export function createProgressCircle () {
-  const container = document.createElement('div')
-  container.setAttribute('id', 'container')
-  container.setAttribute('class', styles.container)
-
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   svg.setAttribute('viewBox', '0, 0, ' + viewBox + ', ' + viewBox)
   svg.setAttribute('preserveAspectRatio', 'xMidYMid meet')
@@ -40,9 +36,8 @@ export function createProgressCircle () {
 
   svg.appendChild(circle)
   svg.appendChild(coverCircle)
-  container.appendChild(svg)
 
-  return (container)
+  return (svg)
 }
 
 export function updateProgressCircle (total, amountDone) {
