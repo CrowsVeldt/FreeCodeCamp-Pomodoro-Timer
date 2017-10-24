@@ -44,14 +44,11 @@ export function toggleSettingsMenu () {
   document.getElementById('settingsMenu').classList.toggle(styles.hidden)
   state.settingsMenuOpen = !state.settingsMenuOpen
 
+  document.getElementById('filter').classList.toggle(styles.opaqueFilter)
+
+  document.getElementById('timer').classList.toggle(styles.flat)
+
   document.querySelectorAll('DIV:not(.settingsMenu)').forEach(node => {
     node.classList.toggle(styles.settingsOpen)
   })
-
-  const filter = document.getElementById('filter')
-  if (state.settingsMenuOpen) {
-    filter.style.opacity = 0.3
-  } else {
-    filter.style.opacity = 0
-  }
 }

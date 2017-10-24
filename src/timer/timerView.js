@@ -10,6 +10,7 @@ export function createTimerView () {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
   newTimerView.setAttribute('tabindex', '0')
+  newTimerView.classList.add(styles.timer)
 
   const timerTitle = document.createElement('p')
   timerTitle.setAttribute('class', styles.title)
@@ -33,7 +34,6 @@ export function createTimerView () {
   newTimerView.appendChild(pomodoroCounter)
   newTimerView.appendChild(alarmElement)
   newTimerView.appendChild(tickElement)
-  newTimerView.classList.add(styles.timer)
 
   newTimerView.addEventListener('click', () => {
     if (state.timerActive === false) {

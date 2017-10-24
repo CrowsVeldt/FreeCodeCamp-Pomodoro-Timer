@@ -22,4 +22,7 @@ body {
   pointer-events: none;
   background-color: #d3d3d3;
   opacity: 0;
+
+  transition: opacity 0.1s;
 }
+
