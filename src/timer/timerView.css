@@ -23,7 +23,13 @@
 
   box-shadow: 0px 0px 100px rgba(0, 0, 0, .5);
 
-  transition: box-shadow 0.1s;
+  transition: box-shadow 0.1s, transform 0.1s;
+}
+
+.timer:active {
+  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0);
+  border: none;
+  transform: scale(.9, .9); 
 }
 
 .title {
