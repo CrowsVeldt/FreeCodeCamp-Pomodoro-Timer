@@ -8,11 +8,7 @@ import {createSettingsToggle} from './settings/settingsToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
-import {createProgressCircle} from './timer/progressCircle.js'
-
 document.body.appendChild(createTimerView())
-
-document.body.appendChild(createProgressCircle())
 
 document.body.appendChild(createSettingsToggle())
 

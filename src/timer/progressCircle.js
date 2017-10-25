@@ -45,9 +45,3 @@ export function updateProgressCircle (total, amountDone) {
 
   coverCircle.setAttribute('stroke-dashoffset', -(circumference / total) * amountDone)
 }
-
-// export function shrinkProgressCircle () {
-//   const svg = document.getElementById('svg')
-
-//   svg.classList.toggle(styles.pressed)
-// }

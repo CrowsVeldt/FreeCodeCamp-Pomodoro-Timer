@@ -6,7 +6,7 @@ import {state} from '../state'
 
 import {beginTimer, endTimer} from './timer.js'
 
-// import {shrinkProgressCircle} from './progressCircle'
+import {createProgressCircle} from './progressCircle.js'
 
 export function createTimerView () {
   const newTimerView = document.createElement('div')
@@ -22,6 +22,8 @@ export function createTimerView () {
   const pomodoroCounter = document.createElement('p')
   pomodoroCounter.setAttribute('class', styles.pomodoroCounter)
 
+  const progressCircle = createProgressCircle()
+
   const alarmElement = document.createElement('audio')
   alarmElement.setAttribute('src', state.alarmOptions[0]['source'])
   alarmElement.setAttribute('id', 'alarm')
@@ -34,16 +36,15 @@ export function createTimerView () {
   newTimerView.appendChild(timerTitle)
   newTimerView.appendChild(timerDisplay)
   newTimerView.appendChild(pomodoroCounter)
+  newTimerView.appendChild(progressCircle)
   newTimerView.appendChild(alarmElement)
   newTimerView.appendChild(tickElement)
 
   newTimerView.addEventListener('click', () => {
     if (state.timerActive === false) {
       beginTimer()
-      // shrinkProgressCircle()
     } else if (state.timerActive === true) {
       endTimer()
-      // shrinkProgressCircle()
     }
   })
 
@@ -51,10 +52,8 @@ export function createTimerView () {
     if (event.key === ' ' || event.key === 'Spacebar') {
       if (state.timerActive === false) {
         beginTimer()
-        // shrinkProgressCircle()
       } else {
         endTimer()
-        // shrinkProgressCircle()
       }
     }
   })

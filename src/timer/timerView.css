@@ -1,7 +1,9 @@
 .timer {
-  position: absolute;
+  z-index: 1;
+
+  position: absolute;  
   top: calc(50vh - (50vmin - 1) / 2);
-  left: calc(50vw - (50vmin - 1) / 2);
+  left: calc(50vw - (50vmin - 1) / 2);  
 
   display: flex;
   flex-direction: column;
