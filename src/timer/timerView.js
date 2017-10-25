@@ -6,6 +6,8 @@ import {state} from '../state'
 
 import {beginTimer, endTimer} from './timer.js'
 
+// import {shrinkProgressCircle} from './progressCircle'
+
 export function createTimerView () {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
@@ -38,8 +40,10 @@ export function createTimerView () {
   newTimerView.addEventListener('click', () => {
     if (state.timerActive === false) {
       beginTimer()
+      // shrinkProgressCircle()
     } else if (state.timerActive === true) {
       endTimer()
+      // shrinkProgressCircle()
     }
   })
 
@@ -47,8 +51,10 @@ export function createTimerView () {
     if (event.key === ' ' || event.key === 'Spacebar') {
       if (state.timerActive === false) {
         beginTimer()
+        // shrinkProgressCircle()
       } else {
         endTimer()
+        // shrinkProgressCircle()
       }
     }
   })

@@ -1,7 +1,7 @@
 .timer {
   position: absolute;
-  top: calc(50vh - 50vmin / 2);
-  left: calc(50vw - 50vmin / 2);
+  top: calc(50vh - (50vmin - 1) / 2);
+  left: calc(50vw - (50vmin - 1) / 2);
 
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
 .timer:active {
   box-shadow: 0px 0px 100px rgba(0, 0, 0, 0);
   border: none;
-  transform: scale(.9, .9); 
+  transform: scale(0.9, 0.9); 
 }
 
 .title {
