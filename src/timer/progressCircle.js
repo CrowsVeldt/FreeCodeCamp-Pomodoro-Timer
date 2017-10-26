@@ -19,7 +19,7 @@ export function createProgressCircle () {
   circle.setAttribute('fill', 'transparent')
   circle.setAttribute('stroke', 'black')
   circle.setAttribute('stroke-width', '5%')
-  circle.setAttribute('r', radius - 0.5)
+  circle.setAttribute('r', radius)
   circle.setAttribute('cx', '50%')
   circle.setAttribute('cy', '50%')
 
