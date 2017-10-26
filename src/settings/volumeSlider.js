@@ -18,7 +18,6 @@ export function createVolumeSlider () {
   volumeSlider.addEventListener('change', () => {
     document.querySelectorAll('audio').forEach((element) => {
       element.volume = volumeSlider.value
-      console.log(volumeSlider.value)
     })
   })
 
