@@ -4,6 +4,8 @@ import {state} from '../state'
 
 import {createSettingsSection} from './settingsSection'
 
+import {createAlarmToggle} from './alarmToggle'
+
 import {createTickToggle} from './tickToggle'
 
 import {createAlarmPicker} from './alarmPicker'
@@ -27,6 +29,7 @@ export function createSettingsMenu () {
   createTimeInput(state.activities.longBreak))
 
   const alarmSettings = createSettingsSection('Alarm Settings',
+  createAlarmToggle(),
   createAlarmPicker(),
   createFilePicker())
 

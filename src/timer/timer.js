@@ -73,7 +73,7 @@ function checkTimer (timerToCheck, title, time) {
 }
 
 function finishTimer (previousTimer) {
-  if (document.getElementById('alarm') !== null) {
+  if (document.getElementById('alarm') !== null && !state.silence) {
     const alarm = document.getElementById('alarm')
     alarm.play()
   }
