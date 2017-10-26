@@ -8,6 +8,8 @@ import {createSettingsToggle} from './settings/settingsToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
+import * as storage from './storage.js'
+
 document.body.appendChild(createTimerView())
 
 document.body.appendChild(createSettingsToggle())
