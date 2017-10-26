@@ -1,11 +1,11 @@
 .settingsMenu {
-  z-index: 1;
+  z-index: 2;
   align-self: end;
 
   height: 99%;
   width: 33vw;
 
-  background-color: #d3d3d3;
+  background-color: ivory;
   border: 1px solid black; 
 
   visibility: visible; 

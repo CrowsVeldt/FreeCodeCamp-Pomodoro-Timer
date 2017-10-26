@@ -14,6 +14,8 @@ import {createTimeInput} from './timeInput'
 
 import {createFilePicker} from './filePicker'
 
+import {createVolumeSlider} from './volumeSlider'
+
 export function createSettingsMenu () {
   const settingsMenu = document.createElement('div')
   settingsMenu.setAttribute('id', 'settingsMenu')
@@ -34,7 +36,8 @@ export function createSettingsMenu () {
   createFilePicker())
 
   const audioSettings = createSettingsSection('Audio Settings',
-  createTickToggle())
+  createTickToggle(),
+  createVolumeSlider())
 
   settingsMenu.appendChild(timeSettings)
   settingsMenu.appendChild(alarmSettings)

@@ -18,7 +18,7 @@
 
   opacity: 1;
   visibility: visible;
-  background-color: #d3d3d3;
+  background-color: ivory;
 
   transition: height 0.06s ease-in, opacity 0.05s linear, visibility 0.05s linear;
 }
