@@ -1,4 +1,4 @@
-import {storageAvailable, populateStorage} from './storageHandler'
+import {storageAvailable} from '../storage.js'
 
 export function createStorageToggle () {
   const storageToggleLabel = document.createElement('label')
@@ -10,7 +10,7 @@ export function createStorageToggle () {
   storageToggle.setAttribute('id', 'storageToggle')
 
   storageToggle.addEventListener('change', () => {
-    populateStorage()
+    // populateStorage()
   })
 
   if (!storageAvailable('localStorage')) {

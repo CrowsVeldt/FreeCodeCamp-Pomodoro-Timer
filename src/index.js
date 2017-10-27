@@ -8,7 +8,9 @@ import {createSettingsToggle} from './settings/settingsToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
-import * as storage from './storage.js'
+import {storageAvailable} from './storage.js'
+
+console.log(storageAvailable())
 
 document.body.appendChild(createTimerView())
 
@@ -37,5 +39,3 @@ document.body.addEventListener('click', () => {
 })
 
 Notification.requestPermission().then()
-
-storage.clearStorage()
