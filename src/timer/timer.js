@@ -1,10 +1,10 @@
 import {state} from '../state'
 
+import notify from '../notification.js'
+
 import {updateTimerView} from './timerView.js'
 
 import {updateProgressCircle} from './progressCircle.js'
-
-import Icon from '../static/icon.png'
 
 let timerID = 0
 
@@ -124,24 +124,5 @@ function finishTimer (previousTimer) {
       endTime: newEndtime,
       timeLeft: previousTimer.pomodoro
     }))
-  }
-}
-
-function notify (theBody, theTitle) {
-  const options = {
-    body: theBody,
-    icon: Icon
-  }
-  const n = new Notification(theTitle, options)
-  // close the notification for systems which don't close it automatically
-  setTimeout(n.close.bind(n), 7000)
-
-  n.onclick = event => {
-    if (document.getElementById('alarm') !== null) {
-      const alarm = document.getElementById('alarm')
-      alarm.pause()
-      alarm.currentTime = 0
-    }
-    n.close()
   }
 }

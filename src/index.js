@@ -20,7 +20,7 @@ updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 
 const filter = document.createElement('div')
 filter.setAttribute('class', styles.filter)
-filter.setAttribute('id', 'filter')
+filter.setAttribute('id', 'filtser')
 
 document.body.appendChild(filter)
 
@@ -37,3 +37,5 @@ document.body.addEventListener('click', () => {
 })
 
 Notification.requestPermission().then()
+
+storage.clearStorage()
