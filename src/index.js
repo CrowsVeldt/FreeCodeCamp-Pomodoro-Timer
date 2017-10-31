@@ -8,21 +8,17 @@ import {createSettingsToggle} from './settings/settingsToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
-import {storageAvailable} from './storage.js'
-
-console.log(storageAvailable())
-
 document.body.appendChild(createTimerView())
+
+updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 
 document.body.appendChild(createSettingsToggle())
 
 document.body.appendChild(createSettingsMenu())
 
-updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
-
 const filter = document.createElement('div')
 filter.setAttribute('class', styles.filter)
-filter.setAttribute('id', 'filtser')
+filter.setAttribute('id', 'filter')
 
 document.body.appendChild(filter)
 

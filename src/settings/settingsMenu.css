@@ -29,9 +29,9 @@
 }
 
 
-/* .settingsOpen {
+.settingsOpen {
    filter: blur(.5px);   
-} */
+} 
 
 .opaqueFilter {
   opacity: 1

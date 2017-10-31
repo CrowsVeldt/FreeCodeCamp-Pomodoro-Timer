@@ -1,6 +1,6 @@
 import {state} from '../state'
 
-import notify from '../notification.js'
+import {notify} from '../notification'
 
 import {updateTimerView} from './timerView.js'
 

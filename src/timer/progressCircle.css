@@ -1,8 +1,11 @@
-.svg {
+.container {
   z-index: -1;
 
-  position: absolute; 
+  position: absolute;  
   
+  height: 50vmin;
+  width: 50vmin; 
+
   transform: rotate(270deg);
 
   border-radius: 50%; 

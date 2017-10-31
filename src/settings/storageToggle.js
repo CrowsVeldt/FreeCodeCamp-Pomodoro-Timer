@@ -1,5 +1,3 @@
-import {storageAvailable} from '../storage.js'
-
 export function createStorageToggle () {
   const storageToggleLabel = document.createElement('label')
   storageToggleLabel.setAttribute('for', 'storageToggle')
