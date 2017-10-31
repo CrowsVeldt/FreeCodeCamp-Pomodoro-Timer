@@ -16,6 +16,8 @@ import {createFilePicker} from './filePicker'
 
 import {createVolumeSlider} from './volumeSlider'
 
+import {createStorageToggle} from './storageToggle'
+
 export function createSettingsMenu () {
   const settingsMenu = document.createElement('div')
   settingsMenu.setAttribute('id', 'settingsMenu')
@@ -39,9 +41,12 @@ export function createSettingsMenu () {
   createTickToggle(),
   createVolumeSlider())
 
+  const storageSettings = createSettingsSection('Storage Settings', createStorageToggle())
+
   settingsMenu.appendChild(timeSettings)
   settingsMenu.appendChild(alarmSettings)
   settingsMenu.appendChild(audioSettings)
+  settingsMenu.appendChild(storageSettings)
 
   return settingsMenu
 }

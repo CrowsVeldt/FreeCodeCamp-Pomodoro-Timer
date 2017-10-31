@@ -8,13 +8,10 @@ export function createStorageToggle () {
   storageToggle.setAttribute('id', 'storageToggle')
 
   storageToggle.addEventListener('change', () => {
-    // populateStorage()
+    // make this an actual 'toggle', that moves back and forth
+    // if it is 'on' save settings
+    // else clear them
   })
-
-  if (!storageAvailable('localStorage')) {
-    storageToggle.disabled = 'disabled'
-    storageToggle.indeterminate = true
-  }
 
   return [storageToggleLabel, storageToggle]
 }
