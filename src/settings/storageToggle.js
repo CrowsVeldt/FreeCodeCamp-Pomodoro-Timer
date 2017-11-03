@@ -1,5 +1,7 @@
 import styles from './storageToggle.css'
 
+import {populateStorage, emptyStorage} from '../storage.js'
+
 export function createStorageToggle () {
   const storageToggleLabel = document.createElement('label')
   storageToggleLabel.setAttribute('for', 'storageToggle')
@@ -23,7 +25,11 @@ export function createStorageToggle () {
 
   storageToggle.addEventListener('change', () => {
     // if 'checked' save settings
-    // else clear them
+    if (document.getElementById('storageToggle').checked) {
+      populateStorage()
+    } else {
+      emptyStorage()
+    }
   })
 
   return [storageToggleLabel]
