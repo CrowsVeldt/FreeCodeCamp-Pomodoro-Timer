@@ -5,19 +5,26 @@ export function createStorageToggle () {
   storageToggleLabel.setAttribute('for', 'storageToggle')
   storageToggleLabel.innerHTML = 'Save settings locally?'
 
+  const toggleContainer = document.createElement('div')
+  toggleContainer.setAttribute('id', 'toggleContainer')
+  toggleContainer.setAttribute('class', styles.toggleContainer)
+
   const storageToggle = document.createElement('input')
   storageToggle.setAttribute('type', 'checkbox')
   storageToggle.setAttribute('id', 'storageToggle')
-  storageToggleLabel.setAttribute('class', styles.storageToggle)
+  storageToggle.setAttribute('class', styles.storageToggle)
 
   const storageToggleSpan = document.createElement('span')
-  storageToggleSpan.setAttribute('class', styles.slider, styles.round)
+  storageToggleSpan.setAttribute('class', styles.slider)
+
+  toggleContainer.appendChild(storageToggle)
+  toggleContainer.appendChild(storageToggleSpan)
+  storageToggleLabel.appendChild(toggleContainer)
 
   storageToggle.addEventListener('change', () => {
-    // make this an actual 'toggle', that moves back and forth
-    // if it is 'on' save settings
+    // if 'checked' save settings
     // else clear them
   })
 
-  return [storageToggleLabel, storageToggle, storageToggleSpan]
+  return [storageToggleLabel]
 }
