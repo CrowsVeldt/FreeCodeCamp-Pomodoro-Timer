@@ -16,15 +16,14 @@ document.body.appendChild(createTimerView())
 
 localforage.length().then(value => {
   value > 0 ? setState() : console.log('no settings found')
-}).then(() => {
-  // debugger
-  updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 })
   .catch(err => {
     console.log(err)
   })
 
 document.body.appendChild(createSettingsToggle())
+
+updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 
 document.body.appendChild(createSettingsMenu())
 

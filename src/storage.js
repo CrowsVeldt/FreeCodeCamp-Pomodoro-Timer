@@ -32,10 +32,11 @@ export function emptyStorage () {
 export function setState () {
   localforage.iterate((value, key, iterationNumber) => {
     state[key] = value
-    console.log([key, state[key]])
+    // console.log([key, state[key]])
   }).then(() => {
-    console.log('finished')
+    // console.log('finished')
   }).catch(err => {
     console.log(err)
   })
+  // console.log(state.activities.pomodoro)
 }
