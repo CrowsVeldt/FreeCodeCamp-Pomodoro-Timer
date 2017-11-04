@@ -8,22 +8,16 @@ localforage.config({
   name: 'Pomodoro Timer Local Storage'
 })
 
-export function populateStorage (key, value) {
-  localforage.setItem(key, value).then(() => {
-    Object.entries(state).forEach(element => {
-      localforage.setItem(element[0], element[1]).then(value => {
-        console.log(element[0])
-      }).catch(err => {
-        console.log(err)
-      })
-    }, this)
-    console.log(Object.entries(state))
-
-    notify('Settings saved successfully!', 'Settings Saved')
-  }).catch(err => {
-    notify('Settings failed to save', 'Settings Not Saved')
-    console.log('ERROR: ' + err)
+export function populateStorage () {
+  Object.entries(state).forEach(element => {
+    localforage.setItem(element[0], element[1]).then(value => {
+        // console.log(JSON.stringify(element))
+    }).catch(err => {
+      notify('Settings failed to save', 'Settings Not Saved')
+      console.log('ERROR: ' + err)
+    })
   })
+  notify('Settings saved successfully!', 'Settings Saved')
 }
 
 export function emptyStorage () {
@@ -32,5 +26,16 @@ export function emptyStorage () {
   }).catch(err => {
     console.log(err)
     notify('Settings failed to clear', 'Settings Not Cleared')
+  })
+}
+
+export function setState () {
+  localforage.iterate((value, key, iterationNumber) => {
+    state[key] = value
+    console.log([key, state[key]])
+  }).then(() => {
+    console.log('finished')
+  }).catch(err => {
+    console.log(err)
   })
 }

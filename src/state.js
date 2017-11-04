@@ -3,14 +3,6 @@ import gongAlarm from './static/gongAlarm.mp3'
 import birdSongAlarm from './static/Birdsong.mp3'
 
 export const state = {
-  'seconds': 60,
-  'milliseconds': 1000,
-  'timerActive': false,
-  'inputMinValue': 1,
-  'inputMaxValue': 60,
-  'settingsMenuOpen': false,
-  'ticking': false,
-  'silence': false,
   'activities': {
     'pomodoro': {
       'name': 'Pomodoro',
@@ -41,5 +33,13 @@ export const state = {
       'value': '2',
       'source': birdSongAlarm
     }
-  ]
+  ],
+  'inputMaxValue': 60,
+  'inputMinValue': 1,
+  'milliseconds': 1000,
+  'seconds': 60,
+  'settingsMenuOpen': false,
+  'silence': false,
+  'ticking': false,
+  'timerActive': false
 }

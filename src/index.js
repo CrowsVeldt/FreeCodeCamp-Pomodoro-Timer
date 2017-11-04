@@ -8,9 +8,21 @@ import {createSettingsToggle} from './settings/settingsToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
+import {default as localforage} from 'localforage'
+
+import {setState} from './storage'
+
 document.body.appendChild(createTimerView())
 
-updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
+localforage.length().then(value => {
+  value > 0 ? setState() : console.log('no settings found')
+}).then(() => {
+  // debugger
+  updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
+})
+  .catch(err => {
+    console.log(err)
+  })
 
 document.body.appendChild(createSettingsToggle())
 

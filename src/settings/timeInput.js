@@ -23,6 +23,8 @@ export function createTimeInput (index) {
 
       if (!state.timerActive) {
         updateTimerView(index.name, input.value, 0)
+        let updateName = name.substring(0, name.length - 6)
+        state.activities[updateName].length = input.value * state.seconds
       }
     }
   })
@@ -39,6 +41,9 @@ export function createTimeInput (index) {
 
       if (!state.timerActive) {
         updateTimerView(index.name, input.value, 0)
+        index.length = input.value * state.seconds
+        let updateName = name.substring(0, name.length - 6)
+        state.activities[updateName].length = input.value * state.seconds
       }
     }
   })
@@ -76,6 +81,8 @@ export function createTimeInput (index) {
   input.addEventListener('input', () => {
     if (state.timerActive === false) {
       updateTimerView(index.name, input.value, 0)
+      let updateName = name.substring(0, name.length - 6)
+      state.activities[updateName].length = input.value * state.seconds
     }
   })
 
