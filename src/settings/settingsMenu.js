@@ -1,6 +1,6 @@
 import styles from './settingsMenu.css'
 
-import {state} from '../state'
+import {state as stateObject} from '../state'
 
 import {createSettingsSection} from './settingsSection'
 
@@ -18,7 +18,7 @@ import {createVolumeSlider} from './volumeSlider'
 
 import {createStorageToggle} from './storageToggle'
 
-export function createSettingsMenu () {
+export function createSettingsMenu (currentState) {
   const settingsMenu = document.createElement('div')
   settingsMenu.setAttribute('id', 'settingsMenu')
   settingsMenu.classList.add(styles.settingsMenu, styles.hidden)
@@ -28,9 +28,9 @@ export function createSettingsMenu () {
   })
 
   const timeSettings = createSettingsSection('Time Settings',
-  createTimeInput(state.activities.pomodoro),
-  createTimeInput(state.activities.shortBreak),
-  createTimeInput(state.activities.longBreak))
+  createTimeInput(currentState.activities.pomodoro),
+  createTimeInput(currentState.activities.shortBreak),
+  createTimeInput(currentState.activities.longBreak))
 
   const alarmSettings = createSettingsSection('Alarm Settings',
   createAlarmToggle(),
@@ -38,7 +38,7 @@ export function createSettingsMenu () {
   createFilePicker())
 
   const audioSettings = createSettingsSection('Audio Settings',
-  createTickToggle(),
+  createTickToggle(currentState),
   createVolumeSlider())
 
   const storageSettings = createSettingsSection('Storage Settings', createStorageToggle())
@@ -53,7 +53,7 @@ export function createSettingsMenu () {
 
 export function toggleSettingsMenu () {
   document.getElementById('settingsMenu').classList.toggle(styles.hidden)
-  state.settingsMenuOpen = !state.settingsMenuOpen
+  stateObject.settingsMenuOpen = !stateObject.settingsMenuOpen
 
   document.getElementById('filter').classList.toggle(styles.opaqueFilter)
 

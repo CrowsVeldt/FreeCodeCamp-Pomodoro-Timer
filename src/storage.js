@@ -11,7 +11,7 @@ localforage.config({
 export function populateStorage () {
   Object.entries(state).forEach(element => {
     localforage.setItem(element[0], element[1]).then(value => {
-        // console.log(JSON.stringify(element))
+      console.log(element)
     }).catch(err => {
       notify('Settings failed to save', 'Settings Not Saved')
       console.log('ERROR: ' + err)
@@ -30,13 +30,14 @@ export function emptyStorage () {
 }
 
 export function setState () {
-  localforage.iterate((value, key, iterationNumber) => {
-    state[key] = value
-    // MAKE THIS WORK VVVV
-    document.getElementById('storageToggle').checked = true
+  return localforage.iterate((value, key, iterationNumber) => {
+    let newState = state
+    newState[key] = value
+    return newState
     // console.log([key, state[key]])
-  }).then(() => {
-    // console.log('finished')
+  }).then((newState) => {
+    // document.getElementById('storageToggle').checked = true
+    return newState
   }).catch(err => {
     console.log(err)
   })

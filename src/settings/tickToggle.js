@@ -1,6 +1,6 @@
-import {state} from '../state'
+import {state as stateObject} from '../state'
 
-export function createTickToggle () {
+export function createTickToggle (currentState) {
   const tickToggleLabel = document.createElement('label')
   tickToggleLabel.setAttribute('for', 'tickToggle')
   tickToggleLabel.innerHTML = 'Ticking:'
@@ -8,18 +8,18 @@ export function createTickToggle () {
   const tickToggle = document.createElement('input')
   tickToggle.setAttribute('type', 'checkbox')
   tickToggle.setAttribute('id', 'tickToggle')
-  tickToggle.checked = state.ticking
+  tickToggle.checked = currentState.ticking
 
   tickToggle.addEventListener('change', () => {
     if (document.getElementById('tickToggle').checked) {
-      state.ticking = true
+      stateObject.ticking = true
     } else {
-      state.ticking = false
+      stateObject.ticking = false
     }
 
-    if (!state.ticking && state.timerActive) {
+    if (!stateObject.ticking && stateObject.timerActive) {
       document.getElementById('tick').pause()
-    } else if (state.ticking && state.timerActive) {
+    } else if (stateObject.ticking && stateObject.timerActive) {
       document.getElementById('tick').play()
     }
   })

@@ -2,13 +2,11 @@ import tick from '../static/tick.wav'
 
 import styles from './timerView.css'
 
-import {state} from '../state'
-
 import {beginTimer, endTimer} from './timer.js'
 
 import {createProgressCircle} from './progressCircle.js'
 
-export function createTimerView () {
+export function createTimerView (state) {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
   newTimerView.setAttribute('tabindex', '0')

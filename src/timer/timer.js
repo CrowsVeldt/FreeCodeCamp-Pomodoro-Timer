@@ -44,7 +44,7 @@ export function beginTimer (timer = Timer({
   updateTimerView(timer.currentActivity, timer.timeLeft, timer.pomodoroCount)
 
   const timerTick = document.getElementById('tick')
-  if (state.ticking) {
+  if (document.getElementById('tickToggle').checked) {
     timerTick.play()
   }
 }
