@@ -12,14 +12,15 @@ import {default as localforage} from 'localforage'
 
 import {setState} from './storage'
 
-document.body.appendChild(createTimerView())
+// localforage.length().then(value => {
+//   value > 0 ? setState() : console.log('no settings found')
+// }).catch(err => {
+//   console.log(err)
+// })
 
-localforage.length().then(value => {
-  value > 0 ? setState() : console.log('no settings found')
-})
-  .catch(err => {
-    console.log(err)
-  })
+console.log(state)
+
+document.body.appendChild(createTimerView())
 
 document.body.appendChild(createSettingsToggle())
 

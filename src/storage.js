@@ -32,6 +32,8 @@ export function emptyStorage () {
 export function setState () {
   localforage.iterate((value, key, iterationNumber) => {
     state[key] = value
+    // MAKE THIS WORK VVVV
+    document.getElementById('storageToggle').checked = true
     // console.log([key, state[key]])
   }).then(() => {
     // console.log('finished')

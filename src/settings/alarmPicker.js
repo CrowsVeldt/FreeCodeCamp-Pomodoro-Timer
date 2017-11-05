@@ -13,6 +13,7 @@ export function createAlarmPicker () {
 
   dropdown.addEventListener('change', () => {
     setAlarm(document.getElementById('alarmDropdown').value)
+    state.alarmValue = document.getElementById('alarmDropdown').value
   })
 
   return [dropdown]

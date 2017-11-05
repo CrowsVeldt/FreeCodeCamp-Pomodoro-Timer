@@ -8,6 +8,7 @@ export function createAlarmToggle () {
   const alarmToggle = document.createElement('input')
   alarmToggle.setAttribute('type', 'checkbox')
   alarmToggle.setAttribute('id', 'alarmToggle')
+  alarmToggle.checked = state.silence
 
   alarmToggle.addEventListener('change', () => {
     if (document.getElementById('alarmToggle').checked) {

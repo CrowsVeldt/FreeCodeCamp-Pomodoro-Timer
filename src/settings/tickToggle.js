@@ -8,6 +8,7 @@ export function createTickToggle () {
   const tickToggle = document.createElement('input')
   tickToggle.setAttribute('type', 'checkbox')
   tickToggle.setAttribute('id', 'tickToggle')
+  tickToggle.checked = state.ticking
 
   tickToggle.addEventListener('change', () => {
     if (document.getElementById('tickToggle').checked) {
