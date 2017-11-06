@@ -33,8 +33,8 @@ export function createSettingsMenu (currentState) {
   createTimeInput(currentState.activities.longBreak))
 
   const alarmSettings = createSettingsSection('Alarm Settings',
-  createAlarmToggle(),
-  createAlarmPicker(),
+  createAlarmToggle(currentState),
+  createAlarmPicker(currentState),
   createFilePicker())
 
   const audioSettings = createSettingsSection('Audio Settings',

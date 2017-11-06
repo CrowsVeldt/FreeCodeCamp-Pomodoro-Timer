@@ -1,6 +1,6 @@
-import {state} from '../state'
+import {state as stateObject} from '../state'
 
-export function createAlarmToggle () {
+export function createAlarmToggle (currentState) {
   const alarmToggleLabel = document.createElement('label')
   alarmToggleLabel.setAttribute('for', 'alarmToggle')
   alarmToggleLabel.innerHTML = 'No Alarm:'
@@ -8,13 +8,13 @@ export function createAlarmToggle () {
   const alarmToggle = document.createElement('input')
   alarmToggle.setAttribute('type', 'checkbox')
   alarmToggle.setAttribute('id', 'alarmToggle')
-  alarmToggle.checked = state.silence
+  alarmToggle.checked = currentState.silence
 
   alarmToggle.addEventListener('change', () => {
     if (document.getElementById('alarmToggle').checked) {
-      state.silence = true
+      stateObject.silence = true
     } else {
-      state.silence = false
+      stateObject.silence = false
     }
   })
 
