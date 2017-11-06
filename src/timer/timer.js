@@ -2,7 +2,7 @@ import {state} from '../state'
 
 import {notify} from '../notification'
 
-import {updateTimerView} from './timerView.js'
+import {updateTimerView, playAlarm} from './timerView.js'
 
 import {updateProgressCircle} from './progressCircle.js'
 
@@ -73,10 +73,8 @@ function checkTimer (timerToCheck, title, time) {
 }
 
 function finishTimer (previousTimer) {
-  if (document.getElementById('alarm') !== null && !state.silence) {
-    const alarm = document.getElementById('alarm')
-    alarm.play()
-  }
+  playAlarm()
+
   if (previousTimer.currentActivity === 'Pomodoro' && previousTimer.pomodoroCount < 3) {
     const newStartTime = new Date().getTime()
     const newEndtime = newStartTime + (previousTimer.shortBreak * state.milliseconds)

@@ -2,11 +2,13 @@ import tick from '../static/tick.wav'
 
 import styles from './timerView.css'
 
+import {state as stateObject} from '../state.js'
+
 import {beginTimer, endTimer} from './timer.js'
 
 import {createProgressCircle} from './progressCircle.js'
 
-export function createTimerView (state) {
+export function createTimerView (currentState) {
   const newTimerView = document.createElement('div')
   newTimerView.setAttribute('id', 'timer')
   newTimerView.setAttribute('tabindex', '0')
@@ -21,7 +23,7 @@ export function createTimerView (state) {
   pomodoroCounter.setAttribute('class', styles.pomodoroCounter)
 
   const alarmElement = document.createElement('audio')
-  alarmElement.setAttribute('src', state.alarmOptions[0]['source'])
+  alarmElement.setAttribute('src', currentState.alarmOptions[currentState.alarmValue]['source'])
   alarmElement.setAttribute('id', 'alarm')
 
   const tickElement = document.createElement('audio')
@@ -39,16 +41,16 @@ export function createTimerView (state) {
   newTimerView.appendChild(progressCircle)
 
   newTimerView.addEventListener('click', () => {
-    if (state.timerActive === false) {
+    if (stateObject.timerActive === false) {
       beginTimer()
-    } else if (state.timerActive === true) {
+    } else if (stateObject.timerActive === true) {
       endTimer()
     }
   })
 
   newTimerView.addEventListener('keydown', (event) => {
     if (event.key === ' ' || event.key === 'Spacebar') {
-      if (state.timerActive === false) {
+      if (stateObject.timerActive === false) {
         beginTimer()
       } else {
         endTimer()
@@ -79,5 +81,12 @@ function formatTime (timeInSeconds) {
     return minutes + ':0' + seconds
   } else {
     return minutes + ':' + seconds
+  }
+}
+
+export function playAlarm () {
+  if (document.getElementById('alarm') !== null && !stateObject.silence) {
+    const alarm = document.getElementById('alarm')
+    alarm.play()
   }
 }
