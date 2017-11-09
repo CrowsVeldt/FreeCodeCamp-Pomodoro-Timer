@@ -42,6 +42,5 @@ export const state = {
   'settingsMenuOpen': false,
   'silence': false,
   'ticking': false,
-  'timerActive': false,
-  'volume': 1
+  'timerActive': false
 }
