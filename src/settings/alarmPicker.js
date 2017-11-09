@@ -1,10 +1,10 @@
-import {state as stateObject} from '../state'
+import {state} from '../state'
 
-export function createAlarmPicker (currentState) {
+export function createAlarmPicker () {
   const dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
 
-  currentState.alarmOptions.forEach(option => {
+  state.alarmOptions.forEach(option => {
     const watchOption = document.createElement('option')
     watchOption.setAttribute('value', option.value)
     watchOption.innerHTML = option.name
@@ -25,7 +25,7 @@ function updateAlarmPicker () {
     dropdown.removeChild(dropdown.lastChild)
   }
 
-  stateObject.alarmOptions.forEach(option => {
+  state.alarmOptions.forEach(option => {
     const watchOption = document.createElement('option')
     watchOption.setAttribute('value', option.value)
     watchOption.innerHTML = option.name
@@ -35,19 +35,19 @@ function updateAlarmPicker () {
 
 function setAlarm (number) {
   const alarm = document.getElementById('alarm')
-  alarm.setAttribute('src', stateObject.alarmOptions[number].source)
-  stateObject.alarmValue = stateObject.alarmOptions[number].value
+  alarm.setAttribute('src', state.alarmOptions[number].source)
+  state.alarmValue = state.alarmOptions[number].value
 }
 
 export function addAlarm (URL, fileName) {
-  stateObject.alarmOptions.push({
+  state.alarmOptions.push({
     name: fileName.replace('.mp3', ''),
-    value: stateObject.alarmOptions.length,
+    value: state.alarmOptions.length,
     source: URL
   })
-  setAlarm(stateObject.alarmOptions.length - 1)
+  setAlarm(state.alarmOptions.length - 1)
   updateAlarmPicker()
 
   const dropdown = document.getElementById('alarmDropdown')
-  dropdown.value = stateObject.alarmOptions.length - 1
+  dropdown.value = state.alarmOptions.length - 1
 }

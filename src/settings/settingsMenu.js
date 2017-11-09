@@ -1,6 +1,6 @@
 import styles from './settingsMenu.css'
 
-import {state as stateObject} from '../state'
+import {state} from '../state'
 
 import {createSettingsSection} from './settingsSection'
 
@@ -16,9 +16,7 @@ import {createFilePicker} from './filePicker'
 
 import {createVolumeSlider} from './volumeSlider'
 
-import {createStorageToggle} from './storageToggle'
-
-export function createSettingsMenu (currentState) {
+export function createSettingsMenu () {
   const settingsMenu = document.createElement('div')
   settingsMenu.setAttribute('id', 'settingsMenu')
   settingsMenu.classList.add(styles.settingsMenu, styles.hidden)
@@ -28,32 +26,29 @@ export function createSettingsMenu (currentState) {
   })
 
   const timeSettings = createSettingsSection('Time Settings',
-  createTimeInput(currentState.activities.pomodoro),
-  createTimeInput(currentState.activities.shortBreak),
-  createTimeInput(currentState.activities.longBreak))
+  createTimeInput(state.activities.pomodoro),
+  createTimeInput(state.activities.shortBreak),
+  createTimeInput(state.activities.longBreak))
 
   const alarmSettings = createSettingsSection('Alarm Settings',
-  createAlarmToggle(currentState),
-  createAlarmPicker(currentState),
+  createAlarmToggle(),
+  createAlarmPicker(),
   createFilePicker())
 
   const audioSettings = createSettingsSection('Audio Settings',
-  createTickToggle(currentState),
-  createVolumeSlider(currentState))
-
-  const storageSettings = createSettingsSection('Storage Settings', createStorageToggle())
+  createTickToggle(),
+  createVolumeSlider())
 
   settingsMenu.appendChild(timeSettings)
   settingsMenu.appendChild(alarmSettings)
   settingsMenu.appendChild(audioSettings)
-  settingsMenu.appendChild(storageSettings)
 
   return settingsMenu
 }
 
 export function toggleSettingsMenu () {
   document.getElementById('settingsMenu').classList.toggle(styles.hidden)
-  stateObject.settingsMenuOpen = !stateObject.settingsMenuOpen
+  state.settingsMenuOpen = !state.settingsMenuOpen
 
   document.getElementById('filter').classList.toggle(styles.opaqueFilter)
 

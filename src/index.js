@@ -8,48 +8,30 @@ import {createSettingsToggle} from './settings/settingsToggle'
 
 import {createTimerView, updateTimerView} from './timer/timerView.js'
 
-import {default as localforage} from 'localforage'
+document.body.appendChild(createTimerView())
 
-import {setState} from './storage'
+document.body.appendChild(createSettingsToggle())
 
-function createAllTheThings (currentState) {
-  document.body.appendChild(createTimerView(currentState))
+updateTimerView('Pomodoro', state.activities.pomodoro.length / state.seconds, 0)
 
-  document.body.appendChild(createSettingsToggle())
+document.body.appendChild(createSettingsMenu())
 
-  updateTimerView('Pomodoro', currentState.activities.pomodoro.length / currentState.seconds, 0)
+const filter = document.createElement('div')
+filter.setAttribute('class', styles.filter)
+filter.setAttribute('id', 'filter')
 
-  document.body.appendChild(createSettingsMenu(currentState))
+document.body.appendChild(filter)
 
-  const filter = document.createElement('div')
-  filter.setAttribute('class', styles.filter)
-  filter.setAttribute('id', 'filter')
-
-  document.body.appendChild(filter)
-
-  document.body.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      toggleSettingsMenu()
-    }
-  })
-
-  document.body.addEventListener('click', () => {
-    if (currentState.settingsMenuOpen) {
-      toggleSettingsMenu()
-    }
-  })
-
-  Notification.requestPermission().then()
-}
-
-localforage.length().then(value => {
-  if (value > 0) {
-    return setState()
-  } else {
-    return state
+document.body.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    toggleSettingsMenu()
   }
-}).then((currentState) => {
-  return createAllTheThings(currentState)
-}).catch(err => {
-  console.log(err)
 })
+
+document.body.addEventListener('click', () => {
+  if (state.settingsMenuOpen) {
+    toggleSettingsMenu()
+  }
+})
+
+Notification.requestPermission().then()
