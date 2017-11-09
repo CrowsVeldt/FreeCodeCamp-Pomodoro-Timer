@@ -39,7 +39,7 @@ export function createSettingsMenu (currentState) {
 
   const audioSettings = createSettingsSection('Audio Settings',
   createTickToggle(currentState),
-  createVolumeSlider())
+  createVolumeSlider(currentState))
 
   const storageSettings = createSettingsSection('Storage Settings', createStorageToggle())
 

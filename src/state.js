@@ -34,7 +34,7 @@ export const state = {
       'source': birdSongAlarm
     }
   ],
-  'alarmValue': '0',
+  'alarmValue': 0,
   'inputMaxValue': 60,
   'inputMinValue': 1,
   'milliseconds': 1000,
@@ -43,5 +43,5 @@ export const state = {
   'silence': false,
   'ticking': false,
   'timerActive': false,
-  'volume': 10
+  'volume': 1
 }

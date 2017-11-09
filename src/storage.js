@@ -1,6 +1,6 @@
 import {default as localforage} from 'localforage'
 
-import {state} from './state'
+import {state as stateObject} from './state'
 
 import {notify} from './notification'
 
@@ -9,9 +9,8 @@ localforage.config({
 })
 
 export function populateStorage () {
-  Object.entries(state).forEach(element => {
+  Object.entries(stateObject).forEach(element => {
     localforage.setItem(element[0], element[1]).then(value => {
-      console.log(element)
     }).catch(err => {
       notify('Settings failed to save', 'Settings Not Saved')
       console.log('ERROR: ' + err)
@@ -30,16 +29,19 @@ export function emptyStorage () {
 }
 
 export function setState () {
+  // create promise that promises to return new state
+
+  // chain the iterator function to that promise
+
+  // ???
   return localforage.iterate((value, key, iterationNumber) => {
-    let newState = state
+    let newState = stateObject
     newState[key] = value
     return newState
-    // console.log([key, state[key]])
   }).then((newState) => {
-    // document.getElementById('storageToggle').checked = true
+    console.log(newState)
     return newState
   }).catch(err => {
     console.log(err)
   })
-  // console.log(state.activities.pomodoro)
 }
