@@ -16,6 +16,7 @@ export function createAlarmToggle () {
       state.silence = false
     }
   })
+  alarmToggleLabel.appendChild(alarmToggle)
 
-  return [alarmToggleLabel, alarmToggle]
+  return [alarmToggleLabel]
 }

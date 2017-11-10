@@ -24,5 +24,7 @@ export function createTickToggle () {
     }
   })
 
-  return [tickToggleLabel, tickToggle]
+  tickToggleLabel.appendChild(tickToggle)
+
+  return [tickToggleLabel]
 }

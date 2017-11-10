@@ -10,25 +10,14 @@
 .fileLabel {
   background-color: white;
   color: black;
-  border-radius: 10%;
   cursor: pointer;
   text-align: center;
   font-size: .9rem;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-.fileLabel:hover {
-  background-color: lightgrey;
+  padding: 4px;
+  margin: 4px;
+  box-shadow: 1px 1px 0.5px 0px rgba(0,0,0,0.75);
 }
 
 .fileLabel:active {
-  background-color: grey;
-  outline: 1px dotted #000; 
-}
-
-.fileLabel:focus-within {
-  outline: 1px dotted #000;
-  /* default focus style for webkit: */
-  outline: -webkit-focus-ring-color auto 5px; 
+  outline: 1px solid black; 
 }

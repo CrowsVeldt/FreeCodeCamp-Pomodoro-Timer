@@ -49,12 +49,13 @@ export function createTimerView () {
   })
 
   newTimerView.addEventListener('keydown', (event) => {
-    if (event.key === ' ' || event.key === 'Spacebar') {
-      if (state.timerActive === false) {
-        beginTimer()
-      } else {
-        endTimer()
-      }
+    if (event.key === ' ' || event.key === 'Spacebar' || event.key === 'Enter') {
+      let mouseEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      })
+      document.getElementById('timer').dispatchEvent(mouseEvent)
     }
   })
 

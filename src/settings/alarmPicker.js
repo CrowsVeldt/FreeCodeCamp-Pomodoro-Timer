@@ -1,8 +1,11 @@
+import styles from './alarmPicker.css'
+
 import {state} from '../state'
 
 export function createAlarmPicker () {
   const dropdown = document.createElement('select')
   dropdown.setAttribute('id', 'alarmDropdown')
+  dropdown.classList.add(styles.alarmPicker)
 
   state.alarmOptions.forEach(option => {
     const watchOption = document.createElement('option')
