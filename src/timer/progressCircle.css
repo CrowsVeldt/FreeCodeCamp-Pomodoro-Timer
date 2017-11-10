@@ -4,7 +4,9 @@
   position: absolute;  
   
   height: calc(50vmin - 1px);
-  width: calc(50vmin - 1px); 
+  min-height: 200px;
+  width: calc(50vmin - 1px);
+  min-width: 200px;
 
   transform: rotate(270deg);
 

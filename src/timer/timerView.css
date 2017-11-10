@@ -8,10 +8,12 @@
   text-align: center;
 
   height: calc(50vmin - 1px);
+  min-height: 200px;
   width: calc(50vmin - 1px);
+  min-width: 200px;
 
   font-family: Courier New, Courier, monospace;
-  font-size: 30px;
+  font-size: calc(20px + 2vmin);
 
   border: 1px solid rgba(100, 100, 100, 1); 
   border-radius: 50%;     
@@ -32,7 +34,7 @@
 }
 
 .title {
-  margin: 50px;
+  margin-top: 5vmin;  
   cursor: pointer;
 }
 
