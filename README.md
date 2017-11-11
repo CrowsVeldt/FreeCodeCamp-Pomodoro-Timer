@@ -37,12 +37,14 @@
 
 The resources I used were provided with, great generosity, by:
 
-[Analog Watch Alarm](http://soundbible.com/2197-Analog-Watch-Alarm.html) by Daniel Simion, Found at SoundBible.
+[Analog Watch Alarm](http://soundbible.com/2197-Analog-Watch-Alarm.html) by Daniel Simion, Found at [SoundBible](http://soundbible.com/). [Attribution 3.0 Unported (CC BY 3.0)](https://creativecommons.org/licenses/by/3.0/legalcode).
 
-[Gong](https://freesound.org/people/cdiupe/sounds/112507/) by [cdiupe](https://freesound.org/people/cdiupe/), found at [Freesound.org](https://freesound.org/).
+[Gong](https://freesound.org/people/cdiupe/sounds/112507/) by [cdiupe](https://freesound.org/people/cdiupe/), found at [Freesound.org](https://freesound.org/). [CC0 1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)/
 
-[Birdsong May](http://freesound.org/people/juskiddink/sounds/98480/) by [juskiddink](http://freesound.org/people/juskiddink/), found at [Freesound.org](https://freesound.org/).
+[Birdsong May](http://freesound.org/people/juskiddink/sounds/98480/) by [juskiddink](http://freesound.org/people/juskiddink/), found at [Freesound.org](https://freesound.org/). [Attribution 3.0 Unported (CC BY 3.0)](https://creativecommons.org/licenses/by/3.0/legalcode)/. This file was modified by truncating it, and converting it to MP3.
 
-[Alarm Clock Ticking](https://freesound.org/people/joedeshon/sounds/78563/) by [joedeshon](https://freesound.org/people/joedeshon/), found at [Freesound.org](https://freesound.org/).
+[Alarm Clock Ticking](https://freesound.org/people/joedeshon/sounds/78563/) by [joedeshon](https://freesound.org/people/joedeshon/), found at [Freesound.org](https://freesound.org/). [Attribution 3.0 Unported (CC BY 3.0)](https://creativecommons.org/licenses/by/3.0/legalcode)/. This file was modified by truncating it.
 
-[Stopwatch](https://thenounproject.com/search/?q=timer&creator=2823359&i=1136013) icon by [ngamlerdlek.design](https://thenounproject.com/ngamlerdlek.video/), found at [The Noun Project](https://thenounproject.com/). [Attribution 3.0 United States (CC BY 3.0 US)](https://creativecommons.org/licenses/by/3.0/us/)
+[Stopwatch](https://thenounproject.com/search/?q=timer&creator=2823359&i=1136013) icon by [ngamlerdlek.design](https://thenounproject.com/ngamlerdlek.video/), found at [The Noun Project](https://thenounproject.com/). [Attribution 3.0 United States (CC BY 3.0 US)](https://creativecommons.org/licenses/by/3.0/us/legalcode).
+
+I have tried to abide by all the requirements of the appropriate licenses, if I have made any mistakes or oversights I will be very happy to correct them.
