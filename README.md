@@ -27,7 +27,7 @@
 
 ## General Comments:
 
-1. I started this project trying to learn (arguably) too many new things at once. This is my first time using: WebPack, Babel, Modular design, and many ES6 features. I did learn a lot, but I spent a *lot* of time stuck because of some problem with a tool (or my understanding of it), and it was very hard to maintain motivation.
+1. I started this project trying to learn (arguably) too many new things at once. This is my first time using: WebPack, Babel, Modular design, many (new to me) ES6 features, and git history management. I did learn a lot, but I spent a *lot* of time stuck because of some problem with a tool (or my understanding of it), and it was very hard to maintain motivation.
 
 2. At the start I was also writing unit tests with Jest, and trying to follow TDD principles. Unfortunately it was too much at once, and I struggled trying to write code (period) with all the new tools and features I was using let alone code that was testable, or the tests for that code. After a week I decided to focus on learning how to write code that worked, and I dropped testing for the duration of the project. As a point of interest: There were many occasions after this were I found myself dealing with a bug that would have been trivial to sort out if I had been writing proper tests, and as such I have a renewed understanding of, and appreciation for, the value of writing tests, and intend to dedicate my next project solely to leraning how to write unit tests, and integrating them into my workflow. (I have left the test files in the repo for posterity and as a warning to others)
 
